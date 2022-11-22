@@ -2,7 +2,7 @@
 # [C++] SUPER MORIA with NEAT and TidyVolve
 
 - My very own NEAT framework in C++ (it's neat & tidy) : https://github.com/romainducrocq/NEAT-TidyVolve
-- Nintaco - NES / Famicom emulator and game RAM reading & manipulation API : https://nintaco.com/api.html
+- Nintaco API - NES / Famicom emulator and game RAM manipulation in C : https://nintaco.com/api.html
   
 ****
 
