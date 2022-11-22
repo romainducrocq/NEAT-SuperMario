@@ -15,7 +15,7 @@ set(EXEC_DIR "${PROJECT_SOURCE_DIR}/../bin/apps/")
 set(LINK_LIB "-lgtest -pthread -L${LIB_DIR}pbplots/ -lPbPlots -L${LIB_DIR}nintaco/ -lNintaco")
 
 file(GLOB_RECURSE SOURCE_FILES "${SOURCE_DIR}/*.cpp" "${TEST_SOURCE_DIR}/*.cpp")
-file(GLOB_RECURSE HEADER_FILES "${HEADER_DIR}/*.hpp" "${TEST_HEADER_DIR}/*.hpp" "${LIB_DIR}/*.hpp")
+file(GLOB_RECURSE HEADER_FILES "${HEADER_DIR}/*.hpp" "${TEST_HEADER_DIR}/*.hpp" "${LIB_DIR}/*.hpp" "${LIB_DIR}/*.h")
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${TEST_SOURCE_FILES})
 target_include_directories(${PROJECT_NAME} PRIVATE ${HEADER_DIR} ${TEST_HEADER_DIR} ${LIB_DIR})
