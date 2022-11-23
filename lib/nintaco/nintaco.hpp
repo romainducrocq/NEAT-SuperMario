@@ -22,10 +22,8 @@
 #define addStopListener nintaco_addStopListener
 #define ARRAY_LENGTH nintaco_ARRAY_LENGTH
 #define clipRect nintaco_clipRect
-#define close nintaco_close
 #define closeFile nintaco_closeFile
 #define closeSocketConnect nintaco_closeSocketConnect
-#define connect nintaco_connect
 #define copyArea nintaco_copyArea
 #define createSprite nintaco_createSprite
 #define deleteAccessPoint nintaco_deleteAccessPoint
@@ -63,9 +61,7 @@
 #define fireStatusChanged nintaco_fireStatusChanged
 #define flipDiskSide nintaco_flipDiskSide
 #define flush nintaco_flush
-#define free nintaco_free
 #define getA nintaco_getA
-#define getaddrinfo nintaco_getaddrinfo
 #define getArchiveEntries nintaco_getArchiveEntries
 #define getCameraX nintaco_getCameraX
 #define getCameraY nintaco_getCameraY
@@ -97,7 +93,6 @@
 #define getZapperX nintaco_getZapperX
 #define getZapperY nintaco_getZapperY
 #define glitch nintaco_glitch
-#define _GLOBAL_OFFSET_TABLE_ nintaco__GLOBAL_OFFSET_TABLE_
 #define HEARTBEAT nintaco_HEARTBEAT
 #define insertCoin nintaco_insertCoin
 #define insertDisk nintaco_insertDisk
@@ -116,10 +111,6 @@
 #define isZ nintaco_isZ
 #define isZapperTrigger nintaco_isZapperTrigger
 #define loadState nintaco_loadState
-#define malloc nintaco_malloc
-#define memcpy nintaco_memcpy
-#define memset nintaco_memset
-#define nanosleep nintaco_nanosleep
 #define newAccessPoint nintaco_newAccessPoint
 #define newDataInputStream nintaco_newDataInputStream
 #define newDataOutputStream nintaco_newDataOutputStream
@@ -144,7 +135,6 @@
 #define probeEvents nintaco_probeEvents
 #define quickLoadState nintaco_quickLoadState
 #define quickSaveState nintaco_quickSaveState
-#define read nintaco_read
 #define readBoolean nintaco_readBoolean
 #define readByte nintaco_readByte
 #define readChar nintaco_readChar
@@ -221,12 +211,7 @@
 #define setZapperY nintaco_setZapperY
 #define showMessage nintaco_showMessage
 #define sleep_ms nintaco_sleep_ms
-#define socket nintaco_socket
-#define sprintf nintaco_sprintf
 #define stepToNextFrame nintaco_stepToNextFrame
-#define strlen nintaco_strlen
-#define vsprintf nintaco_vsprintf
-#define write nintaco_write
 #define writeBoolean nintaco_writeBoolean
 #define writeByte nintaco_writeByte
 #define writeChar nintaco_writeChar
@@ -268,10 +253,8 @@
 #undef addStopListener
 #undef ARRAY_LENGTH
 #undef clipRect
-#undef close
 #undef closeFile
 #undef closeSocketConnect
-#undef connect
 #undef copyArea
 #undef createSprite
 #undef deleteAccessPoint
@@ -309,9 +292,7 @@
 #undef fireStatusChanged
 #undef flipDiskSide
 #undef flush
-#undef free
 #undef getA
-#undef getaddrinfo
 #undef getArchiveEntries
 #undef getCameraX
 #undef getCameraY
@@ -343,7 +324,6 @@
 #undef getZapperX
 #undef getZapperY
 #undef glitch
-#undef _GLOBAL_OFFSET_TABLE_
 #undef HEARTBEAT
 #undef insertCoin
 #undef insertDisk
@@ -362,10 +342,6 @@
 #undef isZ
 #undef isZapperTrigger
 #undef loadState
-#undef malloc
-#undef memcpy
-#undef memset
-#undef nanosleep
 #undef newAccessPoint
 #undef newDataInputStream
 #undef newDataOutputStream
@@ -390,7 +366,6 @@
 #undef probeEvents
 #undef quickLoadState
 #undef quickSaveState
-#undef read
 #undef readBoolean
 #undef readByte
 #undef readChar
@@ -467,12 +442,7 @@
 #undef setZapperY
 #undef showMessage
 #undef sleep_ms
-#undef socket
-#undef sprintf
 #undef stepToNextFrame
-#undef strlen
-#undef vsprintf
-#undef write
 #undef writeBoolean
 #undef writeByte
 #undef writeChar
