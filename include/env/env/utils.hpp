@@ -4,23 +4,29 @@
 #include <cstdlib>
 #include <thread>
 
-namespace CONST
-{
-    const char SYSROM[] = "../../opt/java/jre1.8.0_latest/bin/java -jar "
-                          "../../opt/nintaco/Nintaco_bin_2020-05-01/Nintaco.jar "
-                          "../../res/rom/Super\\ Mario\\ Bros\\ \\(E\\).nes";
-}
+#include <nintaco/nintaco.hpp>
 
-namespace utils
+namespace rom
 {
-    void sysrom()
+    const char RUN[] = "../../opt/java/jre1.8.0_latest/bin/java -jar "
+                       "../../opt/nintaco/Nintaco_bin_2020-05-01/Nintaco.jar "
+                       "../../res/rom/Super\\ Mario\\ Bros\\ \\(E\\).nes";
+
+    const char SAV[] = "";
+
+    void run()
     {
         std::thread th([&]() {
-            std::system(CONST::SYSROM);
+            std::system(rom::RUN);
         });
         th.detach();
     }
+
+    void load()
+    {
+
+    }
+
 }
 
 #endif
-
