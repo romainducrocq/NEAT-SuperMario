@@ -6,27 +6,33 @@
 
 #include <nintaco/nintaco.hpp>
 
+#include "env/conf.hpp"
+
 namespace rom
 {
-    char RUN[] = "../../opt/java/jre1.8.0_latest/bin/java -jar "
-                 "../../opt/nintaco/Nintaco_bin_2020-05-01/Nintaco.jar "
-                 "../../res/rom/Super_Mario_Bros_E.nes";
+    std::string ADDR = CONF::ADDR;
+    size_t PORT = CONF::PORT;
 
-    char SAV[] = "../../res/sav/Super_Mario_Bros_E_1-1.save";
+    std::string RUN = "../../opt/java/jre1.8.0_latest/bin/java -jar "
+                      "../../opt/nintaco/Nintaco_bin_2020-05-01/Nintaco.jar "
+                      "../../res/rom/" + CONF::ROM + "." + CONF::EXT;
+
+    std::string SAV = "../../res/sav/" + CONF::ROM + "_" + CONF::SAV + ".save";
 
     void run()
     {
         std::thread th([&]() {
-            std::system(rom::RUN);
+            std::system(&rom::RUN[0]);
         });
         th.detach();
     }
 
     void load(NintacoAPI* api)
     {
-        nintaco_loadState(api, rom::SAV);
+       nintaco_loadState(api, &rom::SAV[0]);
     }
 
+    /*
     void test()
     {
         rom::run();
@@ -65,6 +71,7 @@ namespace rom
             nintaco_sleep_ms(nintaco_RETRY_MILLIS);
         }
     }
+     */
 }
 
 #endif
