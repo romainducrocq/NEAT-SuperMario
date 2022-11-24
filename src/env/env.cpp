@@ -3,7 +3,6 @@
 /*** DEF INIT FUNC HERE */
 void MyEnv::Env::init_func()
 {
-    this->m.emu.rom.run();
 }
 
 /*** DEF OBS FUNC HERE */

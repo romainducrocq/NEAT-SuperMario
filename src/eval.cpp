@@ -1,6 +1,7 @@
 #include "eval.hpp"
 
 App::Eval::Eval()
+    : env(*this->api.ptr())
 {
     this->run();
 }
@@ -13,13 +14,7 @@ void App::Eval::run()
     std::cout << "-------------------------------EVAL--------------------------------" << "\n";
     std::cout << "\n";
 
-    this->ev_setup();
-    this->setup();
-    this->draw_setup();
-
-    while(this->loop()){
-        this->draw_loop();
-    }
+    this->Super::app_run([](NintacoAPI*) { Eval::EVAL().app_loop(); });
 }
 
 void App::Eval::setup()

@@ -9,13 +9,15 @@
 #include "env/env.hpp"
 #include "env/view.hpp"
 
+#include "utils/emulator.hpp"
 #include "utils/timer.hpp"
 
 namespace App
 {
-    class Play
+    class Play : public Emulator
     {
         private:
+            typedef Emulator Super;
             MyEnv::Env env;
 
         private:
@@ -29,12 +31,12 @@ namespace App
         private:
             void run();
 
-            void ev_setup();
-            void draw_setup();
-            void draw_loop();
+            void ev_setup() override;
+            void draw_setup() override;
+            void draw_loop() override;
 
-            void setup();
-            bool loop();
+            void setup() override;
+            bool loop() override;
 
             Play();
 

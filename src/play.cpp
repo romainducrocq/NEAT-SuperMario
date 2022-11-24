@@ -1,6 +1,7 @@
 #include "play.hpp"
 
 App::Play::Play()
+    : env(*this->api.ptr())
 {
     this->run();
 }
@@ -13,13 +14,7 @@ void App::Play::run()
     std::cout << "-------------------------------PLAY--------------------------------" << "\n";
     std::cout << "\n";
 
-    this->ev_setup();
-    this->setup();
-    this->draw_setup();
-
-    while(this->loop()){
-        this->draw_loop();
-    }
+    this->Super::app_run([](NintacoAPI*) { Play::PLAY().app_loop(); });
 }
 
 void App::Play::setup()

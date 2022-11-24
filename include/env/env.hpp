@@ -1,12 +1,16 @@
 #ifndef _ENV_ENV_HPP
 #define _ENV_ENV_HPP
 
+#include <memory>
+
+#include <nintaco/nintaco.hpp>
+
 #include "neat/neat.hpp"
 
 #include "utils/logger.hpp"
 
 /*** ADD INCLUDE HERE */
-#include "env/env/emulator.hpp"
+
 
 namespace App { class Play; }
 
@@ -15,8 +19,6 @@ namespace MyEnv
     /*** DEC MODEL HERE */
     struct Model
     {
-        nintaco::Emu emu;
-        // std::unique_ptr<NintacoAPI> api;
     };
 
     class Env : public Neat
@@ -27,6 +29,8 @@ namespace MyEnv
 
         private:
             MyEnv::Model m;
+
+            NintacoAPI& api;
 
         private:
             void init_func() override;
@@ -52,7 +56,11 @@ namespace MyEnv
             void step_render_func() override;
 
         public:
-            Env() = default;
+            Env() = delete;
+            inline explicit Env(NintacoAPI& api)
+                : api(api)
+            {
+            }
 
             inline const MyEnv::Model &get_m() const
             {
