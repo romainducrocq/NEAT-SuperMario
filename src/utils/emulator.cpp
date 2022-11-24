@@ -9,7 +9,7 @@ Emulator::Emulator()
 void Emulator::app_run(void(*app_loop_func)(NintacoAPI*))
 {
     this->app_setup();
-    nintaco_addFrameListener(nullptr, reinterpret_cast<FrameListener>(&app_loop_func));
+    nintaco_addFrameListener(this->api.ptr(), reinterpret_cast<FrameListener>(&app_loop_func));
 
     auto status_func = [](NintacoAPI*, char* msg) { std::cout << msg << "\n"; };
     nintaco_addStatusListener(this->api.ptr(), reinterpret_cast<StatusListener>(&status_func));
