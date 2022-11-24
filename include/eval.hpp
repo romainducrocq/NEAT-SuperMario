@@ -31,7 +31,7 @@ namespace App
             Eval();
 
         private:
-            static void eval_loop(NintacoAPI*);
+            static void eval_loop(nintaco::NintacoAPI*);
 
         public:
             Eval(const Eval& other) = delete;

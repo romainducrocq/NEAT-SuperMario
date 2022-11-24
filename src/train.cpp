@@ -6,8 +6,9 @@ App::Train::Train()
     this->run();
 }
 
-void App::Train::train_loop(NintacoAPI*)
+void App::Train::train_loop(nintaco::NintacoAPI*)
 {
+    std::cout << "hello train\n";
     Train::TRAIN().app_loop();
 }
 
@@ -25,9 +26,9 @@ void App::Train::run()
 void App::Train::app_run()
 {
     this->app_setup();
-    nintaco_addFrameListener(this->Super::api.ptr(), reinterpret_cast<FrameListener>(&App::Train::train_loop));
-    nintaco_addStatusListener(this->Super::api.ptr(), reinterpret_cast<StatusListener>(&Super::status));
-    nintaco_run(this->Super::api.ptr());
+    nintaco::addFrameListener(this->Super::api.ptr(), reinterpret_cast<nintaco::FrameListener>(&App::Train::train_loop));
+    nintaco::addStatusListener(this->Super::api.ptr(), reinterpret_cast<nintaco::StatusListener>(&Super::status));
+    nintaco::run(this->Super::api.ptr());
 }
 
 void App::Train::setup()

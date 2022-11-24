@@ -43,7 +43,7 @@ namespace App
             Play();
 
         private:
-            static void play_loop(NintacoAPI*);
+            static void play_loop(nintaco::NintacoAPI*);
 
         public:
             Play(const Play &other) = delete;

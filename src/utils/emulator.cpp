@@ -6,7 +6,7 @@ Emulator::Emulator()
     this->api.make();
 }
 
-void Emulator::status(NintacoAPI*, char* msg)
+void Emulator::status(nintaco::NintacoAPI*, char* msg)
 {
     std::cout << msg << "\n";
 }

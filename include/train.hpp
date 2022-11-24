@@ -27,7 +27,7 @@ namespace App
         Train();
 
     private:
-        static void train_loop(NintacoAPI*);
+        static void train_loop(nintaco::NintacoAPI*);
 
     public:
         Train(const Train& other) = delete;

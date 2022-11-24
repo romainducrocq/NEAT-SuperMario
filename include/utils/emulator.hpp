@@ -33,12 +33,12 @@ class Emulator
             std::string addr = CONF::ADDR;
             size_t port = CONF::PORT;
 
-            std::unique_ptr<NintacoAPI> api;
+            std::unique_ptr<nintaco::NintacoAPI> api;
 
             inline void make()
             {
-                this->api = std::unique_ptr<NintacoAPI>(
-                        nintaco_newNintacoAPI(&this->addr[0], static_cast<int>(this->port)));
+                this->api = std::unique_ptr<nintaco::NintacoAPI>(
+                        nintaco::newNintacoAPI(&this->addr[0], static_cast<int>(this->port)));
             }
 
             inline void kill() const
@@ -46,7 +46,7 @@ class Emulator
                 this->api->running = false;
             }
 
-            inline NintacoAPI* ptr() const
+            inline nintaco::NintacoAPI* ptr() const
             {
                 return this->api.get();
             }
@@ -76,7 +76,7 @@ class Emulator
         Emulator();
 
     protected:
-        static void status(NintacoAPI*, char* msg);
+        static void status(nintaco::NintacoAPI*, char* msg);
 };
 
 #endif

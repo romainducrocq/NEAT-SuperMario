@@ -43,6 +43,21 @@ void MyEnv::Env::reset_func()
 /*** DEF STEP FUNC HERE */
 void MyEnv::Env::step_func()
 {
+    switch (this->Super::mode) {
+        case CONF::Mode::TRAIN:
+            std::cout << "step train\n";
+            break;
+
+        case CONF::Mode::EVAL:
+            std::cout << "step eval\n";
+            break;
+
+        case CONF::Mode::PLAY:
+            std::cout << "step play\n";
+            break;
+        default:
+            break;
+    }
 }
 
 /*** DEF RESET RENDER FUNC HERE */
