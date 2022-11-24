@@ -3,7 +3,7 @@
 /*** DEF INIT FUNC HERE */
 void MyEnv::Env::init_func()
 {
-    // this->m.api = std::unique_ptr<NintacoAPI>(nintaco_newNintacoAPI(&rom::ADDR[0], static_cast<int>(rom::PORT)));
+    this->m.emu.rom.run();
 }
 
 /*** DEF OBS FUNC HERE */

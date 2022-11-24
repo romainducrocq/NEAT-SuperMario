@@ -1,16 +1,18 @@
 #ifndef _ENV_UTILS_HPP
 #define _ENV_UTILS_HPP
 
+/*
 #include <cstdlib>
 #include <thread>
 
 #include <nintaco/nintaco.hpp>
 
 #include "env/conf.hpp"
+*/
 
 namespace rom
 {
-    std::string ADDR = CONF::ADDR;
+  /*  std::string ADDR = CONF::ADDR;
     size_t PORT = CONF::PORT;
 
     std::string RUN = "../../opt/java/jre1.8.0_latest/bin/java -jar "
@@ -31,6 +33,7 @@ namespace rom
     {
        nintaco_loadState(api, &rom::SAV[0]);
     }
+    */
 
     /*
     void test()

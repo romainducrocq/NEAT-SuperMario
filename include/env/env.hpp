@@ -6,11 +6,7 @@
 #include "utils/logger.hpp"
 
 /*** ADD INCLUDE HERE */
-#include <memory>
-
-#include <nintaco/nintaco.hpp>
-
-#include "env/utils.hpp"
+#include "env/env/emulator.hpp"
 
 namespace App { class Play; }
 
@@ -19,7 +15,8 @@ namespace MyEnv
     /*** DEC MODEL HERE */
     struct Model
     {
-        std::unique_ptr<NintacoAPI> api;
+        nintaco::Emu emu;
+        // std::unique_ptr<NintacoAPI> api;
     };
 
     class Env : public Neat
