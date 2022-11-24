@@ -6,6 +6,11 @@ App::Play::Play()
     this->run();
 }
 
+void App::Play::play_loop(NintacoAPI*)
+{
+    Play::PLAY().app_loop();
+}
+
 void App::Play::run()
 {
     Timer timer;
@@ -14,7 +19,15 @@ void App::Play::run()
     std::cout << "-------------------------------PLAY--------------------------------" << "\n";
     std::cout << "\n";
 
-    this->Super::app_run([](NintacoAPI*) { Play::PLAY().app_loop(); });
+    this->app_run();
+}
+
+void App::Play::app_run()
+{
+    this->app_setup();
+    nintaco_addFrameListener(this->Super::api.ptr(), reinterpret_cast<FrameListener>(&App::Play::play_loop));
+    nintaco_addStatusListener(this->Super::api.ptr(), reinterpret_cast<StatusListener>(&Super::status));
+    nintaco_run(this->Super::api.ptr());
 }
 
 void App::Play::setup()

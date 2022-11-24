@@ -6,6 +6,11 @@ App::Eval::Eval()
     this->run();
 }
 
+void App::Eval::eval_loop(NintacoAPI*)
+{
+    Eval::EVAL().app_loop();
+}
+
 void App::Eval::run()
 {
     Timer timer;
@@ -14,7 +19,15 @@ void App::Eval::run()
     std::cout << "-------------------------------EVAL--------------------------------" << "\n";
     std::cout << "\n";
 
-    this->Super::app_run([](NintacoAPI*) { Eval::EVAL().app_loop(); });
+    this->app_run();
+}
+
+void App::Eval::app_run()
+{
+    this->app_setup();
+    nintaco_addFrameListener(this->Super::api.ptr(), reinterpret_cast<FrameListener>(&App::Eval::eval_loop));
+    nintaco_addStatusListener(this->Super::api.ptr(), reinterpret_cast<StatusListener>(&Super::status));
+    nintaco_run(this->Super::api.ptr());
 }
 
 void App::Eval::setup()

@@ -31,6 +31,8 @@ namespace App
         private:
             void run();
 
+            void app_run() override;
+
             void ev_setup() override;
             void draw_setup() override;
             void draw_loop() override;
@@ -39,6 +41,9 @@ namespace App
             bool loop() override;
 
             Play();
+
+        private:
+            static void play_loop(NintacoAPI*);
 
         public:
             Play(const Play &other) = delete;

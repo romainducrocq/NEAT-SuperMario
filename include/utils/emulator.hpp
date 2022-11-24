@@ -58,24 +58,25 @@ class Emulator
     protected:
         Emulator::Api api;
 
-    private:
-        void app_setup();
-
     protected:
+        virtual void app_setup() final;
         virtual void app_loop() final;
 
-    protected:
-        void app_run(void(*app_loop_func)(NintacoAPI*));
+        virtual void app_run() = 0;
 
-        virtual void ev_setup() = 0;
-        virtual void draw_setup() = 0;
-        virtual void draw_loop() = 0;
+    protected:
+        virtual inline void ev_setup() {}
+        virtual inline void draw_setup() {}
+        virtual inline void draw_loop() {}
 
         virtual void setup() = 0;
         virtual bool loop() = 0;
 
     public:
         Emulator();
+
+    protected:
+        static void status(NintacoAPI*, char* msg);
 };
 
 #endif

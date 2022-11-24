@@ -19,6 +19,8 @@ namespace App
         private:
             void run();
 
+            void app_run() override;
+
             void ev_setup() override;
             void draw_setup() override;
             void draw_loop() override;
@@ -27,6 +29,9 @@ namespace App
             bool loop() override;
 
             Eval();
+
+        private:
+            static void eval_loop(NintacoAPI*);
 
         public:
             Eval(const Eval& other) = delete;

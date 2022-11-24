@@ -19,14 +19,15 @@ namespace App
     private:
         void run();
 
-        void ev_setup() override;
-        void draw_setup() override;
-        void draw_loop() override;
+        void app_run() override;
 
         void setup() override;
         bool loop() override;
 
         Train();
+
+    private:
+        static void train_loop(NintacoAPI*);
 
     public:
         Train(const Train& other) = delete;
@@ -39,40 +40,5 @@ namespace App
         }
     };
 }
-
-
-/*
-namespace App
-{
-    class Train : public Emulator
-    {
-        private:
-            typedef Emulator Super;
-            MyEnv::Env env;
-
-        private:
-            void run();
-
-            void ev_setup() override;
-            void draw_setup() override;
-            void draw_loop() override;
-
-            void setup() override;
-            bool loop() override;
-
-            Train();
-
-        public:
-            Train(const Train& other) = delete;
-            Train operator=(const Train& other) = delete;
-
-            static Train& TRAIN()
-            {
-                static Train singleton;
-                return singleton;
-            }
-    };
-}
-*/
 
 #endif
