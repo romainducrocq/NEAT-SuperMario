@@ -48,7 +48,7 @@ class Emulator
 
             inline bool ready() const
             {
-                return this->api->in && this->api->out && this->api->in->alive && this->api->out->alive;
+                return this->api->running && this->api->in && this->api->out && this->api->in->alive && this->api->out->alive;
             }
 
             inline NintacoAPI* ptr() const
