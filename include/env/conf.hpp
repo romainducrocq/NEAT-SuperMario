@@ -71,12 +71,15 @@ struct DefaultConf{
 
     static Mode MODE;
 
-    /*** DEC OPT PARAMS HERE */
+    /* NINTACO */
     const static size_t PORT;
     const static std::string ADDR;
     const static std::string EXT;
     const static std::string ROM;
     const static std::string SAV;
+
+    /*** DEC OPT PARAMS HERE */
+
 
     static inline bool argParse(int argc, char** argv)
     {
@@ -228,7 +231,7 @@ size_t DefaultConf<T>::MAX_STEP = 0; // (0=inf) -> no step early stop
 template<typename T>
 size_t DefaultConf<T>::MAX_NOOP = 0; // (0=inf) -> no noop early stop
 
-/*** DEF OPT PARAMS HERE */
+/* NINTACO */
 template<typename T>
 const size_t DefaultConf<T>::PORT = 9999;
 template<typename T>
@@ -239,6 +242,9 @@ template<typename T>
 const std::string DefaultConf<T>::ROM = "Super_Mario_Bros_E";
 template<typename T>
 const std::string DefaultConf<T>::SAV = "1-1";
+
+/*** DEF OPT PARAMS HERE */
+
 
 using CONF = DefaultConf<int>;
 
