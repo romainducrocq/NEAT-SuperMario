@@ -77,9 +77,6 @@ class Emulator
 
     public:
         Emulator();
-
-    protected:
-        static void status(NintacoAPI*, char* msg);
 };
 
 #endif

@@ -34,7 +34,7 @@ int main(int argc, char** argv)
             }
 
             case CONF::Mode::EVAL:{
-                // if(CONF::LOG_SAV.empty()) { return 1; }
+                if(CONF::LOG_SAV.empty()) { return 1; }
                 std::srand(time(nullptr));
                 App::Eval::EVAL().run();
                 return 0;
