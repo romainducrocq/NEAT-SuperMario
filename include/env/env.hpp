@@ -30,8 +30,8 @@ namespace MyEnv
         private:
             MyEnv::Model m;
 
-            NintacoAPI& api;
-            std::string sav;
+            NintacoAPI* api;
+            char* sav;
 
         private:
             void init_func() override;
@@ -59,7 +59,7 @@ namespace MyEnv
         public:
             Env() = delete;
             inline Env(NintacoAPI& api, std::string& sav)
-                : api(api), sav(sav)
+                : api(&api), sav(&sav[0])
             {
             }
 

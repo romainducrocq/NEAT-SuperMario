@@ -23,8 +23,10 @@ void Emulator::app_setup()
 
 void Emulator::app_loop()
 {
-    if(! this->loop()){
-        this->api.kill();
+    if(this->api.ready()){
+        if(! this->loop()){
+            this->api.kill();
+        }
+        this->draw_loop();
     }
-    this->draw_loop();
 }

@@ -46,6 +46,11 @@ class Emulator
                 this->api->running = false;
             }
 
+            inline bool ready() const
+            {
+                return this->api->in && this->api->out && this->api->in->alive && this->api->out->alive;
+            }
+
             inline NintacoAPI* ptr() const
             {
                 return this->api.get();
