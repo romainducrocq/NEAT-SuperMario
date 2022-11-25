@@ -52,10 +52,8 @@ class Emulator
             }
         };
 
-    private:
-        Emulator::Rom rom;
-
     protected:
+        Emulator::Rom rom;
         Emulator::Api api;
 
     protected:
