@@ -17,15 +17,10 @@ namespace App
         MyEnv::Env env;
 
     private:
-        void app_run() override;
-
         void setup() override;
         bool loop() override;
 
         Train();
-
-    private:
-        static void train_loop(NintacoAPI*);
 
     public:
         void run();

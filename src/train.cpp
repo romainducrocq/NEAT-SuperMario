@@ -5,11 +5,6 @@ App::Train::Train()
 {
 }
 
-void App::Train::train_loop(NintacoAPI*)
-{
-    Train::TRAIN().app_loop();
-}
-
 void App::Train::run()
 {
     Timer timer;
@@ -18,15 +13,7 @@ void App::Train::run()
     std::cout << "-------------------------------TRAIN-------------------------------" << "\n";
     std::cout << "\n";
 
-    this->app_run();
-}
-
-void App::Train::app_run()
-{
-    this->app_setup();
-    nintaco_addFrameListener(this->Super::api.ptr(), reinterpret_cast<FrameListener>(&App::Train::train_loop));
-    nintaco_addStatusListener(this->Super::api.ptr(), reinterpret_cast<StatusListener>(&Super::status));
-    nintaco_run(this->Super::api.ptr());
+    this->Super::app_run([](NintacoAPI*) { Train::TRAIN().app_loop(); } );
 }
 
 void App::Train::setup()
