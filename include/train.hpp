@@ -17,8 +17,6 @@ namespace App
         MyEnv::Env env;
 
     private:
-        void run();
-
         void app_run() override;
 
         void setup() override;
@@ -27,7 +25,10 @@ namespace App
         Train();
 
     private:
-        static void train_loop(nintaco::NintacoAPI*);
+        static void train_loop(NintacoAPI*);
+
+    public:
+        void run();
 
     public:
         Train(const Train& other) = delete;

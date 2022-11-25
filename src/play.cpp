@@ -3,12 +3,10 @@
 App::Play::Play()
     : env(*this->api.ptr())
 {
-    this->run();
 }
 
-void App::Play::play_loop(nintaco::NintacoAPI*)
+void App::Play::play_loop(NintacoAPI*)
 {
-    std::cout << "hello play\n";
     Play::PLAY().app_loop();
 }
 
@@ -25,10 +23,10 @@ void App::Play::run()
 
 void App::Play::app_run()
 {
-    this->app_setup();
-    nintaco::addFrameListener(this->Super::api.ptr(), reinterpret_cast<nintaco::FrameListener>(&App::Play::play_loop));
-    nintaco::addStatusListener(this->Super::api.ptr(), reinterpret_cast<nintaco::StatusListener>(&Super::status));
-    nintaco::run(this->Super::api.ptr());
+    this->Super::app_setup();
+    nintaco_addFrameListener(this->Super::api.ptr(), reinterpret_cast<FrameListener>(&App::Play::play_loop));
+    nintaco_addStatusListener(this->Super::api.ptr(), reinterpret_cast<StatusListener>(&Super::status));
+    nintaco_run(this->Super::api.ptr());
 }
 
 void App::Play::setup()

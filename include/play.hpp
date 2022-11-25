@@ -29,8 +29,6 @@ namespace App
             bool play();
 
         private:
-            void run();
-
             void app_run() override;
 
             void ev_setup() override;
@@ -43,7 +41,10 @@ namespace App
             Play();
 
         private:
-            static void play_loop(nintaco::NintacoAPI*);
+            static void play_loop(NintacoAPI*);
+
+        public:
+            void run();
 
         public:
             Play(const Play &other) = delete;

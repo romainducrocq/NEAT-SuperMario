@@ -30,7 +30,7 @@ namespace MyEnv
         private:
             MyEnv::Model m;
 
-            nintaco::NintacoAPI& api;
+            NintacoAPI& api;
 
         private:
             void init_func() override;
@@ -57,7 +57,7 @@ namespace MyEnv
 
         public:
             Env() = delete;
-            inline explicit Env(nintaco::NintacoAPI& api)
+            inline explicit Env(NintacoAPI& api)
                 : api(api)
             {
             }

@@ -17,8 +17,6 @@ namespace App
             MyEnv::Env env;
 
         private:
-            void run();
-
             void app_run() override;
 
             void ev_setup() override;
@@ -31,7 +29,10 @@ namespace App
             Eval();
 
         private:
-            static void eval_loop(nintaco::NintacoAPI*);
+            static void eval_loop(NintacoAPI*);
+
+        public:
+            void run();
 
         public:
             Eval(const Eval& other) = delete;

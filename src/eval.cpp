@@ -3,12 +3,10 @@
 App::Eval::Eval()
     : env(*this->api.ptr())
 {
-    this->run();
 }
 
-void App::Eval::eval_loop(nintaco::NintacoAPI*)
+void App::Eval::eval_loop(NintacoAPI*)
 {
-    std::cout << "hello eval\n";
     Eval::EVAL().app_loop();
 }
 
@@ -26,9 +24,9 @@ void App::Eval::run()
 void App::Eval::app_run()
 {
     this->app_setup();
-    nintaco::addFrameListener(this->Super::api.ptr(), reinterpret_cast<nintaco::FrameListener>(&App::Eval::eval_loop));
-    nintaco::addStatusListener(this->Super::api.ptr(), reinterpret_cast<nintaco::StatusListener>(&Super::status));
-    nintaco::run(this->Super::api.ptr());
+    nintaco_addFrameListener(this->Super::api.ptr(), reinterpret_cast<FrameListener>(&App::Eval::eval_loop));
+    nintaco_addStatusListener(this->Super::api.ptr(), reinterpret_cast<StatusListener>(&Super::status));
+    nintaco_run(this->Super::api.ptr());
 }
 
 void App::Eval::setup()
