@@ -78,6 +78,15 @@ struct DefaultConf{
     const static std::string ROM;
     const static std::string SAV;
 
+    const static std::string KEY_A;
+    const static std::string KEY_B;
+    const static std::string KEY_UP;
+    const static std::string KEY_DOWN;
+    const static std::string KEY_LEFT;
+    const static std::string KEY_RIGHT;
+    const static std::string KEY_START;
+    const static std::string KEY_SELECT;
+
     /*** DEC OPT PARAMS HERE */
 
 
@@ -242,6 +251,23 @@ template<typename T>
 const std::string DefaultConf<T>::ROM = "Super_Mario_Bros_E";
 template<typename T>
 const std::string DefaultConf<T>::SAV = "1-1";
+
+template<typename T>
+const std::string DefaultConf<T>::KEY_A = "X";
+template<typename T>
+const std::string DefaultConf<T>::KEY_B = "Z";
+template<typename T>
+const std::string DefaultConf<T>::KEY_UP = "Up";
+template<typename T>
+const std::string DefaultConf<T>::KEY_DOWN = "Down";
+template<typename T>
+const std::string DefaultConf<T>::KEY_LEFT = "Left";
+template<typename T>
+const std::string DefaultConf<T>::KEY_RIGHT = "Right";
+template<typename T>
+const std::string DefaultConf<T>::KEY_START = "Space";
+template<typename T>
+const std::string DefaultConf<T>::KEY_SELECT = "Enter";
 
 /*** DEF OPT PARAMS HERE */
 

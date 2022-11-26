@@ -9,6 +9,8 @@
 #include <nintaco/nintaco.hpp>
 
 #include <SFML/Graphics.hpp>
+#include <sfev/sfevmngr.hpp>
+#include <sfev/kbmap.hpp>
 
 #include "env/conf.hpp"
 
@@ -134,14 +136,14 @@ namespace nintaco
     {
         private:
             std::unordered_map<sf::Keyboard::Key, bool> keys = {
-                {sf::Keyboard::A, false},
-                {sf::Keyboard::B, false},
-                {sf::Keyboard::X, false},
-                {sf::Keyboard::Y, false},
-                {sf::Keyboard::Up, false},
-                {sf::Keyboard::Down, false},
-                {sf::Keyboard::Left, false},
-                {sf::Keyboard::Right, false}
+                {sfev::kbmap.at(CONF::KEY_A), false},
+                {sfev::kbmap.at(CONF::KEY_B), false},
+                {sfev::kbmap.at(CONF::KEY_UP), false},
+                {sfev::kbmap.at(CONF::KEY_DOWN), false},
+                {sfev::kbmap.at(CONF::KEY_LEFT), false},
+                {sfev::kbmap.at(CONF::KEY_RIGHT), false},
+                {sfev::kbmap.at(CONF::KEY_START), false},
+                {sfev::kbmap.at(CONF::KEY_SELECT), false}
             };
 
         private:
