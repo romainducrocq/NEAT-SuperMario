@@ -4,7 +4,11 @@
 #include <thread>
 #include <memory>
 
+#include <unordered_map>
+
 #include <nintaco/nintaco.hpp>
+
+#include <SFML/Graphics.hpp>
 
 #include "env/conf.hpp"
 
@@ -128,6 +132,18 @@ namespace nintaco
 
     class Event
     {
+        private:
+            std::unordered_map<sf::Keyboard::Key, bool> keys = {
+                {sf::Keyboard::A, false},
+                {sf::Keyboard::B, false},
+                {sf::Keyboard::X, false},
+                {sf::Keyboard::Y, false},
+                {sf::Keyboard::Up, false},
+                {sf::Keyboard::Down, false},
+                {sf::Keyboard::Left, false},
+                {sf::Keyboard::Right, false}
+            };
+
         private:
             Event() = default;
 
