@@ -71,9 +71,9 @@ namespace nintaco
             virtual void app_loop() final;
 
         protected:
-            virtual inline void ev_setup() {}
-            virtual inline void draw_setup() {}
-            virtual inline void draw_loop() {}
+            virtual inline void ev_setup() = 0;
+            virtual inline void draw_setup() = 0;
+            virtual inline void draw_loop() = 0;
 
             virtual void setup() = 0;
             virtual bool loop() = 0;

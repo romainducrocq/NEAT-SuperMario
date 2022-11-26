@@ -24,3 +24,19 @@ bool App::Train::loop()
 {
     return this->env.train();
 }
+
+
+void App::Train::ev_setup()
+{
+    View::EventHandler::EVENTHANDLER().ev_setup();
+}
+
+void App::Train::draw_setup()
+{
+    View::Renderer::RENDERER().draw_setup(this->env.get_m());
+}
+
+void App::Train::draw_loop()
+{
+    View::Renderer::RENDERER().draw_loop(this->env.get_m());
+}

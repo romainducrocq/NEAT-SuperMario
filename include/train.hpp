@@ -17,6 +17,10 @@ namespace App
         MyEnv::Env env;
 
     private:
+        void ev_setup() override;
+        void draw_setup() override;
+        void draw_loop() override;
+
         void setup() override;
         bool loop() override;
 
