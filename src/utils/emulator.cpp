@@ -5,7 +5,7 @@ nintaco::Emulator::Emulator()
     this->rom.run();
     this->api.make();
 
-    nintaco::Api::API(this->api.ptr());
+    nintaco::Api::API().init(this->api.ptr());
 }
 
 void nintaco::Emulator::app_run(void(*app_loop_func)(NintacoAPI*))
@@ -33,7 +33,17 @@ void nintaco::Emulator::app_loop()
     }
 }
 
+void nintaco::Api::init(NintacoAPI* api)
+{
+    this->api = api;
+}
+
+NintacoAPI* nintaco::Api::get() const
+{
+    return this->api;
+}
+
 void nintaco::State::load()
 {
-    nintaco_loadState(nintaco::Api::API(), &this->sav[0]);
+    nintaco_loadState(nintaco::Api::API().get(), &this->sav[0]);
 }

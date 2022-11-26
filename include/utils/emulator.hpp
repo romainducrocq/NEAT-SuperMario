@@ -91,15 +91,17 @@ namespace nintaco
             Api() = default;
 
         public:
+            void init(NintacoAPI* api);
+            NintacoAPI* get() const;
+
+        public:
             Api(const Api &other) = delete;
             Api operator=(const Api &other) = delete;
 
-            static NintacoAPI* &API(NintacoAPI* api = nullptr)
+            static Api &API()
             {
                 static Api singleton;
-                if(api){ singleton.api = api; }
-
-                return singleton.api;
+                return singleton;
             }
     };
 
@@ -112,15 +114,32 @@ namespace nintaco
             State() = default;
 
         public:
-            State(const State &other) = delete;
-            State operator=(const State &other) = delete;
+            void load();
 
         public:
-            void load();
+            State(const State &other) = delete;
+            State operator=(const State &other) = delete;
 
             static State &STATE()
             {
                 static State singleton;
+                return singleton;
+            }
+    };
+
+    class Event
+    {
+        private:
+            Event() = default;
+
+        public:
+            Event(const Event &other) = delete;
+            Event operator=(const Event &other) = delete;
+
+        public:
+            static Event &EVENT()
+            {
+                static Event singleton;
                 return singleton;
             }
     };
