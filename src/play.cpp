@@ -1,7 +1,6 @@
 #include "play.hpp"
 
 App::Play::Play()
-    : env(*this->api.ptr(), this->rom.sav)
 {
 }
 

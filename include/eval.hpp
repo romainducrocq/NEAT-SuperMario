@@ -10,10 +10,10 @@
 
 namespace App
 {
-    class Eval : public Emulator
+    class Eval : public nintaco::Emulator
     {
         private:
-            typedef Emulator Super;
+            typedef nintaco::Emulator Super;
             MyEnv::Env env;
 
         private:

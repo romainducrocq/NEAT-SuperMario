@@ -38,7 +38,7 @@ void MyEnv::Env::noop_func()
 /*** DEF RESET FUNC HERE */
 void MyEnv::Env::reset_func()
 {
-    nintaco_loadState(this->api, this->sav);
+    nintaco::State::STATE().load();
 }
 
 /*** DEF STEP FUNC HERE */

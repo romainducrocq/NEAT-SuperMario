@@ -1,7 +1,6 @@
 #include "eval.hpp"
 
 App::Eval::Eval()
-    : env(*this->api.ptr(), this->rom.sav)
 {
 }
 

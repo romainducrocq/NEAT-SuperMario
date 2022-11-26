@@ -7,6 +7,8 @@
 
 #include "neat/neat.hpp"
 
+#include "utils/emulator.hpp"
+
 #include "utils/logger.hpp"
 
 /*** ADD INCLUDE HERE */
@@ -29,9 +31,6 @@ namespace MyEnv
 
         private:
             MyEnv::Model m;
-
-            NintacoAPI* api;
-            char* sav;
 
         private:
             void init_func() override;
@@ -57,11 +56,7 @@ namespace MyEnv
             void step_render_func() override;
 
         public:
-            Env() = delete;
-            inline Env(NintacoAPI& api, std::string& sav)
-                : api(&api), sav(&sav[0])
-            {
-            }
+            Env() = default;
 
             inline const MyEnv::Model &get_m() const
             {

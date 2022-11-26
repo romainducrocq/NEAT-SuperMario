@@ -1,7 +1,6 @@
 #include "train.hpp"
 
 App::Train::Train()
-    : env(*this->api.ptr(), this->rom.sav)
 {
 }
 

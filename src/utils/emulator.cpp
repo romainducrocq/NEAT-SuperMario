@@ -1,12 +1,14 @@
 #include "utils/emulator.hpp"
 
-Emulator::Emulator()
+nintaco::Emulator::Emulator()
 {
     this->rom.run();
     this->api.make();
+
+    nintaco::Api::API(this->api.ptr());
 }
 
-void Emulator::app_run(void(*app_loop_func)(NintacoAPI*))
+void nintaco::Emulator::app_run(void(*app_loop_func)(NintacoAPI*))
 {
     this->app_setup();
     nintaco_addFrameListener(this->api.ptr(), app_loop_func);
@@ -14,14 +16,14 @@ void Emulator::app_run(void(*app_loop_func)(NintacoAPI*))
     nintaco_run(this->api.ptr());
 }
 
-void Emulator::app_setup()
+void nintaco::Emulator::app_setup()
 {
     this->ev_setup();
     this->setup();
     this->draw_setup();
 }
 
-void Emulator::app_loop()
+void nintaco::Emulator::app_loop()
 {
     if(this->api.ready()){
         if(! this->loop()){
@@ -29,4 +31,9 @@ void Emulator::app_loop()
         }
         this->draw_loop();
     }
+}
+
+void nintaco::State::load()
+{
+    nintaco_loadState(nintaco::Api::API(), &this->sav[0]);
 }

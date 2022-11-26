@@ -14,10 +14,10 @@
 
 namespace App
 {
-    class Play : public Emulator
+    class Play : public nintaco::Emulator
     {
         private:
-            typedef Emulator Super;
+            typedef nintaco::Emulator Super;
             MyEnv::Env env;
 
         private:
