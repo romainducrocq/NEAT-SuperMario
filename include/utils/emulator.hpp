@@ -91,17 +91,16 @@ namespace nintaco
             Api() = default;
 
         public:
-            void init(NintacoAPI* api);
-            NintacoAPI* get() const;
-
-        public:
             Api(const Api &other) = delete;
             Api operator=(const Api &other) = delete;
 
-            static Api &API()
+            static NintacoAPI* &API(NintacoAPI* api=nullptr)
             {
                 static Api singleton;
-                return singleton;
+                if(api){
+                    singleton.api = api;
+                }
+                return singleton.api;
             }
     };
 
