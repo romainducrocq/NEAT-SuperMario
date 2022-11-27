@@ -1,6 +1,8 @@
 #ifndef _EMULATOR_HPP
 #define _EMULATOR_HPP
 
+#include <cassert>
+
 #include <thread>
 #include <memory>
 
@@ -141,24 +143,26 @@ namespace nintaco
 
             const std::vector<CONF::Action>& actions = CONF::ACTIONS;
 
-            std::string key_a = CONF::KEY_A;
-            std::string key_b = CONF::KEY_B;
-            std::string key_up = CONF::KEY_UP;
-            std::string key_down = CONF::KEY_DOWN;
-            std::string key_left = CONF::KEY_LEFT;
-            std::string key_right = CONF::KEY_RIGHT;
-            std::string key_start = CONF::KEY_START;
-            std::string key_select = CONF::KEY_SELECT;
+            const std::unordered_map<CONF::Action, sf::Keyboard::Key> ev_key = {
+                {CONF::Action::A, sfev::kbmap.at(CONF::KEY_A)},
+                {CONF::Action::B, sfev::kbmap.at(CONF::KEY_B)},
+                {CONF::Action::UP, sfev::kbmap.at(CONF::KEY_UP)},
+                {CONF::Action::DOWN, sfev::kbmap.at(CONF::KEY_DOWN)},
+                {CONF::Action::LEFT, sfev::kbmap.at(CONF::KEY_LEFT)},
+                {CONF::Action::RIGHT, sfev::kbmap.at(CONF::KEY_RIGHT)},
+                {CONF::Action::START, sfev::kbmap.at(CONF::KEY_START)},
+                {CONF::Action::SELECT, sfev::kbmap.at(CONF::KEY_SELECT)}
+            };
 
-            std::unordered_map<sf::Keyboard::Key, bool> keys = {
-                {sfev::kbmap.at(CONF::KEY_A), false},
-                {sfev::kbmap.at(CONF::KEY_B), false},
-                {sfev::kbmap.at(CONF::KEY_UP), false},
-                {sfev::kbmap.at(CONF::KEY_DOWN), false},
-                {sfev::kbmap.at(CONF::KEY_LEFT), false},
-                {sfev::kbmap.at(CONF::KEY_RIGHT), false},
-                {sfev::kbmap.at(CONF::KEY_START), false},
-                {sfev::kbmap.at(CONF::KEY_SELECT), false}
+            std::unordered_map<CONF::Action, bool> ev_state = {
+                {CONF::Action::A, false},
+                {CONF::Action::B, false},
+                {CONF::Action::UP, false},
+                {CONF::Action::DOWN, false},
+                {CONF::Action::LEFT, false},
+                {CONF::Action::RIGHT, false},
+                {CONF::Action::START, false},
+                {CONF::Action::SELECT, false}
             };
 
         private:
@@ -188,6 +192,20 @@ namespace nintaco
 
     class Action
     {
+        private:
+            const std::vector<CONF::Action>& actions = CONF::ACTIONS;
+
+            std::unordered_map<CONF::Action, bool> act_state = {
+                {CONF::Action::A, false},
+                {CONF::Action::B, false},
+                {CONF::Action::UP, false},
+                {CONF::Action::DOWN, false},
+                {CONF::Action::LEFT, false},
+                {CONF::Action::RIGHT, false},
+                {CONF::Action::START, false},
+                {CONF::Action::SELECT, false}
+            };
+
         private:
             Action() = default;
 

@@ -54,7 +54,7 @@ void nintaco::Event::init()
     sf::ContextSettings options;
     options.antialiasingLevel = 0;
 
-    this->window->create(sf::VideoMode(1, 1, 1), "", sf::Style::Default, options);
+    this->window->create(sf::VideoMode(1, 1, 1), "Nintaco", sf::Style::Default, options);
     this->window->setVerticalSyncEnabled(false);
 
     this->window->setFramerateLimit(0);
@@ -72,102 +72,23 @@ void nintaco::Event::process()
 
 void nintaco::Event::ev_setup()
 {
-    auto add_func = [&](sf::Keyboard::Key key) {
-        this->ev_manager->addKeyPressedCallback(key, [&](sfev::CstEv){
-            this->keys.at(key) = true;
-        });
-
-        this->ev_manager->addKeyReleasedCallback(key, [&](sfev::CstEv){
-            this->keys.at(key) = false;
-        });
-    };
-
     for(const auto& action : this->actions){
-        switch(action){
-            case CONF::Action::A:
-                add_func(sfev::kbmap.at(this->key_a));
-                break;
+        this->ev_manager->addKeyPressedCallback(this->ev_key.at(action), [&](sfev::CstEv){
+            this->ev_state.at(action) = true;
+        });
 
-            case CONF::Action::B:
-                add_func(sfev::kbmap.at(this->key_b));
-                break;
-
-            case CONF::Action::UP:
-                add_func(sfev::kbmap.at(this->key_up));
-                break;
-
-            case CONF::Action::DOWN:
-                add_func(sfev::kbmap.at(this->key_down));
-                break;
-
-            case CONF::Action::LEFT:
-                add_func(sfev::kbmap.at(this->key_left));
-                break;
-
-            case CONF::Action::RIGHT:
-                add_func(sfev::kbmap.at(this->key_right));
-                break;
-
-            case CONF::Action::START:
-                add_func(sfev::kbmap.at(this->key_start));
-                break;
-
-            case CONF::Action::SELECT:
-                add_func(sfev::kbmap.at(this->key_select));
-                break;
-        }
+        this->ev_manager->addKeyReleasedCallback(this->ev_key.at(action), [&](sfev::CstEv){
+            this->ev_state.at(action) = false;
+        });
     }
 }
 
 void nintaco::Event::get_action(std::vector<float>& act)
 {
-    auto it = act.begin();
+    assert(act.size() == this->actions.size());
 
-    auto act_func = [&act, &it](bool state, bool other) {
-        if(it != act.end()){
-            *it = state && !other ? 1.f : -1.f;
-            it++;
-        }
-    };
-
-    for(const auto& action : this->actions){
-        switch(action){
-            case CONF::Action::A:
-                act_func(this->keys.at(sfev::kbmap.at(this->key_a)), false);
-                break;
-
-            case CONF::Action::B:
-                act_func(this->keys.at(sfev::kbmap.at(this->key_b)), false);
-                break;
-
-            case CONF::Action::UP:
-                act_func(this->keys.at(sfev::kbmap.at(this->key_up)),
-                         this->keys.at(sfev::kbmap.at(this->key_down)));
-                break;
-
-            case CONF::Action::DOWN:
-                act_func(this->keys.at(sfev::kbmap.at(this->key_down)),
-                         this->keys.at(sfev::kbmap.at(this->key_up)));
-                break;
-
-            case CONF::Action::LEFT:
-                act_func(this->keys.at(sfev::kbmap.at(this->key_left)),
-                         this->keys.at(sfev::kbmap.at(this->key_right)));
-                break;
-
-            case CONF::Action::RIGHT:
-                act_func(this->keys.at(sfev::kbmap.at(this->key_right)),
-                         this->keys.at(sfev::kbmap.at(this->key_left)));
-                break;
-
-            case CONF::Action::START:
-                act_func(this->keys.at(sfev::kbmap.at(this->key_start)), false);
-                break;
-
-            case CONF::Action::SELECT:
-                act_func(this->keys.at(sfev::kbmap.at(this->key_select)), false);
-                break;
-        }
+    for(size_t i = 0; i < act.size(); i++){
+        act[i] = this->ev_state.at(this->actions[i]) ? 1.f : -1.f;
     }
 }
 

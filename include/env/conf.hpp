@@ -187,7 +187,7 @@ std::string DefaultConf<T>::LOG_SAV = "";
 template<typename T>
 const size_t DefaultConf<T>::INPUTS = 2;
 template<typename T>
-const size_t DefaultConf<T>::OUTPUTS = 1;
+const size_t DefaultConf<T>::OUTPUTS = 6;
 template<typename T>
 const size_t DefaultConf<T>::LIM_HIDDEN = 1000000;
 template<typename T>
