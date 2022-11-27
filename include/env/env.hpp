@@ -7,7 +7,9 @@
 
 #include "neat/neat.hpp"
 
-#include "utils/emulator.hpp"
+#include "utils/nintaco/api.hpp"
+#include "utils/nintaco/state.hpp"
+#include "utils/nintaco/action.hpp"
 
 #include "utils/logger.hpp"
 

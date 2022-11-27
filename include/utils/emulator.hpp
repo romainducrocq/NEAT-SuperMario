@@ -1,21 +1,15 @@
 #ifndef _EMULATOR_HPP
 #define _EMULATOR_HPP
 
-#include <cassert>
-
 #include <thread>
 #include <memory>
 
-#include <vector>
-#include <unordered_map>
-
 #include <nintaco/nintaco.hpp>
 
-#include <SFML/Graphics.hpp>
-#include <sfev/sfevmngr.hpp>
-#include <sfev/kbmap.hpp>
-
 #include "env/conf.hpp"
+
+#include "utils/nintaco/api.hpp"
+#include "utils/nintaco/event.hpp"
 
 namespace nintaco
 {
@@ -89,138 +83,6 @@ namespace nintaco
 
         public:
             Emulator();
-    };
-
-    class Api
-    {
-        private:
-            NintacoAPI* api = nullptr;
-
-        private:
-            Api() = default;
-
-        public:
-            void init(NintacoAPI* api);
-            NintacoAPI* get_api() const;
-
-        public:
-            Api(const Api &other) = delete;
-            Api operator=(const Api &other) = delete;
-
-            static Api &API()
-            {
-                static Api singleton;
-                return singleton;
-            }
-    };
-
-    class State
-    {
-        private:
-            std::string sav = "../../res/sav/" + CONF::ROM + "_" + CONF::SAV + ".save";
-
-        private:
-            State() = default;
-
-        public:
-            void load();
-
-        public:
-            State(const State &other) = delete;
-            State operator=(const State &other) = delete;
-
-            static State &STATE()
-            {
-                static State singleton;
-                return singleton;
-            }
-    };
-
-    class Event
-    {
-        private:
-            std::unique_ptr<sf::RenderWindow> window;
-            std::unique_ptr<sfev::EventManager> ev_manager;
-
-            const std::vector<CONF::Action>& actions = CONF::ACTIONS;
-
-            const std::unordered_map<CONF::Action, sf::Keyboard::Key> ev_key = {
-                {CONF::Action::A, sfev::kbmap.at(CONF::KEY_A)},
-                {CONF::Action::B, sfev::kbmap.at(CONF::KEY_B)},
-                {CONF::Action::UP, sfev::kbmap.at(CONF::KEY_UP)},
-                {CONF::Action::DOWN, sfev::kbmap.at(CONF::KEY_DOWN)},
-                {CONF::Action::LEFT, sfev::kbmap.at(CONF::KEY_LEFT)},
-                {CONF::Action::RIGHT, sfev::kbmap.at(CONF::KEY_RIGHT)},
-                {CONF::Action::START, sfev::kbmap.at(CONF::KEY_START)},
-                {CONF::Action::SELECT, sfev::kbmap.at(CONF::KEY_SELECT)}
-            };
-
-            std::unordered_map<CONF::Action, bool> ev_state = {
-                {CONF::Action::A, false},
-                {CONF::Action::B, false},
-                {CONF::Action::UP, false},
-                {CONF::Action::DOWN, false},
-                {CONF::Action::LEFT, false},
-                {CONF::Action::RIGHT, false},
-                {CONF::Action::START, false},
-                {CONF::Action::SELECT, false}
-            };
-
-        private:
-            Event() = default;
-
-        public:
-            void init(bool ev);
-            bool ev() const;
-            bool open() const;
-            void process() const;
-
-            void ev_setup();
-            void get_action(std::vector<float>& act);
-
-            const sfev::EventManager& get_ev_manager() const;
-
-        public:
-            Event(const Event &other) = delete;
-            Event operator=(const Event &other) = delete;
-
-        public:
-            static Event &EVENT()
-            {
-                static Event singleton;
-                return singleton;
-            }
-    };
-
-    class Action
-    {
-        private:
-            const std::vector<CONF::Action>& actions = CONF::ACTIONS;
-
-            std::unordered_map<CONF::Action, bool> act_state = {
-                {CONF::Action::A, false},
-                {CONF::Action::B, false},
-                {CONF::Action::UP, false},
-                {CONF::Action::DOWN, false},
-                {CONF::Action::LEFT, false},
-                {CONF::Action::RIGHT, false},
-                {CONF::Action::START, false},
-                {CONF::Action::SELECT, false}
-            };
-
-        private:
-            Action() = default;
-
-        public:
-            Action(const Action &other) = delete;
-            Action operator=(const Action &other) = delete;
-
-        public:
-            static Action &ACTION()
-            {
-                static Action singleton;
-                return singleton;
-            }
     };
 }
 

@@ -7,7 +7,8 @@
 
 #include "env/env.hpp"
 
-#include "utils/emulator.hpp"
+#include "utils/nintaco/api.hpp"
+#include "utils/nintaco/event.hpp"
 
 #include "utils/logger.hpp"
 
