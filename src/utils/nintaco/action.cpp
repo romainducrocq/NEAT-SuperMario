@@ -39,4 +39,47 @@ void nintaco::Action::act_func(std::vector<float>& act) const
             }
         }
     }
+
+    /*
+    for (const auto& z : act) {
+        if(nintaco::Action::Output::activate(z)){
+            std::cout << "act" << "\n";
+        }
+    }
+     */
+
+    for(size_t i = 0; i < act.size(); i++){
+        switch (i) {
+            case 0:
+                if(nintaco::Action::Output::activate(act[i])) {
+                    std::cout << "A" << "\n";
+                }
+                break;
+            case 1:
+                if(nintaco::Action::Output::activate(act[i])) {
+                    std::cout << "B" << "\n";
+                }
+                break;
+            case 2:
+                if(nintaco::Action::Output::activate(act[i])) {
+                    std::cout << "UP" << "\n";
+                }
+                break;
+            case 3:
+                if(nintaco::Action::Output::activate(act[i])) {
+                    std::cout << "DOWN" << "\n";
+                }
+                break;
+            case 4:
+                if(nintaco::Action::Output::activate(act[i])) {
+                    std::cout << "LEFT" << "\n";
+                }
+                break;
+            case 5:
+                if(nintaco::Action::Output::activate(act[i])) {
+                    std::cout << "RIGHT" << "\n";
+                }
+                break;
+        }
+    }
 }

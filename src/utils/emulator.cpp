@@ -33,6 +33,7 @@ void nintaco::Emulator::app_loop()
             this->api.kill();
             return;
         }
+        nintaco::Event::EVENT().focus();
         nintaco::Event::EVENT().process();
 
         if(! this->loop()){

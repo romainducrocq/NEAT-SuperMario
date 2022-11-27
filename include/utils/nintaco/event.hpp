@@ -1,6 +1,9 @@
 #ifndef _UTILS_NINTACO_EVENT_HPP
 #define _UTILS_NINTACO_EVENT_HPP
 
+#include <cstdlib>
+
+#include <thread>
 #include <memory>
 
 #include <vector>
@@ -21,6 +24,8 @@ namespace nintaco
     class Event
     {
         private:
+            bool wmctrl = true;
+
             std::unique_ptr<sf::RenderWindow> window;
             std::unique_ptr<sfev::EventManager> ev_manager;
 
@@ -56,6 +61,7 @@ namespace nintaco
             bool is() const;
             bool open() const;
             void process() const;
+            void focus();
 
             void ev_setup();
             void get_action(std::vector<float>& act) const;

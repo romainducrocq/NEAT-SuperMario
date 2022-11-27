@@ -9,7 +9,7 @@ void nintaco::Event::init(bool on)
         sf::ContextSettings options;
         options.antialiasingLevel = 0;
 
-        this->window->create(sf::VideoMode(1, 1, 1), "Nintaco", sf::Style::Default, options);
+        this->window->create(sf::VideoMode(1, 1, 1), "SFML", sf::Style::Default, options);
         this->window->setVerticalSyncEnabled(false);
 
         this->window->setFramerateLimit(0);
@@ -33,6 +33,21 @@ void nintaco::Event::process() const
 {
     if(this->is()){
         this->ev_manager->processEvents();
+    }
+}
+
+void nintaco::Event::focus()
+{
+    if(this->is() && !this->window->hasFocus()){
+        if(this->wmctrl){
+            std::thread th([&]() {
+                std::system("wmctrl -a SFML");
+            });
+            th.detach();
+            this->wmctrl = false;
+        }else{
+            this->window->requestFocus();
+        }
     }
 }
 

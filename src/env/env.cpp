@@ -13,6 +13,7 @@ void MyEnv::Env::obs_func()
 /*** DEF ACT FUNC HERE */
 void MyEnv::Env::act_func()
 {
+    nintaco::Action::ACTION().act_func(this->Super::mdp.act);
 }
 
 /*** DEF DONE FUNC HERE */
@@ -54,7 +55,7 @@ void MyEnv::Env::step_func()
             break;
 
         case CONF::Mode::PLAY:
-            std::cout << "step play\n";
+            // std::cout << "step play\n";
             break;
         default:
             break;

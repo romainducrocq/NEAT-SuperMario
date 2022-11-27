@@ -3,7 +3,7 @@
 OPT=$(dirname $(pwd))'/opt/'
 
 sudo apt-get update
-sudo apt-get install g++ cmake valgrind libgtest-dev
+sudo apt-get install g++ cmake valgrind libgtest-dev wmctrl
 
 cd /usr/src/gtest
 sudo cmake CMakeLists.txt

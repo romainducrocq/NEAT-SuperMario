@@ -1,6 +1,8 @@
 #ifndef _EMULATOR_HPP
 #define _EMULATOR_HPP
 
+#include <cstdlib>
+
 #include <thread>
 #include <memory>
 
