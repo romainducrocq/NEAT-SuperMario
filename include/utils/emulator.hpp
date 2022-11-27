@@ -100,16 +100,17 @@ namespace nintaco
             Api() = default;
 
         public:
+            void init(NintacoAPI* api);
+            NintacoAPI* get_api() const;
+
+        public:
             Api(const Api &other) = delete;
             Api operator=(const Api &other) = delete;
 
-            static NintacoAPI* &API(NintacoAPI* api=nullptr)
+            static Api &API()
             {
                 static Api singleton;
-                if(api){
-                    singleton.api = api;
-                }
-                return singleton.api;
+                return singleton;
             }
     };
 
@@ -169,9 +170,10 @@ namespace nintaco
             Event() = default;
 
         public:
-            void init();
-            bool open();
-            void process();
+            void init(bool ev);
+            bool ev() const;
+            bool open() const;
+            void process() const;
 
             void ev_setup();
             void get_action(std::vector<float>& act);
@@ -220,6 +222,6 @@ namespace nintaco
                 return singleton;
             }
     };
-
 }
+
 #endif
