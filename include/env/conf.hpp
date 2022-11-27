@@ -20,15 +20,19 @@
 #include <cstring>
 #include <cstdlib>
 
+#include <vector>
+
 template<typename T>
 struct DefaultConf{
     enum Mode{
         TRAIN, EVAL, PLAY, TEST, NONE
     };
 
-    /*** DEC ACTIONS HERE */
     enum Action{
+        A, B, UP, DOWN, LEFT, RIGHT, START, SELECT
     };
+
+    const static std::vector<typename DefaultConf<T>::Action> ACTIONS;
 
     const static size_t INPUTS;
     const static size_t OUTPUTS;
@@ -268,6 +272,16 @@ template<typename T>
 const std::string DefaultConf<T>::KEY_START = "Space";
 template<typename T>
 const std::string DefaultConf<T>::KEY_SELECT = "Enter";
+
+template<typename T>
+const std::vector<typename DefaultConf<T>::Action> DefaultConf<T>::ACTIONS = {
+        DefaultConf<T>::Action::A,
+        DefaultConf<T>::Action::B,
+        DefaultConf<T>::Action::UP,
+        DefaultConf<T>::Action::DOWN,
+        DefaultConf<T>::Action::LEFT,
+        DefaultConf<T>::Action::RIGHT,
+};
 
 /*** DEF OPT PARAMS HERE */
 

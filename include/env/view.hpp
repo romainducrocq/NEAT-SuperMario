@@ -7,6 +7,8 @@
 
 #include "env/env.hpp"
 
+#include "utils/emulator.hpp"
+
 #include "utils/logger.hpp"
 
 /*** ADD INCLUDE HERE */

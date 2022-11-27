@@ -3,11 +3,13 @@
 /*** DEF EVENT SETUP HERE */
 void View::EventHandler::ev_setup()
 {
+    nintaco::Event::EVENT().ev_setup();
 }
 
 /*** DEF ACTION HANDLER HERE */
-void View::EventHandler::get_action(std::vector<float>& /*act*/)
+void View::EventHandler::get_action(std::vector<float>& act)
 {
+    nintaco::Event::EVENT().get_action(act);
 }
 
 /*** DEF DRAW SETUP HERE */

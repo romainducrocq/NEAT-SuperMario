@@ -4,6 +4,7 @@
 #include <thread>
 #include <memory>
 
+#include <vector>
 #include <unordered_map>
 
 #include <nintaco/nintaco.hpp>
@@ -135,6 +136,20 @@ namespace nintaco
     class Event
     {
         private:
+            std::unique_ptr<sf::RenderWindow> window;
+            std::unique_ptr<sfev::EventManager> ev_manager;
+
+            const std::vector<CONF::Action>& actions = CONF::ACTIONS;
+
+            std::string key_a = CONF::KEY_A;
+            std::string key_b = CONF::KEY_B;
+            std::string key_up = CONF::KEY_UP;
+            std::string key_down = CONF::KEY_DOWN;
+            std::string key_left = CONF::KEY_LEFT;
+            std::string key_right = CONF::KEY_RIGHT;
+            std::string key_start = CONF::KEY_START;
+            std::string key_select = CONF::KEY_SELECT;
+
             std::unordered_map<sf::Keyboard::Key, bool> keys = {
                 {sfev::kbmap.at(CONF::KEY_A), false},
                 {sfev::kbmap.at(CONF::KEY_B), false},
@@ -150,6 +165,16 @@ namespace nintaco
             Event() = default;
 
         public:
+            void init();
+            bool open();
+            void process();
+
+            void ev_setup();
+            void get_action(std::vector<float>& act);
+
+            const sfev::EventManager& get_ev_manager() const;
+
+        public:
             Event(const Event &other) = delete;
             Event operator=(const Event &other) = delete;
 
@@ -157,6 +182,23 @@ namespace nintaco
             static Event &EVENT()
             {
                 static Event singleton;
+                return singleton;
+            }
+    };
+
+    class Action
+    {
+        private:
+            Action() = default;
+
+        public:
+            Action(const Action &other) = delete;
+            Action operator=(const Action &other) = delete;
+
+        public:
+            static Action &ACTION()
+            {
+                static Action singleton;
                 return singleton;
             }
     };
