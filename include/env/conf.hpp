@@ -20,6 +20,7 @@
 #include <cstring>
 #include <cstdlib>
 
+#include <array>
 #include <vector>
 
 template<typename T>
@@ -31,8 +32,6 @@ struct DefaultConf{
     enum Action{
         A, B, UP, DOWN, LEFT, RIGHT, START, SELECT
     };
-
-    const static std::vector<typename DefaultConf<T>::Action> ACTIONS;
 
     const static size_t INPUTS;
     const static size_t OUTPUTS;
@@ -90,6 +89,8 @@ struct DefaultConf{
     const static std::string KEY_RIGHT;
     const static std::string KEY_START;
     const static std::string KEY_SELECT;
+
+    const static std::vector<typename DefaultConf<T>::Action> ACTIONS;
 
     /*** DEC OPT PARAMS HERE */
 
@@ -274,13 +275,17 @@ template<typename T>
 const std::string DefaultConf<T>::KEY_SELECT = "Enter";
 
 template<typename T>
-const std::vector<typename DefaultConf<T>::Action> DefaultConf<T>::ACTIONS = {
+const std::array<typename DefaultConf<T>::Action, DefaultConf<T>::OUTPUTS> ACTIONS_ = {
         DefaultConf<T>::Action::A,
         DefaultConf<T>::Action::B,
         DefaultConf<T>::Action::UP,
         DefaultConf<T>::Action::DOWN,
         DefaultConf<T>::Action::LEFT,
         DefaultConf<T>::Action::RIGHT,
+};
+template<typename T>
+const std::vector<typename DefaultConf<T>::Action> DefaultConf<T>::ACTIONS = {
+        ACTIONS_<T>.begin(), ACTIONS_<T>.end()
 };
 
 /*** DEF OPT PARAMS HERE */

@@ -53,8 +53,6 @@ void nintaco::Event::ev_setup()
 
 void nintaco::Event::get_action(std::vector<float>& act) const
 {
-    assert(act.size() == this->actions.size());
-
     if(this->is()) {
         for (size_t i = 0; i < act.size(); i++) {
             act[i] = this->ev_state.at(this->actions[i]) ? 1.f : -1.f;

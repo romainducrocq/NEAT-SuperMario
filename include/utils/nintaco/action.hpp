@@ -1,7 +1,6 @@
 #ifndef _UTILS_NINTACO_ACTION_HPP
 #define _UTILS_NINTACO_ACTION_HPP
 
-#include <cassert>
 #include <limits>
 
 #include <memory>

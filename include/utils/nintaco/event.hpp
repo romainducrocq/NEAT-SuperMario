@@ -1,8 +1,6 @@
 #ifndef _UTILS_NINTACO_EVENT_HPP
 #define _UTILS_NINTACO_EVENT_HPP
 
-#include <cassert>
-
 #include <memory>
 
 #include <vector>
