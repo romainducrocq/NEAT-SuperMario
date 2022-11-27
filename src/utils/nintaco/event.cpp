@@ -16,14 +16,14 @@ void nintaco::Event::init(bool on)
     }
 }
 
-bool nintaco::Event::on() const
+bool nintaco::Event::is() const
 {
     return this->window.get() && this->ev_manager.get();
 }
 
 bool nintaco::Event::open() const
 {
-    if(! this->on()){
+    if(! this->is()){
         return true;
     }
     return this->window->isOpen();
@@ -31,14 +31,14 @@ bool nintaco::Event::open() const
 
 void nintaco::Event::process() const
 {
-    if(this->on()){
+    if(this->is()){
         this->ev_manager->processEvents();
     }
 }
 
 void nintaco::Event::ev_setup()
 {
-    if(this->on()){
+    if(this->is()){
         for(const auto& action : this->actions){
             this->ev_manager->addKeyPressedCallback(this->ev_key.at(action), [&](sfev::CstEv){
                 this->ev_state.at(action) = true;
@@ -55,7 +55,7 @@ void nintaco::Event::get_action(std::vector<float>& act) const
 {
     assert(act.size() == this->actions.size());
 
-    if(this->on()) {
+    if(this->is()) {
         for (size_t i = 0; i < act.size(); i++) {
             act[i] = this->ev_state.at(this->actions[i]) ? 1.f : -1.f;
         }

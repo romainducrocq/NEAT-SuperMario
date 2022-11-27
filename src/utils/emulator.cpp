@@ -6,7 +6,9 @@ nintaco::Emulator::Emulator()
     this->api.make();
 
     nintaco::Api::API().init(this->api.ptr());
+    nintaco::State::STATE().init();
     nintaco::Event::EVENT().init(true);
+    nintaco::Action::ACTION().init();
 }
 
 void nintaco::Emulator::app_run(void(*app_loop_func)(NintacoAPI*))

@@ -4,10 +4,14 @@
 #include <cassert>
 #include <limits>
 
+#include <memory>
+
+#include <array>
 #include <vector>
-#include <unordered_map>
 
 #include <nintaco/nintaco.hpp>
+
+#include "utils/nintaco/api.hpp"
 
 #include "env/conf.hpp"
 
@@ -25,21 +29,29 @@ namespace nintaco
             };
 
         private:
-            const std::vector<CONF::Action>& actions = CONF::ACTIONS;
+            struct Noop
+            {
+                std::unique_ptr<size_t> act1;
+                std::unique_ptr<size_t> act2;
 
-            std::unordered_map<CONF::Action, bool> act_state = {
-                {CONF::Action::A, false},
-                {CONF::Action::B, false},
-                {CONF::Action::UP, false},
-                {CONF::Action::DOWN, false},
-                {CONF::Action::LEFT, false},
-                {CONF::Action::RIGHT, false},
-                {CONF::Action::START, false},
-                {CONF::Action::SELECT, false}
+                inline bool is() const
+                {
+                    return this->act1.get() && this->act2.get();
+                }
             };
 
         private:
+            std::array<nintaco::Action::Noop, 2> noops;
+
+            const std::vector<CONF::Action>& actions = CONF::ACTIONS;
+
+        private:
             Action() = default;
+
+        public:
+            void init();
+
+            void act_func(std::vector<float>& act) const;
 
         public:
             Action(const Action &other) = delete;

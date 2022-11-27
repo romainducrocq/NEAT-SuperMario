@@ -9,7 +9,9 @@
 #include "env/conf.hpp"
 
 #include "utils/nintaco/api.hpp"
+#include "utils/nintaco/state.hpp"
 #include "utils/nintaco/event.hpp"
+#include "utils/nintaco/action.hpp"
 
 namespace nintaco
 {

@@ -14,6 +14,8 @@
 #include <sfev/sfevmngr.hpp>
 #include <sfev/kbmap.hpp>
 
+#include "utils/nintaco/api.hpp"
+
 #include "env/conf.hpp"
 
 namespace nintaco
@@ -52,8 +54,8 @@ namespace nintaco
             Event() = default;
 
         public:
-            void init(bool on);
-            bool on() const;
+            void init(bool is);
+            bool is() const;
             bool open() const;
             void process() const;
 

@@ -3,9 +3,9 @@
 
 #include <nintaco/nintaco.hpp>
 
-#include "env/conf.hpp"
-
 #include "utils/nintaco/api.hpp"
+
+#include "env/conf.hpp"
 
 namespace nintaco
 {
@@ -18,6 +18,8 @@ namespace nintaco
             State() = default;
 
         public:
+            void init();
+
             void load();
 
         public:
