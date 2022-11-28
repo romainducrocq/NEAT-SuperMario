@@ -14,7 +14,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <sfev/sfevmngr.hpp>
-#include <sfev/kbmap.hpp>
+#include <sfev/sfmap.hpp>
 
 #include "utils/nintaco/api.hpp"
 
@@ -44,11 +44,13 @@ namespace nintaco
             };
 
         private:
+            bool is() const;
+
+        private:
             Event() = default;
 
         public:
             void init(bool is);
-            bool is() const;
             bool open() const;
             void process() const;
             void focus();
@@ -56,7 +58,9 @@ namespace nintaco
             void ev_setup();
             void get_action(std::vector<float>& act) const;
 
-            const sfev::EventManager& get_ev_manager() const;
+            void add_event_callback(const std::string& event, void(*ev_func)(sfev::CstEv)) const;
+            void add_key_pressed_callback(const std::string& key, void(*ev_func)(sfev::CstEv)) const;
+            void add_key_released_callback(const std::string& key, void(*ev_func)(sfev::CstEv)) const;
 
         public:
             Event(const Event &other) = delete;

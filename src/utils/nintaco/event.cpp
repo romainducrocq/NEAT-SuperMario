@@ -75,4 +75,23 @@ void nintaco::Event::get_action(std::vector<float>& act) const
     }
 }
 
-const sfev::EventManager& nintaco::Event::get_ev_manager() const { return *this->ev_manager; }
+void nintaco::Event::add_event_callback(const std::string& event, void(*ev_func)(sfev::CstEv)) const
+{
+    if(this->is()) {
+        this->ev_manager->addEventCallback(sfev::evmap.at(event), ev_func);
+    }
+}
+
+void nintaco::Event::add_key_pressed_callback(const std::string& key, void(*ev_func)(sfev::CstEv)) const
+{
+    if(this->is()) {
+        this->ev_manager->addKeyPressedCallback(sfev::kbmap.at(key), ev_func);
+    }
+}
+
+void nintaco::Event::add_key_released_callback(const std::string& key, void(*ev_func)(sfev::CstEv)) const
+{
+    if(this->is()) {
+        this->ev_manager->addKeyReleasedCallback(sfev::kbmap.at(key), ev_func);
+    }
+}

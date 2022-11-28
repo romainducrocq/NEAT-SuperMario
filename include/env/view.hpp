@@ -23,6 +23,7 @@ namespace View
             /*** DEC EVENT STATE HERE */
             struct EventState
             {
+                bool obs_view = false;
             };
 
         private:
