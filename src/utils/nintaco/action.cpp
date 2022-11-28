@@ -28,8 +28,7 @@ void nintaco::Action::init()
 
 void nintaco::Action::act_func(std::vector<float>& act) const
 {
-    for(const auto& noop : noops)
-    {
+    for(const auto& noop : noops){
         if(noop.is()){
             if(nintaco::Action::Output::activate(act[*noop.act1]) &&
                nintaco::Action::Output::activate(act[*noop.act2]))
@@ -40,7 +39,7 @@ void nintaco::Action::act_func(std::vector<float>& act) const
         }
     }
 
-    for (size_t i = 0; i < act.size(); i++) {
+    for(size_t i = 0; i < act.size(); i++){
         switch(this->actions[i]){
             case CONF::Action::A:
                 if(nintaco::Action::Output::activate(act[i])) {

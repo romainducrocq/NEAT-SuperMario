@@ -68,7 +68,7 @@ void nintaco::Event::ev_setup()
 
 void nintaco::Event::get_action(std::vector<float>& act) const
 {
-    if(this->is()) {
+    if(this->is()){
         for (size_t i = 0; i < act.size(); i++) {
             act[i] = this->keys.at(this->actions[i]).second ? 1.f : -1.f;
         }
@@ -77,21 +77,21 @@ void nintaco::Event::get_action(std::vector<float>& act) const
 
 void nintaco::Event::add_event_callback(const std::string& event, void(*ev_func)(sfev::CstEv)) const
 {
-    if(this->is()) {
+    if(this->is()){
         this->ev_manager->addEventCallback(sfev::evmap.at(event), ev_func);
     }
 }
 
 void nintaco::Event::add_key_pressed_callback(const std::string& key, void(*ev_func)(sfev::CstEv)) const
 {
-    if(this->is()) {
+    if(this->is()){
         this->ev_manager->addKeyPressedCallback(sfev::kbmap.at(key), ev_func);
     }
 }
 
 void nintaco::Event::add_key_released_callback(const std::string& key, void(*ev_func)(sfev::CstEv)) const
 {
-    if(this->is()) {
+    if(this->is()){
         this->ev_manager->addKeyReleasedCallback(sfev::kbmap.at(key), ev_func);
     }
 }
