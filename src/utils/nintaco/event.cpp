@@ -55,12 +55,12 @@ void nintaco::Event::ev_setup()
 {
     if(this->is()){
         for(const auto& action : this->actions){
-            this->ev_manager->addKeyPressedCallback(this->ev_key.at(action), [&](sfev::CstEv){
-                this->ev_state.at(action) = true;
+            this->ev_manager->addKeyPressedCallback(this->keys.at(action).first, [&](sfev::CstEv){
+                this->keys.at(action).second = true;
             });
 
-            this->ev_manager->addKeyReleasedCallback(this->ev_key.at(action), [&](sfev::CstEv){
-                this->ev_state.at(action) = false;
+            this->ev_manager->addKeyReleasedCallback(this->keys.at(action).first, [&](sfev::CstEv){
+                this->keys.at(action).second = false;
             });
         }
     }
@@ -70,7 +70,7 @@ void nintaco::Event::get_action(std::vector<float>& act) const
 {
     if(this->is()) {
         for (size_t i = 0; i < act.size(); i++) {
-            act[i] = this->ev_state.at(this->actions[i]) ? 1.f : -1.f;
+            act[i] = this->keys.at(this->actions[i]).second ? 1.f : -1.f;
         }
     }
 }

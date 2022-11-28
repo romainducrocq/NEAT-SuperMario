@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <unordered_map>
+#include <utility>
 
 #include <nintaco/nintaco.hpp>
 
@@ -31,26 +32,15 @@ namespace nintaco
 
             const std::vector<CONF::Action>& actions = CONF::ACTIONS;
 
-            const std::unordered_map<CONF::Action, sf::Keyboard::Key> ev_key = {
-                {CONF::Action::A, sfev::kbmap.at(CONF::KEY_A)},
-                {CONF::Action::B, sfev::kbmap.at(CONF::KEY_B)},
-                {CONF::Action::UP, sfev::kbmap.at(CONF::KEY_UP)},
-                {CONF::Action::DOWN, sfev::kbmap.at(CONF::KEY_DOWN)},
-                {CONF::Action::LEFT, sfev::kbmap.at(CONF::KEY_LEFT)},
-                {CONF::Action::RIGHT, sfev::kbmap.at(CONF::KEY_RIGHT)},
-                {CONF::Action::START, sfev::kbmap.at(CONF::KEY_START)},
-                {CONF::Action::SELECT, sfev::kbmap.at(CONF::KEY_SELECT)}
-            };
-
-            std::unordered_map<CONF::Action, bool> ev_state = {
-                {CONF::Action::A, false},
-                {CONF::Action::B, false},
-                {CONF::Action::UP, false},
-                {CONF::Action::DOWN, false},
-                {CONF::Action::LEFT, false},
-                {CONF::Action::RIGHT, false},
-                {CONF::Action::START, false},
-                {CONF::Action::SELECT, false}
+            std::unordered_map<CONF::Action, std::pair<sf::Keyboard::Key, bool>> keys = {
+                {CONF::Action::A, {sfev::kbmap.at(CONF::KEY_A), false}},
+                {CONF::Action::B, {sfev::kbmap.at(CONF::KEY_B), false}},
+                {CONF::Action::UP, {sfev::kbmap.at(CONF::KEY_UP), false}},
+                {CONF::Action::DOWN, {sfev::kbmap.at(CONF::KEY_DOWN), false}},
+                {CONF::Action::LEFT, {sfev::kbmap.at(CONF::KEY_LEFT), false}},
+                {CONF::Action::RIGHT, {sfev::kbmap.at(CONF::KEY_RIGHT), false}},
+                {CONF::Action::START, {sfev::kbmap.at(CONF::KEY_START), false}},
+                {CONF::Action::SELECT, {sfev::kbmap.at(CONF::KEY_SELECT), false}}
             };
 
         private:
