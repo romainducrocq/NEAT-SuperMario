@@ -3,9 +3,10 @@
 /*** DEF EVENT SETUP HERE */
 void View::EventHandler::ev_setup()
 {
-    nintaco::Event::EVENT().add_key_released_callback("D", [](sfev::CstEv){
-        View::EventHandler::EVENTHANDLER().ev_state.obs_view =
-                ! View::EventHandler::EVENTHANDLER().ev_state.obs_view;
+    nintaco::Event::EVENT().add_key_released_callback(
+            View::EventHandler::EVENTHANDLER().ev_state.debug.first, [](sfev::CstEv){
+        View::EventHandler::EVENTHANDLER().ev_state.debug.second =
+                ! View::EventHandler::EVENTHANDLER().ev_state.debug.second;
     });
 
     nintaco::Event::EVENT().ev_setup();

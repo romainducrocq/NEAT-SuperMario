@@ -93,7 +93,7 @@ struct DefaultConf{
     const static std::vector<typename DefaultConf<T>::Action> ACTIONS;
 
     /*** DEC OPT PARAMS HERE */
-
+    const static std::string KEY_DEBUG;
 
     static inline bool argParse(int argc, char** argv)
     {
@@ -289,7 +289,8 @@ const std::vector<typename DefaultConf<T>::Action> DefaultConf<T>::ACTIONS = {
 };
 
 /*** DEF OPT PARAMS HERE */
-
+template<typename T>
+const std::string DefaultConf<T>::KEY_DEBUG = "D";
 
 using CONF = DefaultConf<int>;
 

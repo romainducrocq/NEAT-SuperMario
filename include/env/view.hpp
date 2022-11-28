@@ -13,7 +13,7 @@
 #include "utils/logger.hpp"
 
 /*** ADD INCLUDE HERE */
-
+#include "utility"
 
 namespace View
 {
@@ -23,7 +23,7 @@ namespace View
             /*** DEC EVENT STATE HERE */
             struct EventState
             {
-                bool obs_view = false;
+                std::pair<std::string, bool> debug = {CONF::KEY_DEBUG, false};
             };
 
         private:
