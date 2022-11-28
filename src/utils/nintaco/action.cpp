@@ -41,40 +41,54 @@ void nintaco::Action::act_func(std::vector<float>& act) const
     }
 
     for (size_t i = 0; i < act.size(); i++) {
-        if(nintaco::Action::Output::activate(act[i])){
-            switch(this->actions[i]){
-                case CONF::Action::A:
+        switch(this->actions[i]){
+            case CONF::Action::A:
+                if(nintaco::Action::Output::activate(act[i])) {
                     std::cout << "Action: A\n";
-                    break;
+                }
+                break;
 
-                case CONF::Action::B:
+            case CONF::Action::B:
+                if(nintaco::Action::Output::activate(act[i])) {
                     std::cout << "Action: B\n";
-                    break;
+                }
+                break;
 
-                case CONF::Action::UP:
+            case CONF::Action::UP:
+                if(nintaco::Action::Output::activate(act[i])) {
                     std::cout << "Action: UP\n";
-                    break;
+                }
+                break;
 
-                case CONF::Action::DOWN:
+            case CONF::Action::DOWN:
+                if(nintaco::Action::Output::activate(act[i])) {
                     std::cout << "Action: DOWN\n";
-                    break;
+                }
+                break;
 
-                case CONF::Action::LEFT:
+            case CONF::Action::LEFT:
+                if(nintaco::Action::Output::activate(act[i])) {
                     std::cout << "Action: LEFT\n";
-                    break;
+                }
+                break;
 
-                case CONF::Action::RIGHT:
+            case CONF::Action::RIGHT:
+                if(nintaco::Action::Output::activate(act[i])) {
                     std::cout << "Action: RIGHT\n";
-                    break;
+                }
+                break;
 
-                case CONF::Action::START:
+            case CONF::Action::START:
+                if(nintaco::Action::Output::activate(act[i])) {
                     std::cout << "Action: START\n";
-                    break;
+                }
+                break;
 
-                case CONF::Action::SELECT:
+            case CONF::Action::SELECT:
+                if(nintaco::Action::Output::activate(act[i])) {
                     std::cout << "Action: SELECT\n";
-                    break;
-            }
+                }
+                break;
         }
     }
 }
