@@ -7,7 +7,7 @@ nintaco::Emulator::Emulator()
 
     nintaco::Api::API().init(this->api.ptr());
     nintaco::State::STATE().init();
-    nintaco::Event::EVENT().init(true);
+    nintaco::Event::EVENT().init();
     nintaco::Action::ACTION().init();
 }
 

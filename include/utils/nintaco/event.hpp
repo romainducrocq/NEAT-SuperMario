@@ -27,6 +27,8 @@ namespace nintaco
         private:
             bool wmctrl = true;
 
+            bool on = CONF::MODE == CONF::Mode::PLAY;
+
             std::unique_ptr<sf::RenderWindow> window;
             std::unique_ptr<sfev::EventManager> ev_manager;
 
@@ -50,7 +52,7 @@ namespace nintaco
             Event() = default;
 
         public:
-            void init(bool is);
+            void init();
             bool open() const;
             void process() const;
             void focus();

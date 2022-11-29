@@ -7,6 +7,7 @@
 
 #include <array>
 #include <vector>
+#include <unordered_map>
 
 #include <nintaco/nintaco.hpp>
 
@@ -43,6 +44,17 @@ namespace nintaco
             std::array<nintaco::Action::Noop, 2> noops;
 
             const std::vector<CONF::Action>& actions = CONF::ACTIONS;
+
+            std::unordered_map<CONF::Action, GamepadButtons> buttons = {
+                {CONF::Action::A, A},
+                {CONF::Action::B, B},
+                {CONF::Action::UP, Up},
+                {CONF::Action::DOWN, Down},
+                {CONF::Action::LEFT, Left},
+                {CONF::Action::RIGHT, Right},
+                {CONF::Action::START, Start},
+                {CONF::Action::SELECT, Select}
+            };
 
         private:
             Action() = default;

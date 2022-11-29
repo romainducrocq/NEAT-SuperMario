@@ -1,8 +1,8 @@
 #include "utils/nintaco/event.hpp"
 
-void nintaco::Event::init(bool on)
+void nintaco::Event::init()
 {
-    if(on){
+    if(this->on){
         this->window = std::make_unique<sf::RenderWindow>();
         this->ev_manager = std::make_unique<sfev::EventManager>(*this->window, true);
 
