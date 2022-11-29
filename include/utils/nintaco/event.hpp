@@ -27,7 +27,8 @@ namespace nintaco
         private:
             bool wmctrl = true;
 
-            bool on = CONF::MODE == CONF::Mode::PLAY;
+            bool on = CONF::KEYBOARD_SFML;
+            bool gamepad = CONF::MODE == CONF::Mode::PLAY;
 
             std::unique_ptr<sf::RenderWindow> window;
             std::unique_ptr<sfev::EventManager> ev_manager;

@@ -53,7 +53,7 @@ void nintaco::Event::focus()
 
 void nintaco::Event::ev_setup()
 {
-    if(this->is()){
+    if(this->is() && this->gamepad){
         for(const auto& action : this->actions){
             this->ev_manager->addKeyPressedCallback(this->keys.at(action).first, [&](sfev::CstEv){
                 this->keys.at(action).second = true;
@@ -68,7 +68,7 @@ void nintaco::Event::ev_setup()
 
 void nintaco::Event::get_action(std::vector<float>& act) const
 {
-    if(this->is()){
+    if(this->is() && this->gamepad){
         for (size_t i = 0; i < act.size(); i++) {
             act[i] = this->keys.at(this->actions[i]).second ? 1.f : -1.f;
         }

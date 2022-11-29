@@ -4,11 +4,11 @@
 /*** DEF DEFAULT ARGS HERE */
 /*
  * TRAIN
-   -g 300 -t 0 -n 0 -p plt -s sav
+   -k n -g 300 -t 0 -n 0 -p plt -s sav
  * EVAL
-   -e 10 -t 0 -n 0 -s sav
+   -k n -e 10 -t 0 -n 0 -s sav
  * PLAY
-   -e 10
+   -k y -e 10
  * TEST
 
 */
@@ -90,6 +90,8 @@ struct DefaultConf{
     const static std::string KEY_START;
     const static std::string KEY_SELECT;
 
+    static bool KEYBOARD_SFML;
+
     const static std::vector<typename DefaultConf<T>::Action> ACTIONS;
 
     /*** DEC OPT PARAMS HERE */
@@ -100,7 +102,7 @@ struct DefaultConf{
         // https://github.com/gnif/LookingGlass/blob/c0c63fd93bf999b6601a782fec8b56e9133388cc/client/main.c#L1391
 
         /*** DEF CMDS HERE */
-        const char cmds[] = "h:m:g:e:t:n:p:s:";
+        const char cmds[] = "h:m:k:g:e:t:n:p:s:";
 
         for(;;){
             switch(getopt(argc, argv, cmds)){
@@ -109,21 +111,22 @@ struct DefaultConf{
                 case '?': // help
                 case 'h':
                 default :
-                    std::cerr << "usage: apps/exec [-h] [-m MOD] [-g GEN] [-e EPO] [-t STP] [-n NOP] [-p PLT] [-s SAV] \n";
+                    std::cerr << "usage: apps/exec [-h] [-m MOD] [-k KEY] [-g GEN] [-e EPO] [-t STP] [-n NOP] [-p PLT] [-s SAV] \n";
                     std::cerr << "\n";
-                    std::cerr << "TidyVolve                                                                             \n";
+                    std::cerr << "NEAT SuperMorIA                                                                               \n";
                     std::cerr << "\n";
-                    std::cerr << "optional args:                                                                       \n";
-                    std::cerr << "  -h      Print help and exit                                                        \n";
-                    std::cerr << "  -m MOD  Set mode < train | eval | play | test >                                    \n";
-                    std::cerr << "  params:                                                                            \n";
-                    std::cerr << "  -g GEN  [train]       Set number generation (0=inf)                                \n";
-                    std::cerr << "  -e EPO  [eval, play]  Set number epoch      (0=inf)                                \n";
-                    std::cerr << "  -t STP  [train, eval] Set number max step   (0=inf)                                \n";
-                    std::cerr << "  -n NOP  [train, eval] Set number max noop   (0=inf)                                \n";
-                    std::cerr << "  utils:                                                                             \n";
-                    std::cerr << "  -p PLT  [train]       Set file name plot plt                                       \n";
-                    std::cerr << "  -s SAV  [train, eval] Set file name save sav                                       \n";
+                    std::cerr << "optional args:                                                                                \n";
+                    std::cerr << "  -h      Print help and exit                                                                 \n";
+                    std::cerr << "  -m MOD  Set mode < train | eval | play | test >                                             \n";
+                    std::cerr << "  -k KEY  Set keyboard sfml < y | n >                                                         \n";
+                    std::cerr << "  params:                                                                                     \n";
+                    std::cerr << "  -g GEN  [train]       Set number generation (0=inf)                                         \n";
+                    std::cerr << "  -e EPO  [eval, play]  Set number epoch      (0=inf)                                         \n";
+                    std::cerr << "  -t STP  [train, eval] Set number max step   (0=inf)                                         \n";
+                    std::cerr << "  -n NOP  [train, eval] Set number max noop   (0=inf)                                         \n";
+                    std::cerr << "  utils:                                                                                      \n";
+                    std::cerr << "  -p PLT  [train]       Set file name plot plt                                                \n";
+                    std::cerr << "  -s SAV  [train, eval] Set file name save sav                                                \n";
 
                     return false;
 
@@ -141,6 +144,14 @@ struct DefaultConf{
                         DefaultConf<T>::MODE = DefaultConf<T>::Mode::TEST;
                     }
                 continue;
+
+                case 'k': // keyboard sfml < y | n >
+                    if(std::strcmp(optarg, "y") == 0){
+                        DefaultConf<T>::KEYBOARD_SFML = true;
+                    }else if(std::strcmp(optarg, "n") == 0){
+                        DefaultConf<T>::KEYBOARD_SFML = false;
+                    }
+                    continue;
 
                 case 'g': // number generation
                     DefaultConf<T>::GENERATIONS_TRAIN = static_cast<size_t>(std::atoi(optarg));
@@ -273,6 +284,9 @@ template<typename T>
 const std::string DefaultConf<T>::KEY_START = "Space";
 template<typename T>
 const std::string DefaultConf<T>::KEY_SELECT = "Enter";
+
+template<typename T>
+bool DefaultConf<T>::KEYBOARD_SFML = false;
 
 template<typename T>
 const std::array<typename DefaultConf<T>::Action, DefaultConf<T>::OUTPUTS> ACTIONS_ = {

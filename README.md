@@ -6,6 +6,11 @@
   
 ****
 
+- https://chrispresso.io/AI_Learns_To_Play_SMB_Using_GA_And_NN
+- https://datacrystal.romhacking.net/wiki/Super_Mario_Bros.:RAM_map
+
+****
+
 External Control
 
 To control Nintaco from a program:
