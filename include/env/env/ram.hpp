@@ -1,7 +1,7 @@
 #ifndef _ENV_RAM_HPP
 #define _ENV_RAM_HPP
 
-#include <stddef.h>
+#include <cstddef>
 
 namespace smb
 {
@@ -36,7 +36,7 @@ namespace smb
             : type(type), loc(loc), tile(tile) {}
     };
 
-    class Ram
+    namespace ram
     {
         enum Enemy{
             GREEN_KOOPA1 = 0X00,
@@ -114,21 +114,7 @@ namespace smb
             PLAYER_Y_POS_ON_SCREEN = 0XCE,
             PLAYER_VERTICAL_SCREEN_POSITION = 0XB5
         };
-
-        private:
-            Ram() = default;
-
-        public:
-            Ram(const Ram& other) = delete;
-            Ram operator=(const Ram& other) = delete;
-
-            static Ram& RAM()
-            {
-                static Ram singleton;
-                return singleton;
-            }
-    };
-
+    }
 }
 
 #endif
