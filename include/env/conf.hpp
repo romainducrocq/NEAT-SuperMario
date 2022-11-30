@@ -264,9 +264,9 @@ const std::string DefaultConf<T>::ADDR = "localhost";
 template<typename T>
 const std::string DefaultConf<T>::EXT = "nes";
 template<typename T>
-const std::string DefaultConf<T>::ROM = "Super_Mario_Bros_E";
+const std::string DefaultConf<T>::ROM = "SuperMarioBrosJUPRG0";
 template<typename T>
-const std::string DefaultConf<T>::SAV = "1-1";
+const std::string DefaultConf<T>::SAV = "Level1-1";
 
 template<typename T>
 const std::string DefaultConf<T>::KEY_A = "X";
