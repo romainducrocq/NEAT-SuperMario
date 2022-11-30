@@ -5,17 +5,21 @@
 
 namespace smb
 {
-    template <typename T>
     struct Vec2
     {
-        T x;
-        T y;
+        size_t x;
+        size_t y;
 
         Vec2() = delete;
-        Vec2(T x, T y)
+        Vec2(size_t x, size_t y)
             : x(x), y(y) {}
+
+        static inline size_t to1D(size_t x, size_t y, size_t w){
+            return x + y * w;
+        }
     };
 
+    /*
     struct Tile
     {
         size_t type;
@@ -28,13 +32,14 @@ namespace smb
     struct Enemy
     {
         size_t type;
-        smb::Vec2<size_t> loc;
-        smb::Vec2<size_t> tile;
+        smb::Vec2 loc;
+        smb::Vec2 tile;
 
         Enemy() = delete;
-        Enemy(size_t type, smb::Vec2<size_t> loc, smb::Vec2<size_t> tile)
+        Enemy(size_t type, smb::Vec2 loc, smb::Vec2= tile)
             : type(type), loc(loc), tile(tile) {}
     };
+    */
 
     namespace ram
     {

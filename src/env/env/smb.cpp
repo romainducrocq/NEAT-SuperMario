@@ -1,9 +1,12 @@
 #include "env/env/smb.hpp"
 
-void smb::Smb::init()
+smb::Smb::Smb()
 {
 }
 
-void smb::Smb::obs_func()
+void smb::Smb::obs_func(std::array<float, CONF::INPUTS>& /*obs*/) const
 {
+    // this->get_tiles_tiles(obs);
+    // this->obs_enemies(obs);
 }
+

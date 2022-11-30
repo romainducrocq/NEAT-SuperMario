@@ -3,7 +3,6 @@
 /*** DEF INIT FUNC HERE */
 void MyEnv::Env::init_func()
 {
-    this->m.smb.init();
 }
 
 /*** DEF OBS FUNC HERE */

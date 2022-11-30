@@ -5,10 +5,13 @@
 
 #include "env/env/ram.hpp"
 
+#include "env/conf.hpp"
+
 namespace smb
 {
     class Smb
     {
+        /*
         size_t max_num_enemies = 5;
         size_t page_size = 256;
         size_t num_blocks = 8;
@@ -16,27 +19,15 @@ namespace smb
         size_t num_screen_pages = 2;
         size_t total_ram = 2048;
         Vec2<size_t> resolution = Vec2<size_t>(256, 240);
+         */
 
-        private:
-            std::array<size_t, 5> enemies = { 0 };
-
-        private:
-            Smb() = default;
+        // private:
+            // std::array<size_t, 5> enemies = { 0 };
 
         public:
-            void init();
+            Smb();
 
-            void obs_func();
-
-        public:
-            Smb(const Smb& other) = delete;
-            Smb operator=(const Smb& other) = delete;
-
-            static Smb& SMB()
-            {
-                static Smb singleton;
-                return singleton;
-            }
+            void obs_func(std::array<float, CONF::INPUTS>& obs) const;
     };
 }
 

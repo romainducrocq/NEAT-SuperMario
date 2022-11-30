@@ -23,7 +23,7 @@ namespace MyEnv
     /*** DEC MODEL HERE */
     struct Model
     {
-        smb::Smb& smb = smb::Smb::SMB();
+        smb::Smb smb = smb::Smb();
     };
 
     class Env : public Neat
