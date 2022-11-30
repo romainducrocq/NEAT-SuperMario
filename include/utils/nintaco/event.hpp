@@ -6,6 +6,7 @@
 #include <thread>
 #include <memory>
 
+#include <array>
 #include <vector>
 #include <unordered_map>
 #include <utility>
@@ -59,7 +60,7 @@ namespace nintaco
             void focus();
 
             void ev_setup();
-            void get_action(std::vector<float>& act) const;
+            void get_action(std::array<float, CONF::OUTPUTS>& act) const;
 
             void add_event_callback(const std::string& event, void(*ev_func)(sfev::CstEv)) const;
             void add_key_pressed_callback(const std::string& key, void(*ev_func)(sfev::CstEv)) const;

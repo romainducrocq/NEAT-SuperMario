@@ -26,7 +26,7 @@ void nintaco::Action::init()
     }
 }
 
-void nintaco::Action::act_func(std::vector<float>& act) const
+void nintaco::Action::act_func(std::array<float, CONF::OUTPUTS>& act) const
 {
     for(const auto& noop : noops){
         if(noop.is()){

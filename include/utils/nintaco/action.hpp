@@ -62,7 +62,7 @@ namespace nintaco
         public:
             void init();
 
-            void act_func(std::vector<float>& act) const;
+            void act_func(std::array<float, CONF::OUTPUTS>& act) const;
 
         public:
             Action(const Action &other) = delete;

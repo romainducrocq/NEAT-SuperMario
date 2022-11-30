@@ -66,7 +66,7 @@ void nintaco::Event::ev_setup()
     }
 }
 
-void nintaco::Event::get_action(std::vector<float>& act) const
+void nintaco::Event::get_action(std::array<float, CONF::OUTPUTS>& act) const
 {
     if(this->is() && this->gamepad){
         for (size_t i = 0; i < act.size(); i++) {
