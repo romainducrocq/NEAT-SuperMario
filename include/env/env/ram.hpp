@@ -1,8 +1,41 @@
 #ifndef _ENV_RAM_HPP
 #define _ENV_RAM_HPP
 
+#include <stddef.h>
+
 namespace smb
 {
+    template <typename T>
+    struct Vec2
+    {
+        T x;
+        T y;
+
+        Vec2() = delete;
+        Vec2(T x, T y)
+            : x(x), y(y) {}
+    };
+
+    struct Tile
+    {
+        size_t type;
+
+        Tile() = delete;
+        Tile(size_t type)
+                : type(type) {}
+    };
+
+    struct Enemy
+    {
+        size_t type;
+        smb::Vec2<size_t> loc;
+        smb::Vec2<size_t> tile;
+
+        Enemy() = delete;
+        Enemy(size_t type, smb::Vec2<size_t> loc, smb::Vec2<size_t> tile)
+            : type(type), loc(loc), tile(tile) {}
+    };
+
     class Ram
     {
         enum Enemy{
@@ -58,13 +91,28 @@ namespace smb
             LIFT1 = 0X2B,
             LIFT2 = 0X2C,
             VINE = 0X2F,
-            FLAGPOLE = 0X30,
+            FLAGPOLE2 = 0X30,
             START_FLAG = 0X31,
             JUMP_SPRING = 0X32,
             WARPZONE = 0X34,
             SPRING1 = 0X67,
             SPRING2 = 0X68,
             GENERIC_DYNAMIC_TILE = 0XFF
+        };
+
+        enum Location{
+            ENEMY_DRAWN = 0X0F,
+            ENEMY_TYPE = 0X16,
+            ENEMY_X_POSITION_IN_LEVEL = 0X6E,
+            ENEMY_X_POSITION_ON_SCREEN = 0X87,
+            ENEMY_Y_POSITION_ON_SCREEN = 0XCF,
+            PLAYER_X_POSTION_IN_LEVEL = 0X06D,
+            PLAYER_X_POSITION_ON_SCREEN = 0X086,
+            PLAYER_X_POSITION_SCREEN_OFFSET = 0X3AD,
+            PLAYER_Y_POSITION_SCREEN_OFFSET = 0X3B8,
+            ENEMY_X_POSITION_SCREEN_OFFSET = 0X3AE,
+            PLAYER_Y_POS_ON_SCREEN = 0XCE,
+            PLAYER_VERTICAL_SCREEN_POSITION = 0XB5
         };
 
         private:

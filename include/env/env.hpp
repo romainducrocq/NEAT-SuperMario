@@ -14,7 +14,7 @@
 #include "utils/logger.hpp"
 
 /*** ADD INCLUDE HERE */
-
+#include "env/env/smb.hpp"
 
 namespace App { class Play; }
 
@@ -23,6 +23,7 @@ namespace MyEnv
     /*** DEC MODEL HERE */
     struct Model
     {
+        smb::Smb& smb = smb::Smb::SMB();
     };
 
     class Env : public Neat
