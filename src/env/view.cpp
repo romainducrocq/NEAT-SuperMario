@@ -41,8 +41,8 @@ void View::Renderer::draw_loop(const MyEnv::Model& m)
         if (WIFEXITED(std::system("clear"))){
             std::cout << std::endl;
         }
-        for(size_t y = 0; y < m.smb.rows; y++){
-            for(size_t x = 0; x < m.smb.cols; x++){
+        for(int y = 0; y < m.smb.rows; y++){
+            for(int x = 0; x < m.smb.cols; x++){
                 switch(static_cast<size_t>((*m.obs_r)[m.smb.to1D(x, y)])){
                     case smb::Smb::feature::EMPTY:
                         std::cout << "\033[1;34m" << "# " << "\033[0m"; // BLUE

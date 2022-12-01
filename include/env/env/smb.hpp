@@ -155,19 +155,14 @@ namespace smb
             // const float ENEMY = -1.f;
             // const float MARIO = ??;
 
-            int box_radius = 6;
+            int max_cols = 13;
+            int max_rows = 15;
 
+            int cols = 10;
+            int rows;
 
-
-            size_t max_cols = 15;
-            size_t max_rows = 16;
-
-            size_t cols = 13;
-            size_t rows = 13;
-            // size_t rows;
-
-            size_t cols_l = 3;
-            size_t cols_r;
+            int cols_l = 3;
+            int cols_r;
 
             size_t sprite = 16;
 
@@ -183,7 +178,7 @@ namespace smb
     */
 
         private:
-            inline size_t to1D(size_t x, size_t y) const
+            inline size_t to1D(int x, int y) const
             {
                 return x + y * this->cols;
             }
