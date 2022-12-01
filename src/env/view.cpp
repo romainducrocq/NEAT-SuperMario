@@ -3,6 +3,12 @@
 /*** DEF EVENT SETUP HERE */
 void View::EventHandler::ev_setup()
 {
+    nintaco::Event::EVENT().add_key_released_callback(
+            View::EventHandler::EVENTHANDLER().ev_state.debug.first, [](sfev::CstEv){
+                View::EventHandler::EVENTHANDLER().ev_state.debug.second =
+                    ! View::EventHandler::EVENTHANDLER().ev_state.debug.second;
+            });
+    /*
     nintaco::Event::EVENT().add_key_pressed_callback(
             View::EventHandler::EVENTHANDLER().ev_state.debug.first, [](sfev::CstEv){
         View::EventHandler::EVENTHANDLER().ev_state.debug.second = true;
@@ -12,6 +18,7 @@ void View::EventHandler::ev_setup()
             View::EventHandler::EVENTHANDLER().ev_state.debug.first, [](sfev::CstEv){
         View::EventHandler::EVENTHANDLER().ev_state.debug.second = false;
     });
+     */
 
     nintaco::Event::EVENT().ev_setup();
 }
@@ -37,19 +44,19 @@ void View::Renderer::draw_loop(const MyEnv::Model& m)
         for(size_t y = 0; y < m.smb.rows; y++){
             for(size_t x = 0; x < m.smb.cols; x++){
                 switch(static_cast<size_t>((*m.obs_r)[m.smb.to1D(x, y)])){
-                    case smb::Smb::OBS::EMPTY:
+                    case smb::Smb::feature::EMPTY:
                         std::cout << "\033[1;34m" << "# " << "\033[0m"; // BLUE
                         break;
 
-                    case smb::Smb::OBS::SAFE:
+                    case smb::Smb::feature::SAFE:
                         std::cout << "\033[0;33m" << "# " << "\033[0m"; // BROWN ORANGE
                         break;
 
-                    case smb::Smb::OBS::ENEMY:
+                    case smb::Smb::feature::ENEMY:
                         std::cout << "\033[0;31m" << "# " << "\033[0m"; // RED
                         break;
 
-                    case smb::Smb::OBS::MARIO:
+                    case smb::Smb::feature::MARIO:
                         std::cout << "\033[0;32m" << "# " << "\033[0m"; // GREEN
                         break;
                 }

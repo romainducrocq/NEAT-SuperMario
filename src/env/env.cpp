@@ -57,6 +57,7 @@ void MyEnv::Env::step_func()
 
         case CONF::Mode::PLAY:
             // std::cout << "step play\n";
+            this->m.smb.obs_func(this->Super::mdp.obs);
             break;
         default:
             break;

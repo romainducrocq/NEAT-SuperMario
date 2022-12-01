@@ -1,9 +1,15 @@
 #ifndef _ENV_SMB_HPP
 #define _ENV_SMB_HPP
 
+#include <cmath>
+
 #include <memory>
 
 #include <array>
+
+#include <nintaco/nintaco.hpp>
+
+#include "utils/nintaco/api.hpp"
 
 #include "env/conf.hpp"
 
@@ -131,24 +137,39 @@ namespace smb
             friend class View::Renderer;
 
         private:
-            enum OBS{
+            enum feature{
                 EMPTY, SAFE, ENEMY, MARIO
             };
 
-            // const float SAFE = 1.f;
+            enum ram{
+                PLAYER_Y_POS_ON_SCREEN = 0XCE,
+                PLAYER_X_POSITION_SCREEN_OFFSET = 0X3AD,
+                PLAYER_Y_POSITION_SCREEN_OFFSET = 0X3B8,
+                PLAYER_VERTICAL_SCREEN_POSITION = 0XB5
+            };
+
+        private:
+
+        // const float SAFE = 1.f;
             // const float EMPTY = 0.f;
             // const float ENEMY = -1.f;
             // const float MARIO = ??;
 
-            size_t cols = 10;
-            size_t rows;
+            int box_radius = 6;
 
-            size_t offset = 3;
+
+
+            size_t max_cols = 15;
+            size_t max_rows = 16;
+
+            size_t cols = 13;
+            size_t rows = 13;
+            // size_t rows;
+
+            size_t cols_l = 3;
+            size_t cols_r;
 
             size_t sprite = 16;
-
-            enum ram{
-            };
 
         private:
         /*
@@ -166,6 +187,24 @@ namespace smb
             {
                 return x + y * this->cols;
             }
+
+            inline int read_cpu(int addr) const
+            {
+                return nintaco_readCPU(nintaco::Api::API().get_api(), addr);
+            }
+
+        private:
+            void get_loc(int& x, int& y) const;
+            bool get_tile(int x, int y) const;
+
+            void get_mario_loc_displ(size_t& x, size_t& y) const;
+            void get_mario_loc_level(size_t& x, size_t& y) const;
+            // smb::Smb::feature get_tile(size_t x, size_t y) const;
+
+        private:
+            void obs_mario(std::array<float, CONF::INPUTS>& obs) const;
+            void obs_tiles(std::array<float, CONF::INPUTS>& obs) const;
+            void obs_enemies(std::array<float, CONF::INPUTS>& obs) const;
 
         public:
             explicit Smb(size_t obs_n);
