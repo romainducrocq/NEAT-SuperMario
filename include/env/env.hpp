@@ -29,7 +29,7 @@ namespace MyEnv
     {
         std::array<float, CONF::INPUTS>* obs_r = nullptr;
 
-        smb::Smb smb = smb::Smb();
+        smb::Smb smb = smb::Smb(CONF::INPUTS);
     };
 
     class Env : public Neat

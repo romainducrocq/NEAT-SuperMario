@@ -131,14 +131,21 @@ namespace smb
             friend class View::Renderer;
 
         private:
-            const float SAFE = 1.f;
-            const float EMPTY = 0.f;
-            const float ENEMY = -1.f;
+            enum OBS{
+                EMPTY, SAFE, ENEMY, MARIO
+            };
+
+            // const float SAFE = 1.f;
+            // const float EMPTY = 0.f;
+            // const float ENEMY = -1.f;
             // const float MARIO = ??;
 
-            const size_t COLS = 10;
-            const size_t ROWS = 10;
-            const size_t SPRITE = 16;
+            size_t cols = 10;
+            size_t rows;
+
+            size_t offset = 3;
+
+            size_t sprite = 16;
 
             enum ram{
             };
@@ -157,11 +164,11 @@ namespace smb
         private:
             inline size_t to1D(size_t x, size_t y) const
             {
-                return x + y * this->COLS;
+                return x + y * this->cols;
             }
 
         public:
-            Smb() = default;
+            explicit Smb(size_t obs_n);
 
             void obs_func(std::array<float, CONF::INPUTS>& obs) const;
     };
