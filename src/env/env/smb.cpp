@@ -7,56 +7,58 @@ smb::Smb::Smb(size_t obs_n)
 
     this->cols_l = std::max(std::min(this->cols, this->cols_l), 0);
     this->cols_r = std::max(std::min(this->cols, this->cols - this->cols_l), 1);
-
-    std::cout << "cols: " << this->cols << "\n";
-    std::cout << "rows: " << this->rows << "\n";
-    std::cout << "cols_l: " << this->cols_l << "\n";
-    std::cout << "cols_r: " << this->cols_r << "\n";
 }
 
-void smb::Smb::obs_func(std::array<float, CONF::INPUTS>& obs) const
+void smb::Smb::obs_func(std::array<float, CONF::INPUTS>& obs)
 {
-    int mario_x, mario_y;
-    this->get_loc(mario_x, mario_y);
+    this->set_mario();
+    this->set_enemies();
 
     size_t i = 0;
-    for(int dy=((15-this->rows)*16); dy<(15*16); dy+=16){
-        for(int dx=(-this->cols_l*16); dx<(this->cols_r*16); dx+=16){
-            obs[i] = (this->get_tile(mario_x + dx, dy)) ?
-                     smb::Smb::feature::SAFE : smb::Smb::feature::EMPTY;
+    for(int y = ((15 - this->rows) * 16); y < (15 * 16); y += 16){
+        for(int x = (-this->cols_l * 16); x < (this->cols_r * 16); x += 16){
+
+            [&](int dx) {
+                if(x == 0 && std::abs(this->mario_xy[1] - y + 16) <= 8){
+                    obs[i] = smb::Smb::feature::MARIO;
+                    return;
+                }
+
+                dx += this->mario_xy[0];
+
+                for(size_t e = 0; e < this->enemies_xy.size(); e += 2){
+                    if(std::abs(this->enemies_xy[e] - dx) <= 8 && std::abs(this->enemies_xy[e + 1] - y) <= 8){
+                        obs[i] = smb::Smb::feature::ENEMY;
+                        return;
+                    }
+                }
+
+                obs[i] = this->get_tile_t(dx, y) ? smb::Smb::feature::SAFE : smb::Smb::feature::EMPTY;
+            }(x);
 
             i++;
         }
     }
-
-    // obs[smb::Smb::to1D(mario_x, mario_y)] = smb::Smb::MARIO;
 }
 
-void smb::Smb::obs_mario(std::array<float, CONF::INPUTS>& /*obs*/) const
+void smb::Smb::set_mario()
 {
-    // size_t x = (this->read_cpu(smb::Smb::ram::PLAYER_X_POSITION_SCREEN_OFFSET) + this->sprite) / this->max_cols;
-    // size_t y = (this->read_cpu(smb::Smb::ram::PLAYER_Y_POSITION_SCREEN_OFFSET) + this->sprite) / this->max_rows;
-
-    // x = std::min(std::max(x, this->cols_l), this->max_cols - this->cols_r);
-
-    // std::cout << "x: " << x << ", y: " << y << "\n";
+    this->mario_xy[0] = this->read_cpu(0x6D) * 0x100 + this->read_cpu(0x86);
+    this->mario_xy[1] = this->read_cpu(0x03B8) + 16;
 }
 
-void smb::Smb::obs_tiles(std::array<float, CONF::INPUTS>& /*obs*/) const
+void smb::Smb::set_enemies()
 {
+    this->enemies_xy.clear();
+    for(int i = 0; i < 5; i++){
+        if(this->read_cpu(0xF + i)){
+            enemies_xy.push_back((this->read_cpu(0x6E + i) * 0x100) + this->read_cpu(0x87 + i));
+            enemies_xy.push_back(this->read_cpu(0xCF + i) + 24);
+        }
+    }
 }
 
-void smb::Smb::obs_enemies(std::array<float, CONF::INPUTS>& /*obs*/) const
-{
-}
-
-void smb::Smb::get_loc(int& x, int& y) const
-{
-    x = this->read_cpu(0x6D) * 0x100 + this->read_cpu(0x86);
-    y = this->read_cpu(0x03B8) + 16;
-}
-
-bool smb::Smb::get_tile(int x, int y) const
+bool smb::Smb::get_tile_t(int x, int y) const
 {
     x += 8;
     y -= 16;
@@ -69,20 +71,4 @@ bool smb::Smb::get_tile(int x, int y) const
         return false;
     }
     return this->read_cpu(0x500 + (page * 13 * 16) + (y * 16) + x);
-}
-
-//smb::Smb::feature smb::Smb::get_tile(size_t /*x*/, size_t /*y*/) const
-//{
-//    return smb::Smb::feature::EMPTY;
-//}
-
-void smb::Smb::get_mario_loc_displ(size_t& x, size_t& y) const
-{
-    x = this->read_cpu(smb::Smb::ram::PLAYER_X_POSITION_SCREEN_OFFSET);
-    y = this->read_cpu(smb::Smb::ram::PLAYER_Y_POS_ON_SCREEN) *
-            (this->read_cpu(smb::Smb::ram::PLAYER_VERTICAL_SCREEN_POSITION) + this->sprite);
-}
-
-void smb::Smb::get_mario_loc_level(size_t& /*x*/, size_t& /*y*/) const
-{
 }

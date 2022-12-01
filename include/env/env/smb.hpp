@@ -3,9 +3,8 @@
 
 #include <cmath>
 
-#include <memory>
-
 #include <array>
+#include <vector>
 
 #include <nintaco/nintaco.hpp>
 
@@ -17,19 +16,6 @@ namespace View { class Renderer; }
 
 namespace smb
 {
-    /*
-    const float EMPTY = 0.f;
-    const float SAFE = 1.f;
-    const float ENEMY = -1.f;
-
-    const size_t SPRITE = 16;
-    const size_t HEIGHT = 10;
-    const size_t WIDTH = 7;
-
-    enum ram{
-    };
-     */
-
     /*
     enum Enemy{
         GREEN_KOOPA1 = 0X00,
@@ -109,28 +95,6 @@ namespace smb
     };
     */
 
-    /*
-    struct Vec2
-    {
-        size_t x;
-        size_t y;
-
-        Vec2()
-            : x(0), y(0) {}
-
-        Vec2(size_t x, size_t y)
-            : x(x), y(y) {}
-
-        static inline size_t to1D(smb::Vec2 v, size_t w=smb::WIDTH){
-            return v.x + v.y * w;
-        }
-
-        static inline size_t to1D(size_t x, size_t y, size_t w=smb::WIDTH){
-            return x + y * w;
-        }
-    };
-     */
-
     class Smb
     {
         private:
@@ -141,20 +105,7 @@ namespace smb
                 EMPTY, SAFE, ENEMY, MARIO
             };
 
-            enum ram{
-                PLAYER_Y_POS_ON_SCREEN = 0XCE,
-                PLAYER_X_POSITION_SCREEN_OFFSET = 0X3AD,
-                PLAYER_Y_POSITION_SCREEN_OFFSET = 0X3B8,
-                PLAYER_VERTICAL_SCREEN_POSITION = 0XB5
-            };
-
         private:
-
-        // const float SAFE = 1.f;
-            // const float EMPTY = 0.f;
-            // const float ENEMY = -1.f;
-            // const float MARIO = ??;
-
             int max_cols = 13;
             int max_rows = 15;
 
@@ -164,18 +115,9 @@ namespace smb
             int cols_l = 3;
             int cols_r;
 
-            size_t sprite = 16;
-
         private:
-        /*
-            size_t max_num_enemies = 5;
-            size_t page_size = 256;
-            size_t num_blocks = 8;
-            size_t num_tiles = 416; // 0x69f - 0x500 + 1,
-            size_t num_screen_pages = 2;
-            size_t total_ram = 2048;
-            smb::Vec2 resolution = smb::Vec2(256, 240);
-    */
+            std::array<int, 2> mario_xy = { 0 };
+            std::vector<int> enemies_xy;
 
         private:
             inline size_t to1D(int x, int y) const
@@ -189,22 +131,14 @@ namespace smb
             }
 
         private:
-            void get_loc(int& x, int& y) const;
-            bool get_tile(int x, int y) const;
-
-            void get_mario_loc_displ(size_t& x, size_t& y) const;
-            void get_mario_loc_level(size_t& x, size_t& y) const;
-            // smb::Smb::feature get_tile(size_t x, size_t y) const;
-
-        private:
-            void obs_mario(std::array<float, CONF::INPUTS>& obs) const;
-            void obs_tiles(std::array<float, CONF::INPUTS>& obs) const;
-            void obs_enemies(std::array<float, CONF::INPUTS>& obs) const;
+            void set_mario();
+            void set_enemies();
+            bool get_tile_t(int x, int y) const;
 
         public:
             explicit Smb(size_t obs_n);
 
-            void obs_func(std::array<float, CONF::INPUTS>& obs) const;
+            void obs_func(std::array<float, CONF::INPUTS>& obs);
     };
 }
 
