@@ -3,6 +3,7 @@
 /*** DEF INIT FUNC HERE */
 void MyEnv::Env::init_func()
 {
+    this->m.obs_r = &this->Super::mdp.obs;
 }
 
 /*** DEF OBS FUNC HERE */

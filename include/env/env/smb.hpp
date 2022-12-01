@@ -1,12 +1,17 @@
 #ifndef _ENV_SMB_HPP
 #define _ENV_SMB_HPP
 
+#include <memory>
+
 #include <array>
 
 #include "env/conf.hpp"
 
+namespace View { class Renderer; }
+
 namespace smb
 {
+    /*
     const float EMPTY = 0.f;
     const float SAFE = 1.f;
     const float ENEMY = -1.f;
@@ -17,6 +22,7 @@ namespace smb
 
     enum ram{
     };
+     */
 
     /*
     enum Enemy{
@@ -97,6 +103,7 @@ namespace smb
     };
     */
 
+    /*
     struct Vec2
     {
         size_t x;
@@ -116,9 +123,26 @@ namespace smb
             return x + y * w;
         }
     };
+     */
 
     class Smb
     {
+        private:
+            friend class View::Renderer;
+
+        private:
+            const float SAFE = 1.f;
+            const float EMPTY = 0.f;
+            const float ENEMY = -1.f;
+            // const float MARIO = ??;
+
+            const size_t COLS = 10;
+            const size_t ROWS = 10;
+            const size_t SPRITE = 16;
+
+            enum ram{
+            };
+
         private:
         /*
             size_t max_num_enemies = 5;
@@ -130,8 +154,14 @@ namespace smb
             smb::Vec2 resolution = smb::Vec2(256, 240);
     */
 
+        private:
+            inline size_t to1D(size_t x, size_t y) const
+            {
+                return x + y * this->COLS;
+            }
+
         public:
-            Smb();
+            Smb() = default;
 
             void obs_func(std::array<float, CONF::INPUTS>& obs) const;
     };
