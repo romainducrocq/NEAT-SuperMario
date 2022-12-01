@@ -15,6 +15,7 @@
 /*** ADD INCLUDE HERE */
 #include <cstdlib>
 #include <iostream>
+#include <chrono>
 
 #include <utility>
 
@@ -68,6 +69,8 @@ namespace View
         private:
             /*** DEC DRAW VARS HERE */
 
+            float debug_sleep = 0.2f;
+            std::chrono::_V2::system_clock::time_point debug_timer;
 
         private:
             /*** DEC DRAW FUNCS HERE */

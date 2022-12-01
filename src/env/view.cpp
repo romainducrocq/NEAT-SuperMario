@@ -8,17 +8,6 @@ void View::EventHandler::ev_setup()
                 View::EventHandler::EVENTHANDLER().ev_state.debug.second =
                     ! View::EventHandler::EVENTHANDLER().ev_state.debug.second;
             });
-    /*
-    nintaco::Event::EVENT().add_key_pressed_callback(
-            View::EventHandler::EVENTHANDLER().ev_state.debug.first, [](sfev::CstEv){
-        View::EventHandler::EVENTHANDLER().ev_state.debug.second = true;
-    });
-
-    nintaco::Event::EVENT().add_key_released_callback(
-            View::EventHandler::EVENTHANDLER().ev_state.debug.first, [](sfev::CstEv){
-        View::EventHandler::EVENTHANDLER().ev_state.debug.second = false;
-    });
-     */
 
     nintaco::Event::EVENT().ev_setup();
 }
@@ -32,13 +21,17 @@ void View::EventHandler::get_action(std::array<float, CONF::OUTPUTS>& act)
 /*** DEF DRAW SETUP HERE */
 void View::Renderer::draw_setup(const MyEnv::Model& /*m*/)
 {
+    this->debug_timer = std::chrono::high_resolution_clock::now();
 }
 
 /*** DEF DRAW LOOP HERE */
 void View::Renderer::draw_loop(const MyEnv::Model& m)
 {
-    if(View::EventHandler::EVENTHANDLER().get_ev_state().debug.second){
-        if (WIFEXITED(std::system("clear"))){
+    if(View::EventHandler::EVENTHANDLER().get_ev_state().debug.second &&
+       std::chrono::duration<float>(std::chrono::high_resolution_clock::now() - this->debug_timer).count()
+       > this->debug_sleep){
+
+        if(WIFEXITED(std::system("clear"))){
             std::cout << std::endl;
         }
         for(int y = 0; y < m.smb.rows; y++){
@@ -63,6 +56,8 @@ void View::Renderer::draw_loop(const MyEnv::Model& m)
             }
             std::cout << "\n";
         }
+
+        this->debug_timer = std::chrono::high_resolution_clock::now();
     }
 }
 

@@ -9,6 +9,8 @@ smb::Smb::Smb(size_t obs_n)
     this->cols_r = std::max(std::min(this->cols, this->cols - this->cols_l), 1);
 }
 
+/* OBSERVATION */
+
 void smb::Smb::obs_func(std::array<float, CONF::INPUTS>& obs)
 {
     this->set_mario();

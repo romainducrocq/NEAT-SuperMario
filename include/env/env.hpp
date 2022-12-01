@@ -1,8 +1,6 @@
 #ifndef _ENV_ENV_HPP
 #define _ENV_ENV_HPP
 
-#include <memory>
-
 #include <nintaco/nintaco.hpp>
 
 #include "neat/neat.hpp"
