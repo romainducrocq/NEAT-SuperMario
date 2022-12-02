@@ -135,10 +135,16 @@ namespace smb
             void set_enemies();
             bool get_tile_t(int x, int y) const;
 
+            int get_frames(size_t steps) const;
+            int get_distance() const;
+            int get_score() const;
+            int get_win() const;
+
         public:
             explicit Smb(size_t obs_n);
 
             void obs_func(std::array<float, CONF::INPUTS>& obs);
+            float fitness_func(bool done, size_t steps) const;
     };
 }
 

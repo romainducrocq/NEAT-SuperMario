@@ -72,3 +72,45 @@ bool smb::Smb::get_tile_t(int x, int y) const
     }
     return this->read_cpu(0x500 + (page * 13 * 16) + (y * 16) + x);
 }
+
+/* FITNESS */
+
+float smb::Smb::fitness_func(bool done, size_t steps) const
+{
+    if(done){
+        return std::max(std::pow(static_cast<float>(steps), 1.5f) +
+                        std::pow(static_cast<float>(this->get_distance()), 1.9f) -
+                        std::min(std::max(static_cast<float>(this->get_distance()) - 50.f, 0.f), 1.f) * 2000.f +
+                        std::pow(static_cast<float>(this->get_score()), 2.f) +
+                        static_cast<float>(this->get_win()) * 1000000.f
+                        , 0.00001f);
+    }
+    return 0.f;
+}
+
+int smb::Smb::get_distance() const
+{
+    return (this->read_cpu(0X06D) * 256) + this->read_cpu(0X086);
+}
+
+int smb::Smb::get_score() const
+{
+    int score = 0;
+    int mult = 10;
+
+    for(int addr = 0x07DC; addr >= 0x07D7; addr -= 1){
+        score += this->read_cpu(addr) * mult;
+        mult *= 10;
+    }
+
+    return score;
+}
+
+int smb::Smb::get_win() const
+{
+    return this->read_cpu(0x001D) == 3 ? 1 : 0;
+}
+
+/* DONE */
+
+/* NOOP */
