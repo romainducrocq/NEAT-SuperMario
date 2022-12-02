@@ -20,11 +20,13 @@ void MyEnv::Env::act_func()
 /*** DEF DONE FUNC HERE */
 void MyEnv::Env::done_func()
 {
+    this->m.smb.done_func(this->m.win);
 }
 
 /*** DEF FITNESS FUNC HERE */
 void MyEnv::Env::fitness_func()
 {
+    this->m.smb.fitness_func(this->Super::mdp.done, this->Super::steps);
 }
 
 /*** DEF INFO FUNC HERE */

@@ -118,5 +118,30 @@ float smb::Smb::get_win_fitness() const
 
 /* DONE */
 
+bool smb::Smb::done_func(bool& win) const
+{
+    return get_win_done(win) || this->get_die_done();
+}
+
+bool smb::Smb::get_die_done() const
+{
+    if(this->read_cpu(0xB5) == 2){
+        return true;
+    }
+
+    int addr = this->read_cpu(0x0E);
+    if(addr == 0x0B || addr == 0x06){
+        return true;
+    }
+
+    return false;
+}
+
+bool smb::Smb::get_win_done(bool& win) const
+{
+    win = this->read_cpu(0x001D) == 3;
+    return win;
+}
+
 /* NOOP */
 

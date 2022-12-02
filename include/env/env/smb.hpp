@@ -140,11 +140,15 @@ namespace smb
             float get_score_fitness() const;
             float get_win_fitness() const;
 
+            bool get_win_done(bool& win) const;
+            bool get_die_done() const;
+
         public:
             explicit Smb(size_t obs_n);
 
             void obs_func(std::array<float, CONF::INPUTS>& obs);
             float fitness_func(bool done, size_t steps) const;
+            bool done_func(bool& win) const;
     };
 }
 
