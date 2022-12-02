@@ -79,7 +79,7 @@ float smb::Smb::fitness_func(bool done, size_t steps) const
 {
     if(done){
         return std::max(this->get_frames_fitness(steps) + this->get_distance_fitness() + this->get_score_fitness() +
-                        this->get_win_fitness(), 0.00001f);
+            this->get_win_fitness(), 0.00001f);
     }
     return 0.f;
 }
@@ -94,7 +94,7 @@ float smb::Smb::get_distance_fitness() const
 {
     int distance = (this->read_cpu(0X06D) * 256) + this->read_cpu(0X086);
     return std::pow(static_cast<float>(distance), 1.9f) -
-           std::min(std::max(static_cast<float>(distance) - 50.f, 0.f), 1.f) * 2000.f;
+        (std::min(std::max(static_cast<float>(distance) - 50.f, 0.f), 1.f) * 2000.f);
 }
 
 float smb::Smb::get_score_fitness() const
