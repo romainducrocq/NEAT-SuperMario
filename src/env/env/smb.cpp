@@ -26,8 +26,6 @@ void smb::Smb::obs_func(std::array<float, CONF::INPUTS>& obs)
                     return;
                 }
 
-                dx += this->mario_xy[0];
-
                 for(size_t e = 0; e < this->enemies_xy.size(); e += 2){
                     if(std::abs(this->enemies_xy[e] - dx) <= 8 && std::abs(this->enemies_xy[e + 1] - y) <= 8){
                         obs[i] = smb::Smb::feature::ENEMY;
@@ -36,7 +34,7 @@ void smb::Smb::obs_func(std::array<float, CONF::INPUTS>& obs)
                 }
 
                 obs[i] = this->get_tile_t(dx, y) ? smb::Smb::feature::SAFE : smb::Smb::feature::EMPTY;
-            }(x);
+            }(x + this->mario_xy[0]);
 
             i++;
         }
