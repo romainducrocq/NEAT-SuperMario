@@ -72,7 +72,16 @@ bool smb::Smb::get_tile_t_obs(int x, int y) const
     if(y >= 13 || y < 0){
         return false;
     }
-    return this->read_cpu(0x500 + (page * 13 * 16) + (y * 16) + x);
+
+    switch(this->read_cpu(0x500 + (page * 13 * 16) + (y * 16) + x)){
+        case 0:
+        case 0xC2:
+        case 0x25:
+            return false;
+
+        default:
+            return true;
+    }
 }
 
 /* FITNESS */
