@@ -14,8 +14,8 @@ smb::Smb::Smb()
 
     for(size_t i = 0; i < this->actions.size(); i++){
         switch(this->actions[i]){
-            case CONF::Action::UP:
-                this->up = i;
+            case CONF::Action::LEFT:
+                this->left = i;
                 break;
             default:
                 break;
@@ -161,5 +161,5 @@ bool smb::Smb::get_win_done(bool& win) const
 
 bool smb::Smb::noop_func(std::array<float, CONF::OUTPUTS>& act, bool(*activate_func)(float)) const
 {
-    return (*activate_func)(act[this->up]);
+    return (*activate_func)(act[this->left]);
 }

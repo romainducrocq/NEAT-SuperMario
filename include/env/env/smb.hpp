@@ -43,7 +43,7 @@ namespace smb
             std::array<int, 2> mario_xy = { 0 };
             std::vector<int> enemies_xy;
 
-            size_t up;
+            size_t left;
 
         private:
             inline size_t to1D(int x, int y) const
