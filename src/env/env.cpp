@@ -20,13 +20,13 @@ void MyEnv::Env::act_func()
 /*** DEF DONE FUNC HERE */
 void MyEnv::Env::done_func()
 {
-    this->m.smb.done_func(this->m.win);
+    this->Super::mdp.done = this->m.smb.done_func(this->m.win);
 }
 
 /*** DEF FITNESS FUNC HERE */
 void MyEnv::Env::fitness_func()
 {
-    this->m.smb.fitness_func(this->Super::mdp.done, this->Super::steps);
+    this->Super::mdp.fitness = this->m.smb.fitness_func(this->Super::mdp.done, this->Super::steps);
 }
 
 /*** DEF INFO FUNC HERE */
@@ -37,6 +37,7 @@ void MyEnv::Env::info_func()
 /*** DEF NOOP FUNC HERE */
 void MyEnv::Env::noop_func()
 {
+    // this->Super::is_noop = this->m.smb.noop_func(this->Super::mdp.act, &Neat::Output::activate);
 }
 
 /*** DEF RESET FUNC HERE */

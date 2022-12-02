@@ -1,12 +1,26 @@
 #include "env/env/smb.hpp"
 
-smb::Smb::Smb(size_t obs_n)
+smb::Smb::Smb()
 {
+    /* OBSERVATION */
+
     this->cols = std::max(std::min(this->max_cols, this->cols), 1);
-    this->rows = std::max(std::min(this->max_rows, static_cast<int>(obs_n) / this->cols), 1);
+    this->rows = std::max(std::min(this->max_rows, static_cast<int>(this->obs_n) / this->cols), 1);
 
     this->cols_l = std::max(std::min(this->cols, this->cols_l), 0);
     this->cols_r = std::max(std::min(this->cols, this->cols - this->cols_l), 1);
+
+    /* NOOP */
+
+    for(size_t i = 0; i < this->actions.size(); i++){
+        switch(this->actions[i]){
+            case CONF::Action::UP:
+                this->up = i;
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 /* OBSERVATION */
@@ -145,3 +159,7 @@ bool smb::Smb::get_win_done(bool& win) const
 
 /* NOOP */
 
+bool smb::Smb::noop_func(std::array<float, CONF::OUTPUTS>& act, bool(*activate_func)(float)) const
+{
+    return (*activate_func)(act[this->up]);
+}
