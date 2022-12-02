@@ -28,7 +28,6 @@ namespace smb
 
         private:
             size_t obs_n = CONF::INPUTS;
-            const std::vector<CONF::Action>& actions = CONF::ACTIONS;
 
             int max_cols = 13;
             int max_rows = 15;
@@ -43,8 +42,6 @@ namespace smb
             std::array<int, 2> mario_xy = { 0 };
             std::vector<int> enemies_xy;
 
-            size_t left;
-
         private:
             inline size_t to1D(int x, int y) const
             {
@@ -54,6 +51,11 @@ namespace smb
             inline int read_cpu(int addr) const
             {
                 return nintaco_readCPU(nintaco::Api::API().get_api(), addr);
+            }
+
+            inline bool read_gamepad(int gamepad, int button) const
+            {
+                return nintaco_readGamepad(nintaco::Api::API().get_api(), gamepad, button);
             }
 
         private:
@@ -75,7 +77,7 @@ namespace smb
             void obs_func(std::array<float, CONF::INPUTS>& obs);
             float fitness_func(bool done, size_t steps) const;
             bool done_func(bool& win) const;
-            bool noop_func(std::array<float, CONF::OUTPUTS>& act, bool(*activate_func)(float)) const;
+            bool noop_func() const;
     };
 }
 

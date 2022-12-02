@@ -37,13 +37,14 @@ void MyEnv::Env::info_func()
 /*** DEF NOOP FUNC HERE */
 void MyEnv::Env::noop_func()
 {
-    // this->Super::is_noop = this->m.smb.noop_func(this->Super::mdp.act, &Neat::Output::activate);
+    // this->Super::is_noop = this->m.smb.noop_func();
 }
 
 /*** DEF RESET FUNC HERE */
 void MyEnv::Env::reset_func()
 {
-    nintaco::State::STATE().load();
+    // nintaco::State::STATE().load();
+    nintaco::State::STATE().reset();
 }
 
 /*** DEF STEP FUNC HERE */

@@ -9,18 +9,6 @@ smb::Smb::Smb()
 
     this->cols_l = std::max(std::min(this->cols, this->cols_l), 0);
     this->cols_r = std::max(std::min(this->cols, this->cols - this->cols_l), 1);
-
-    /* NOOP */
-
-    for(size_t i = 0; i < this->actions.size(); i++){
-        switch(this->actions[i]){
-            case CONF::Action::LEFT:
-                this->left = i;
-                break;
-            default:
-                break;
-        }
-    }
 }
 
 /* OBSERVATION */
@@ -159,7 +147,7 @@ bool smb::Smb::get_win_done(bool& win) const
 
 /* NOOP */
 
-bool smb::Smb::noop_func(std::array<float, CONF::OUTPUTS>& act, bool(*activate_func)(float)) const
+bool smb::Smb::noop_func() const
 {
-    return (*activate_func)(act[this->left]);
+    return (! this->read_gamepad(0, Left));
 }
