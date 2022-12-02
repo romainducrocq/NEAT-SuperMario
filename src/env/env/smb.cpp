@@ -127,7 +127,7 @@ bool smb::Smb::done_func(bool& win) const
 
 bool smb::Smb::get_die_done() const
 {
-    if(this->read_cpu(0xB5) == 2){
+    if(this->read_cpu(0xB5) >= 2){
         return true;
     }
 
