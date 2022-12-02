@@ -18,20 +18,13 @@ namespace nintaco
         private:
             std::string sav = "../../res/sav/" + CONF::ROM + "_" + CONF::SAV + ".save";
 
-            bool ini = true;
-
         private:
             State() = default;
-
-        private:
-            void quick_save() const;
-            void quick_load() const;
 
         public:
             void init();
 
-            void reset();
-            void load(); // TODO -> private if reset ok
+            void load();
 
         public:
             State(const State &other) = delete;

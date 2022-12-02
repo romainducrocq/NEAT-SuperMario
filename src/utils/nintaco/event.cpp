@@ -40,7 +40,7 @@ void nintaco::Event::focus()
 {
     if(this->is() && !this->window->hasFocus()){
         if(this->wmctrl){
-            std::thread th([&]() {
+            std::thread th([]() {
                 std::system("wmctrl -a SFML");
             });
             th.detach();
