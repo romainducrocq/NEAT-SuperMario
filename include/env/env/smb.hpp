@@ -131,14 +131,14 @@ namespace smb
             }
 
         private:
-            void set_mario();
-            void set_enemies();
-            bool get_tile_t(int x, int y) const;
+            void set_mario_obs();
+            void set_enemies_obs();
+            bool get_tile_t_obs(int x, int y) const;
 
-            int get_frames(size_t steps) const;
-            int get_distance() const;
-            int get_score() const;
-            int get_win() const;
+            float get_frames_fitness(size_t steps) const;
+            float get_distance_fitness() const;
+            float get_score_fitness() const;
+            float get_win_fitness() const;
 
         public:
             explicit Smb(size_t obs_n);
