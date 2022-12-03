@@ -8,9 +8,6 @@ smb::Smb::Smb()
                                  static_cast<float>(i) / static_cast<float>(smb::Smb::feature::N - 1)});
     }
 
-    int n;
-    std::cin >> n;
-
     this->cols = std::max(std::min(this->max_cols, this->cols), 1);
     this->rows = std::max(std::min(this->max_rows, static_cast<int>(this->obs_n) / this->cols), 1);
 
@@ -69,18 +66,19 @@ void smb::Smb::obs_func(std::array<float, CONF::INPUTS>& obs)
 
             [&](int dx) {
                 if(x == 0 && std::abs(this->mario_xy[1] - y + 16) <= 8){
-                    obs[i] = smb::Smb::feature::MARIO;
+                    obs[i] = this->scale_to01.at(smb::Smb::feature::MARIO);
                     return;
                 }
 
                 for(size_t e = 0; e < this->enemies_xy.size(); e += 2){
                     if(std::abs(this->enemies_xy[e] - dx) <= 8 && std::abs(this->enemies_xy[e + 1] - y) <= 8){
-                        obs[i] = smb::Smb::feature::ENEMY;
+                        obs[i] = this->scale_to01.at(smb::Smb::feature::ENEMY);
                         return;
                     }
                 }
 
-                obs[i] = this->get_tile_t_obs(dx, y) ? smb::Smb::feature::SAFE : smb::Smb::feature::EMPTY;
+                obs[i] = this->get_tile_t_obs(dx, y) ? this->scale_to01.at(smb::Smb::feature::SAFE) :
+                                                       this->scale_to01.at(smb::Smb::feature::EMPTY);
             }(x + this->mario_xy[0]);
 
             i++;
