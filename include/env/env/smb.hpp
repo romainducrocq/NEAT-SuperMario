@@ -62,7 +62,6 @@ namespace smb
 
             float get_frames_fitness(size_t steps) const;
             float get_distance_fitness() const;
-            float get_score_fitness() const;
             float get_win_fitness() const;
 
             void set_win_done();

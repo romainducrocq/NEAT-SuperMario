@@ -97,7 +97,7 @@ bool smb::Smb::get_tile_t_obs(int x, int y) const
     }
 }
 
-/* DONE */ // TODO timeout
+/* DONE */
 
 bool smb::Smb::done_func()
 {
@@ -134,8 +134,8 @@ bool smb::Smb::get_win_done() const
 float smb::Smb::fitness_func(bool done, size_t steps) const
 {
     if(done){
-        return std::max(this->get_frames_fitness(steps) + this->get_distance_fitness() + this->get_score_fitness() +
-            this->get_win_fitness(), 0.00001f);
+        return std::max(this->get_frames_fitness(steps) + this->get_distance_fitness() + this->get_win_fitness()
+                        , 0.00001f);
     }
     return 0.f;
 }
@@ -143,27 +143,14 @@ float smb::Smb::fitness_func(bool done, size_t steps) const
 float smb::Smb::get_frames_fitness(size_t steps) const
 {
     int frames = static_cast<int>(steps);
-    return std::pow(static_cast<float>(frames), 1.5f);
+    return (-std::pow(static_cast<float>(frames), 1.5f));
 }
 
 float smb::Smb::get_distance_fitness() const
 {
     int distance = this->mario_xy[0];
-    return std::pow(static_cast<float>(distance), 1.9f) -
-        (std::min(std::max(static_cast<float>(distance) - 50.f, 0.f), 1.f) * 2000.f);
-}
-
-float smb::Smb::get_score_fitness() const
-{
-    int score = 0;
-    int mult = 10;
-
-    for(int addr = 0x07DC; addr >= 0x07D7; addr -= 1){
-        score += this->read_cpu(addr) * mult;
-        mult *= 10;
-    }
-
-    return std::pow(static_cast<float>(score), 2.f);
+    return std::pow(static_cast<float>(distance), 1.8f) +
+        (std::min(std::max(static_cast<float>(distance) - 50.f, 0.f), 1.f) * 2500.f);
 }
 
 float smb::Smb::get_win_fitness() const
