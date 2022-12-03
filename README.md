@@ -1,13 +1,15 @@
 
 # [C++] SUPER MORIA with NEAT and TidyV3mul
 
+- The NeuroEvolution of Augmenting Topologies (NEAT) User Page : http://www.cs.ucf.edu/~kstanley/neat.html
+<!---->
+  
 - My very own NEAT framework in C++ (it's v3 on the NES) : https://github.com/romainducrocq/NEAT-TidyV3mul
 - Nintaco API - NES / Famicom emulator and game RAM manipulation in C : https://nintaco.com/api.html
+<!---->
   
-****
-
-- https://chrispresso.io/AI_Learns_To_Play_SMB_Using_GA_And_NN
-- https://datacrystal.romhacking.net/wiki/Super_Mario_Bros.:RAM_map
+- AI learns to play SMB using GA and NN : https://chrispresso.io/AI_Learns_To_Play_SMB_Using_GA_And_NN
+- Super Mario Bros. JU PRG0 ! ram map : https://datacrystal.romhacking.net/wiki/Super_Mario_Bros.:RAM_map
 
 ****
 
