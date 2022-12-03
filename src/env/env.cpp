@@ -30,7 +30,7 @@ void MyEnv::Env::done_func()
 /*** DEF FITNESS FUNC HERE */
 void MyEnv::Env::fitness_func()
 {
-    this->Super::mdp.fitness = this->m.smb.fitness_func(this->Super::mdp.done, this->Super::steps);
+    this->Super::mdp.fitness = this->m.smb.fitness_func(this->Super::mdp.done);
 }
 
 /*** DEF INFO FUNC HERE */

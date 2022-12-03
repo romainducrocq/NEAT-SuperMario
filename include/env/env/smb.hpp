@@ -27,6 +27,7 @@ namespace smb
             };
 
         private:
+            /* OBSERVATION */
             size_t obs_n = CONF::INPUTS;
 
             int max_cols = 13;
@@ -38,11 +39,20 @@ namespace smb
             int cols_l = 3;
             int cols_r;
 
-        private:
             std::array<int, 2> mario_xy = { 0 };
             std::vector<int> enemies_xy;
 
+            /* DONE */
             bool win = false;
+
+            /* NOOP */
+            size_t frames = 0;
+            float timer = 0.f;
+            float t_cst = 20.f;
+            bool timeout = false;
+            int max_mario_x = -1;
+
+            /* FITNESS */
 
         private:
             inline size_t to1D(int x, int y) const
@@ -56,28 +66,41 @@ namespace smb
             }
 
         private:
+            /* OBSERVATION */
             void set_mario_obs();
             void set_enemies_obs();
             bool get_tile_t_obs(int x, int y) const;
 
-            float get_frames_fitness(size_t steps) const;
-            float get_distance_fitness() const;
-            float get_win_fitness() const;
-
+            /* DONE */
             void set_win_done();
             bool get_die_done() const;
+
+            /* NOOP */
+            void set_timeout_noop();
+
+            /* FITNESS */
+            float get_frames_fitness() const;
+            float get_distance_fitness() const;
+            float get_win_fitness() const;
 
         public:
             Smb();
 
-            bool get_win_done() const;
-
             void reset_func();
             void step_func();
 
+            /* OBSERVATION */
             void obs_func(std::array<float, CONF::INPUTS>& obs);
+
+            /* DONE */
             bool done_func();
-            float fitness_func(bool done, size_t steps) const;
+            bool get_win_done() const;
+
+            /* NOOP */
+            bool noop_func() const;
+
+            /* FITNESS */
+            float fitness_func(bool done) const;
     };
 }
 

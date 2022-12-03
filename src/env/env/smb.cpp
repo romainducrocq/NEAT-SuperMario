@@ -9,20 +9,45 @@ smb::Smb::Smb()
 
     this->cols_l = std::max(std::min(this->cols, this->cols_l), 0);
     this->cols_r = std::max(std::min(this->cols, this->cols - this->cols_l), 1);
+
+    /* DONE */
+
+    /* NOOP */
+
+    /* FITNESS */
 }
 
 /* RESET */
 
 void smb::Smb::reset_func()
 {
+    /* OBSERVATION */
+
+    /* DONE */
     this->win = false;
+
+    /* NOOP */
+    this->frames = 0;
+    this->timer = this->t_cst;
+    this->timeout = false;
+    this->max_mario_x = -1;
+
+    /* FITNESS */
 }
 
 /* STEP */
 
 void smb::Smb::step_func()
 {
+    /* OBSERVATION */
     this->set_mario_obs();
+
+    /* DONE */
+
+    /* NOOP */
+    this->set_timeout_noop();
+
+    /* FITNESS */
 }
 
 /* OBSERVATION */
@@ -129,20 +154,42 @@ bool smb::Smb::get_win_done() const
     return this->win;
 }
 
+/* NOOP */
+
+bool smb::Smb::noop_func() const
+{
+    return this->timeout;
+}
+
+void smb::Smb::set_timeout_noop()
+{
+    this->frames++;
+
+    if(this->mario_xy[0] > this->max_mario_x){
+        this->max_mario_x = this->mario_xy[0];
+        this->timer = this->t_cst;
+    }
+
+    this->timer -= 1.f;
+
+    if(this->timer + (static_cast<float>(this->frames) / 4.f) <= 0){
+        this->timeout = true;
+    }
+}
+
 /* FITNESS */
 
-float smb::Smb::fitness_func(bool done, size_t steps) const
+float smb::Smb::fitness_func(bool done) const
 {
     if(done){
-        return std::max(this->get_frames_fitness(steps) + this->get_distance_fitness() + this->get_win_fitness()
-                        , 0.00001f);
+        return std::max(this->get_frames_fitness() + this->get_distance_fitness() + this->get_win_fitness(), 0.00001f);
     }
     return 0.f;
 }
 
-float smb::Smb::get_frames_fitness(size_t steps) const
+float smb::Smb::get_frames_fitness() const
 {
-    int frames = static_cast<int>(steps);
+    int frames = static_cast<int>(this->frames);
     return (-std::pow(static_cast<float>(frames), 1.5f));
 }
 
