@@ -63,8 +63,8 @@ rm -v Nintaco_bin_2020-05-01.zip
 ```
 $ ./build.sh -R
 $ ./compile.sh
-$ ./run.sh -m train -g 300 -t 0 -n 0 -p plt -s sav
-$ ./run.sh -m eval -e 10 -t 0 -n 0 -s sav
+$ ./run.sh -m train -k n -l 1_1 -g 0 -t 0 -n 1 -p plt1_1 -s sav1_1
+$ ./run.sh -m eval -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 ```
 </span>
 
@@ -72,8 +72,8 @@ $ ./run.sh -m eval -e 10 -t 0 -n 0 -s sav
 `./train.sh [-D -R] <args>` or  
 <span id="how_to_train">
 ```
-* Debug   : $ ./train.sh -D -g 300 -t 0 -n 0 -p plt -s sav
-* Release : $ ./train.sh -R -g 300 -t 0 -n 0 -p plt -s sav
+* Debug   : $ ./train.sh -D -k n -l 1_1 -g 0 -t 0 -n 1 -p plt1_1 -s sav1_1
+* Release : $ ./train.sh -R -k n -l 1_1 -g 0 -t 0 -n 1 -p plt1_1 -s sav1_1
 ```
 </span>
 
@@ -81,8 +81,8 @@ $ ./run.sh -m eval -e 10 -t 0 -n 0 -s sav
 `./eval.sh [-D -R] <args>` or  
 <span id="how_to_eval">
 ```
-* Debug   : $ ./eval.sh -D -e 10 -t 0 -n 0 -s sav
-* Release : $ ./eval.sh -R -e 10 -t 0 -n 0 -s sav
+* Debug   : $ ./eval.sh -D -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
+* Release : $ ./eval.sh -R -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 ```
 </span>
 
@@ -90,8 +90,8 @@ $ ./run.sh -m eval -e 10 -t 0 -n 0 -s sav
 `./play.sh [-D -R] <args>` or  
 <span id="how_to_play">
 ```
-* Debug   : $ ./play.sh -D -e 10
-* Release : $ ./play.sh -R -e 10
+* Debug   : $ ./play.sh -D -k y -l 1_1 -e 10
+* Release : $ ./play.sh -R -k y -l 1_1 -e 10
 ```
 </span>
 
@@ -153,8 +153,8 @@ optional args:
 ```
 * HYPERPARAMETER VALUES :
 
-INPUTS               = 2
-OUTPUTS              = 1
+INPUTS               = 100
+OUTPUTS              = 3
 
 LIM_HIDDEN           = 1000000
 
@@ -174,20 +174,20 @@ DELTA_THRESHOLD      = 1.f
 
 CROSSOVER_PROB       = 0.75f
 STALE_SPECIES        = 15
-POPULATION_SIZE      = 150
+POPULATION_SIZE      = 300
 MAX_POPULATION_SIZE  = 0
-POPULATION_GENS_INC  = 150
+POPULATION_GENS_INC  = 300
 POPULATION_INC_FREQ  = 10
 
-ACT_REPEAT           = 0
-MVG_AVG              = 100
-PLT_FREQ             = 0
+ACT_REPEAT           = 5
+MVG_AVG              = 10
+PLT_FREQ             = 1
 SAV_FREQ             = 1
 
-GENERATIONS_TRAIN    = 300
+GENERATIONS_TRAIN    = 0
 EPOCHS_EVAL          = 10
 MAX_STEP             = 0
-MAX_NOOP             = 0
+MAX_NOOP             = 1
 ```
 </span>
 
