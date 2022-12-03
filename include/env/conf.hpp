@@ -4,11 +4,11 @@
 /*** DEF DEFAULT ARGS HERE */
 /*
  * TRAIN
-   -k n -g 0 -t 0 -n 1 -p plt -s sav
+   -k n -l 1_1 -g 0 -t 0 -n 1 -p plt1_1 -s sav1_1
  * EVAL
-   -k n -e 10 -t 0 -n 0 -s sav
+   -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
  * PLAY
-   -k y -e 10
+   -k y -l 1_1 -e 10
  * TEST
 
 */
@@ -304,7 +304,7 @@ const std::string DefaultConf<T>::KEY_SELECT = "Enter";
 template<typename T>
 bool DefaultConf<T>::KEYBOARD_SFML = false;
 template<typename T>
-std::string DefaultConf<T>::LVL = "1-1";
+std::string DefaultConf<T>::LVL = "1_1";
 
 template<typename T>
 const std::array<typename DefaultConf<T>::Action, DefaultConf<T>::OUTPUTS> ACTIONS_ = {
