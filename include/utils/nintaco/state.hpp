@@ -16,7 +16,7 @@ namespace nintaco
     class State
     {
         private:
-            std::string sav = "../../res/sav/" + CONF::ROM + "_" + CONF::SAV + ".save";
+            std::string sav = "../../res/sav/" + CONF::SAV + ".save";
 
         private:
             State() = default;
