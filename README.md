@@ -118,13 +118,7 @@ $ ./run.sh -m eval -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 * Example : $ ./log.sh -V ./play.sh -e 1
 ```
 
-### Emul
-`./emul.sh`  
-```
-* Update : $ ./emul.sh
-```
-
-### Emulation
+### Readme
 `./readme.sh`
 ```
 * Update : $ ./readme.sh
@@ -160,6 +154,12 @@ optional args:
   Space   [play]        Button Start  (? set)
   Enter   [play]        Button Select (? set)
   D       [train, eval] (Debug) Ai view
+```
+
+### Emulation
+`./emul.sh`
+```
+* Update : $ ./emul.sh
 ```
 
 ****
