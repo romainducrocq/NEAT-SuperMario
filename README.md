@@ -11,22 +11,15 @@
 
 ****
 
-External Control
-
-To control Nintaco from a program:
-
-    Start Nintaco and launch a game.
-    Open the Start Program Server window via Tools | Start Program Server...
-    Press Start Server.
-    From the command-line, execute the Go program that uses the Nintaco API.
-
-To disconnect, press Stop Server and/or break the example program (Ctrl+C).
-
-****
-
 ## How to _
 
 `cd bin`
+
+```
+1. Execute program : $ <cmd>
+2. Connect Nintaco : Tools > Start Program Server... > Start Server
+3. Disconnect      : Stop Server or Ctrl+C
+```
 
 ### Install
 `./make.sh` or  
@@ -67,6 +60,7 @@ $ ./run.sh -m train -k n -l 1_1 -g 0 -t 0 -n 1 -p plt1_1 -s sav1_1
 $ ./run.sh -m eval -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 ```
 </span>
+[Connect Nintaco](##-how-to-_)
 
 ### Train
 `./train.sh [-D -R] <args>` or  
