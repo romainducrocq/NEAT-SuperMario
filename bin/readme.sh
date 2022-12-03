@@ -10,7 +10,13 @@ do
         echo '' >> README.md
         echo '# [C++] APPLICATION with NEAT and TidyV3mul' >> README.md
         echo '' >> README.md
-        echo '- My very own NEAT framework in C++ (it'"'"'s v3 on the NES) : https://github.com/romainducrocq/NEAT-TidyV3mul' >> README.md
+        echo '- My very own NEAT framework in C++ (it'"'"'s v3 on the NES) : [\[v1. BASE\]](https://github.com/romainducrocq/NEAT-TidyVolve) - [\[v2. SFML\]](https://github.com/romainducrocq/NEAT-TidyV2fml) - [\[v3. EMUL\]](https://github.com/romainducrocq/NEAT-TidyV3mul)' >> README.md
+        echo '<!---->' >> README.md
+        echo '  ' >> README.md
+        echo '- The NeuroEvolution of Augmenting Topologies (NEAT) User Page : http://www.cs.ucf.edu/~kstanley/neat.html' >> README.md
+        echo '- Nintaco API - NES / Famicom emulator and game RAM manipulation in C : https://nintaco.com/api.html' >> README.md
+        echo '<!---->' >> README.md
+        echo '  ' >> README.md
     elif [[ "${LINE}" == *"how_to_run"* ]] ; then
         echo "${LINE}" >> README.md
         echo '```' >> README.md
