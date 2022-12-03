@@ -89,7 +89,10 @@ namespace smb
         public:
             Smb();
 
+            /* RESET */
             void reset_func();
+
+            /* STEP */
             void step_func();
 
             /* OBSERVATION */
