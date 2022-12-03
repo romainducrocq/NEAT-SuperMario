@@ -118,8 +118,14 @@ $ ./run.sh -m eval -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 * Example : $ ./log.sh -V ./play.sh -e 1
 ```
 
-### Readme
-`./readme.sh`  
+### Emul
+`./emul.sh`  
+```
+* Update : $ ./emul.sh
+```
+
+### Emulation
+`./readme.sh`
 ```
 * Update : $ ./readme.sh
 ```
@@ -127,13 +133,15 @@ $ ./run.sh -m eval -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 ### Help
 `./help.sh`  
 ```
-usage: apps/exec [-h] [-m MOD] [-g GEN] [-e EPO] [-t STP] [-n NOP] [-p PLT] [-s SAV]
+usage: apps/exec [-h] [-m MOD] [-k KEY] [-l LVL] [-g GEN] [-e EPO] [-t STP] [-n NOP] [-p PLT] [-s SAV]
 
-TidyVolve
+NEAT SuperMorIA
 
 optional args:
   -h      Print help and exit
   -m MOD  Set mode < train | eval | play | test >
+  -k KEY  Set keyboard sfml < y | n >
+  -l LVL  Set load state file level lvl
   params:
   -g GEN  [train]       Set number generation (0=inf)
   -e EPO  [eval, play]  Set number epoch      (0=inf)
@@ -142,6 +150,16 @@ optional args:
   utils:
   -p PLT  [train]       Set file name plot plt
   -s SAV  [train, eval] Set file name save sav
+  keys:
+  X       [play]        Button A      (? set)
+  Z       [play]        Button B      (? set)
+  Up      [play]        Button Up     (? set)
+  Down    [play]        Button Down   (? set)
+  Left    [play]        Button Left   (? set)
+  Right   [play]        Button Right  (? set)
+  Space   [play]        Button Start  (? set)
+  Enter   [play]        Button Select (? set)
+  D       [train, eval] (Debug) Ai view
 ```
 
 ****
