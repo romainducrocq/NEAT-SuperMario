@@ -71,6 +71,8 @@ $ ./run.sh -m eval -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 * Release : $ ./train.sh -R -k n -l 1_1 -g 0 -t 0 -n 1 -p plt1_1 -s sav1_1
 ```
 </span>
+  
+[Connect Nintaco](#how-to-_)
 
 ### Eval
 `./eval.sh [-D -R] <args>` or  
@@ -80,6 +82,8 @@ $ ./run.sh -m eval -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 * Release : $ ./eval.sh -R -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 ```
 </span>
+  
+[Connect Nintaco](#how-to-_)
 
 ### Play
 `./play.sh [-D -R] <args>` or  
@@ -89,6 +93,8 @@ $ ./run.sh -m eval -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 * Release : $ ./play.sh -R -k y -l 1_1 -e 10
 ```
 </span>
+  
+[Connect Nintaco](#how-to-_)
 
 ### Test
 `./test.sh [-D -R] <args>` or  
@@ -98,6 +104,8 @@ $ ./run.sh -m eval -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 * Release : $ ./test.sh -R 
 ```
 </span>
+  
+[Connect Nintaco](#how-to-_)
 
 ### Memcheck
 `./memcheck.sh <cmd>`  
@@ -105,6 +113,8 @@ $ ./run.sh -m eval -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 * Example : $ ./memcheck.sh ./train.sh -g 10 
 * Example : $ ./memcheck.sh ./eval.sh -s sav
 ```
+  
+[Connect Nintaco](#how-to-_)
 
 ### Log
 `./log.sh [-V] <cmd>`  
@@ -112,6 +122,8 @@ $ ./run.sh -m eval -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 * Example : $ ./log.sh ./train.sh -s sav
 * Example : $ ./log.sh -V ./play.sh -e 1
 ```
+  
+[Connect Nintaco](#how-to-_)
 
 ### Readme
 `./readme.sh`
