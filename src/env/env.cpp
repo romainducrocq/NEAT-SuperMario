@@ -36,7 +36,30 @@ void MyEnv::Env::fitness_func()
 /*** DEF INFO FUNC HERE */
 void MyEnv::Env::info_func()
 {
-    // TODO
+    switch(this->Super::mode){
+
+        case CONF::Mode::TRAIN:
+            std::cout << "GENERATION  : " << this->Super::generation << " / " <<
+                (this->Super::max_generation_train > 0 ? std::to_string(this->Super::max_generation_train) :
+                                                         "INF") << "\n";
+            std::cout << "MAX FITNESS : " << this->Super::max_fitness << "\n";
+            std::cout << "MVG AVG     : " << this->Super::mvg_avg.get() << "\n";
+            std::cout << "\n";
+            break;
+
+        case CONF::Mode::EVAL:
+        case CONF::Mode::PLAY:
+            std::cout << "EPOCH   : " << this->Super::epoch << " / " <<
+                (this->Super::max_epoch_eval > 0 ? std::to_string(this->Super::max_epoch_eval) :
+                                                   "INF") << "\n";
+            std::cout << "FITNESS : " << this->Super::mdp.fitness << "\n";
+            std::cout << "MVG AVG : " << this->Super::mvg_avg.get() << "\n";
+            std::cout << "\n";
+            break;
+
+        default:
+            break;
+    }
 }
 
 /*** DEF NOOP FUNC HERE */
@@ -56,23 +79,6 @@ void MyEnv::Env::reset_func()
 void MyEnv::Env::step_func()
 {
     this->m.smb.step_func();
-
-    switch (this->Super::mode) {
-        case CONF::Mode::TRAIN:
-            std::cout << "step train\n";
-            break;
-
-        case CONF::Mode::EVAL:
-            std::cout << "step eval\n";
-            break;
-
-        case CONF::Mode::PLAY:
-            // std::cout << "step play\n";
-            this->m.smb.obs_func(this->Super::mdp.obs); // TODO rm
-            break;
-        default:
-            break;
-    }
 }
 
 /*** DEF RESET RENDER FUNC HERE */
