@@ -189,19 +189,16 @@ float smb::Smb::fitness_func(bool done) const
 
 float smb::Smb::get_frames_fitness() const
 {
-    int frames = static_cast<int>(this->frames);
-    return (-std::pow(static_cast<float>(frames), 1.5f));
+    return (-std::pow(static_cast<float>(this->frames), 1.5f));
 }
 
 float smb::Smb::get_distance_fitness() const
 {
-    int distance = this->mario_xy[0];
-    return std::pow(static_cast<float>(distance), 1.8f) +
-        (std::min(std::max(static_cast<float>(distance) - 50.f, 0.f), 1.f) * 2500.f);
+    return std::pow(static_cast<float>(this->mario_xy[0]), 1.8f) +
+        (std::min(std::max(static_cast<float>(this->mario_xy[0]) - 50.f, 0.f), 1.f) * 2500.f);
 }
 
 float smb::Smb::get_win_fitness() const
 {
-    int win = this->win ? 1 : 0;
-    return static_cast<float>(win) * 1000000.f;
+    return static_cast<float>(this->win ? 1 : 0) * 1000000.f;
 }
