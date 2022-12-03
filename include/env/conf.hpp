@@ -130,6 +130,16 @@ struct DefaultConf{
                     std::cerr << "  utils:                                                                                      \n";
                     std::cerr << "  -p PLT  [train]       Set file name plot plt                                                \n";
                     std::cerr << "  -s SAV  [train, eval] Set file name save sav                                                \n";
+                    std::cerr << "  keys:                                                                                       \n";
+                    std::cerr << "  X       [play]        Button A      (? set)                                                 \n";
+                    std::cerr << "  Z       [play]        Button B      (? set)                                                 \n";
+                    std::cerr << "  Up      [play]        Button Up     (? set)                                                 \n";
+                    std::cerr << "  Down    [play]        Button Down   (? set)                                                 \n";
+                    std::cerr << "  Left    [play]        Button Left   (? set)                                                 \n";
+                    std::cerr << "  Right   [play]        Button Right  (? set)                                                 \n";
+                    std::cerr << "  Space   [play]        Button Start  (? set)                                                 \n";
+                    std::cerr << "  Enter   [play]        Button Select (? set)                                                 \n";
+                    std::cerr << "  D       [train, eval] (Debug) Ai view                                                       \n";
 
                     return false;
 
