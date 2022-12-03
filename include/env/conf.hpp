@@ -82,7 +82,6 @@ struct DefaultConf{
     const static std::string ADDR;
     const static std::string EXT;
     const static std::string ROM;
-    const static std::string SAV;
 
     const static std::string KEY_A;
     const static std::string KEY_B;
@@ -94,6 +93,7 @@ struct DefaultConf{
     const static std::string KEY_SELECT;
 
     static bool KEYBOARD_SFML;
+    static std::string LVL;
 
     const static std::vector<typename DefaultConf<T>::Action> ACTIONS;
 
@@ -105,7 +105,7 @@ struct DefaultConf{
         // https://github.com/gnif/LookingGlass/blob/c0c63fd93bf999b6601a782fec8b56e9133388cc/client/main.c#L1391
 
         /*** DEF CMDS HERE */
-        const char cmds[] = "h:m:k:g:e:t:n:p:s:";
+        const char cmds[] = "h:m:k:l:g:e:t:n:p:s:";
 
         for(;;){
             switch(getopt(argc, argv, cmds)){
@@ -114,32 +114,33 @@ struct DefaultConf{
                 case '?': // help
                 case 'h':
                 default :
-                    std::cerr << "usage: apps/exec [-h] [-m MOD] [-k KEY] [-g GEN] [-e EPO] [-t STP] [-n NOP] [-p PLT] [-s SAV] \n";
+                    std::cerr << "usage: apps/exec [-h] [-m MOD] [-k KEY] [-l LVL] [-g GEN] [-e EPO] [-t STP] [-n NOP] [-p PLT] [-s SAV] \n";
                     std::cerr << "\n";
-                    std::cerr << "NEAT SuperMorIA                                                                               \n";
+                    std::cerr << "NEAT SuperMorIA                                                                                        \n";
                     std::cerr << "\n";
-                    std::cerr << "optional args:                                                                                \n";
-                    std::cerr << "  -h      Print help and exit                                                                 \n";
-                    std::cerr << "  -m MOD  Set mode < train | eval | play | test >                                             \n";
-                    std::cerr << "  -k KEY  Set keyboard sfml < y | n >                                                         \n";
-                    std::cerr << "  params:                                                                                     \n";
-                    std::cerr << "  -g GEN  [train]       Set number generation (0=inf)                                         \n";
-                    std::cerr << "  -e EPO  [eval, play]  Set number epoch      (0=inf)                                         \n";
-                    std::cerr << "  -t STP  [train, eval] Set number max step   (0=inf)                                         \n";
-                    std::cerr << "  -n NOP  [train, eval] Set number max noop   (0=inf)                                         \n";
-                    std::cerr << "  utils:                                                                                      \n";
-                    std::cerr << "  -p PLT  [train]       Set file name plot plt                                                \n";
-                    std::cerr << "  -s SAV  [train, eval] Set file name save sav                                                \n";
-                    std::cerr << "  keys:                                                                                       \n";
-                    std::cerr << "  X       [play]        Button A      (? set)                                                 \n";
-                    std::cerr << "  Z       [play]        Button B      (? set)                                                 \n";
-                    std::cerr << "  Up      [play]        Button Up     (? set)                                                 \n";
-                    std::cerr << "  Down    [play]        Button Down   (? set)                                                 \n";
-                    std::cerr << "  Left    [play]        Button Left   (? set)                                                 \n";
-                    std::cerr << "  Right   [play]        Button Right  (? set)                                                 \n";
-                    std::cerr << "  Space   [play]        Button Start  (? set)                                                 \n";
-                    std::cerr << "  Enter   [play]        Button Select (? set)                                                 \n";
-                    std::cerr << "  D       [train, eval] (Debug) Ai view                                                       \n";
+                    std::cerr << "optional args:                                                                                         \n";
+                    std::cerr << "  -h      Print help and exit                                                                          \n";
+                    std::cerr << "  -m MOD  Set mode < train | eval | play | test >                                                      \n";
+                    std::cerr << "  -k KEY  Set keyboard sfml < y | n >                                                                  \n";
+                    std::cerr << "  -l LVL  Set load state file level lvl                                                                \n";
+                    std::cerr << "  params:                                                                                              \n";
+                    std::cerr << "  -g GEN  [train]       Set number generation (0=inf)                                                  \n";
+                    std::cerr << "  -e EPO  [eval, play]  Set number epoch      (0=inf)                                                  \n";
+                    std::cerr << "  -t STP  [train, eval] Set number max step   (0=inf)                                                  \n";
+                    std::cerr << "  -n NOP  [train, eval] Set number max noop   (0=inf)                                                  \n";
+                    std::cerr << "  utils:                                                                                               \n";
+                    std::cerr << "  -p PLT  [train]       Set file name plot plt                                                         \n";
+                    std::cerr << "  -s SAV  [train, eval] Set file name save sav                                                         \n";
+                    std::cerr << "  keys:                                                                                                \n";
+                    std::cerr << "  X       [play]        Button A      (? set)                                                          \n";
+                    std::cerr << "  Z       [play]        Button B      (? set)                                                          \n";
+                    std::cerr << "  Up      [play]        Button Up     (? set)                                                          \n";
+                    std::cerr << "  Down    [play]        Button Down   (? set)                                                          \n";
+                    std::cerr << "  Left    [play]        Button Left   (? set)                                                          \n";
+                    std::cerr << "  Right   [play]        Button Right  (? set)                                                          \n";
+                    std::cerr << "  Space   [play]        Button Start  (? set)                                                          \n";
+                    std::cerr << "  Enter   [play]        Button Select (? set)                                                          \n";
+                    std::cerr << "  D       [train, eval] (Debug) Ai view                                                                \n";
 
                     return false;
 
@@ -164,6 +165,10 @@ struct DefaultConf{
                     }else if(std::strcmp(optarg, "n") == 0){
                         DefaultConf<T>::KEYBOARD_SFML = false;
                     }
+                    continue;
+
+                case 'l': // load state file level lvl
+                    DefaultConf<T>::LVL = std::string(optarg);
                     continue;
 
                 case 'g': // number generation
@@ -278,8 +283,6 @@ template<typename T>
 const std::string DefaultConf<T>::EXT = "nes";
 template<typename T>
 const std::string DefaultConf<T>::ROM = "SuperMarioBrosJUPRG0";
-template<typename T>
-const std::string DefaultConf<T>::SAV = "1-1";
 
 template<typename T>
 const std::string DefaultConf<T>::KEY_A = "X";
@@ -300,6 +303,8 @@ const std::string DefaultConf<T>::KEY_SELECT = "Enter";
 
 template<typename T>
 bool DefaultConf<T>::KEYBOARD_SFML = false;
+template<typename T>
+std::string DefaultConf<T>::LVL = "1-1";
 
 template<typename T>
 const std::array<typename DefaultConf<T>::Action, DefaultConf<T>::OUTPUTS> ACTIONS_ = {
