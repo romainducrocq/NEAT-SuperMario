@@ -9,6 +9,7 @@ funcs=(
 "get_tr_lead_args"
 "get_default_args"
 "get_conf_param"
+"get_rom_file"
 )
 
 function assert () {
@@ -51,6 +52,12 @@ function get_default_args () {
 function get_conf_param () {
     param=$(cat '../include/'"${CONF_D}"'conf.hpp' | grep $(echo ':'"$1"' ') | tail -1 | cut -d'=' -f 2 | cut -d';' -f 1 | sed -e 's/^[[:space:]]*//')
     echo "${param}"
+}
+
+function get_rom_file () {
+    rom=$(cat '../include/'"${CONF_D}"'conf.hpp' | grep $(echo ':ROM ') | tail -1 | cut -d'"' -f 2 | cut -d'"' -f 1 | sed -e 's/^[[:space:]]*//')
+    ext=$(cat '../include/'"${CONF_D}"'conf.hpp' | grep $(echo ':EXT ') | tail -1 | cut -d'"' -f 2 | cut -d'"' -f 1 | sed -e 's/^[[:space:]]*//')
+    echo "${rom}"'.'"${ext}"
 }
 
 # SOURCE FUNCS
