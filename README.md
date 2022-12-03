@@ -10,7 +10,7 @@
   
 - AI learns to play SMB using GA and NN : https://chrispresso.io/AI_Learns_To_Play_SMB_Using_GA_And_NN
 - Super Mario Bros. JU PRG0 ! ram map : https://datacrystal.romhacking.net/wiki/Super_Mario_Bros.:RAM_map
-
+  
 ****
 
 ## How to _
