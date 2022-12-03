@@ -60,7 +60,7 @@ $ ./run.sh -m train -k n -l 1_1 -g 0 -t 0 -n 1 -p plt1_1 -s sav1_1
 $ ./run.sh -m eval -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 ```
 </span>
-[Connect Nintaco](##-how-to-_)
+[Connect Nintaco](#how-to-_)
 
 ### Train
 `./train.sh [-D -R] <args>` or  
