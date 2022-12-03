@@ -4,7 +4,7 @@
 /*** DEF DEFAULT ARGS HERE */
 /*
  * TRAIN
-   -k n -g 300 -t 0 -n 0 -p plt -s sav
+   -k n -g 0 -t 0 -n 1 -p plt -s sav
  * EVAL
    -k n -e 10 -t 0 -n 0 -s sav
  * PLAY
