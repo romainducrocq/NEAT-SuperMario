@@ -3,6 +3,13 @@
 smb::Smb::Smb()
 {
     /* OBSERVATION */
+    for(size_t i = 0; i < smb::Smb::feature::N; i++){
+        this->scale_to01.insert({static_cast<smb::Smb::feature>(i),
+                                 static_cast<float>(i) / static_cast<float>(smb::Smb::feature::N - 1)});
+    }
+
+    int n;
+    std::cin >> n;
 
     this->cols = std::max(std::min(this->max_cols, this->cols), 1);
     this->rows = std::max(std::min(this->max_rows, static_cast<int>(this->obs_n) / this->cols), 1);

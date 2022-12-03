@@ -5,6 +5,7 @@
 
 #include <array>
 #include <vector>
+#include <unordered_map>
 
 #include <nintaco/nintaco.hpp>
 
@@ -23,11 +24,13 @@ namespace smb
 
         private:
             enum feature{
-                EMPTY, SAFE, ENEMY, MARIO
+                EMPTY, SAFE, ENEMY, MARIO, N
             };
 
         private:
             /* OBSERVATION */
+            std::unordered_map<smb::Smb::feature, float> scale_to01;
+
             size_t obs_n = CONF::INPUTS;
 
             int max_cols = 13;
