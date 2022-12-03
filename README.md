@@ -159,7 +159,7 @@ optional args:
 ### Emulation
 `./emul.sh`
 ```
-* Update : $ ./emul.sh
+* Start : $ ./emul.sh
 ```
 
 ****
