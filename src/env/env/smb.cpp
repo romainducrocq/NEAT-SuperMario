@@ -11,11 +11,24 @@ smb::Smb::Smb()
     this->cols_r = std::max(std::min(this->cols, this->cols - this->cols_l), 1);
 }
 
+/* RESET */
+
+void smb::Smb::reset_func()
+{
+    this->win = false;
+}
+
+/* STEP */
+
+void smb::Smb::step_func()
+{
+    this->set_mario_obs();
+}
+
 /* OBSERVATION */
 
 void smb::Smb::obs_func(std::array<float, CONF::INPUTS>& obs)
 {
-    this->set_mario_obs();
     this->set_enemies_obs();
 
     size_t i = 0;
@@ -45,7 +58,7 @@ void smb::Smb::obs_func(std::array<float, CONF::INPUTS>& obs)
 
 void smb::Smb::set_mario_obs()
 {
-    this->mario_xy[0] = this->read_cpu(0x6D) * 0x100 + this->read_cpu(0x86);
+    this->mario_xy[0] = (this->read_cpu(0x6D) * 0x100) + this->read_cpu(0x86);
     this->mario_xy[1] = this->read_cpu(0x03B8) + 16;
 }
 
@@ -84,6 +97,38 @@ bool smb::Smb::get_tile_t_obs(int x, int y) const
     }
 }
 
+/* DONE */ // TODO timeout
+
+bool smb::Smb::done_func()
+{
+    this->set_win_done();
+    return this->get_die_done() || this->win;
+}
+
+void smb::Smb::set_win_done()
+{
+    this->win = this->read_cpu(0x001D) == 3;
+}
+
+bool smb::Smb::get_die_done() const
+{
+    if(this->read_cpu(0xB5) >= 2){
+        return true;
+    }
+
+    int addr = this->read_cpu(0x0E);
+    if(addr == 0x0B || addr == 0x06){
+        return true;
+    }
+
+    return false;
+}
+
+bool smb::Smb::get_win_done() const
+{
+    return this->win;
+}
+
 /* FITNESS */
 
 float smb::Smb::fitness_func(bool done, size_t steps) const
@@ -103,7 +148,7 @@ float smb::Smb::get_frames_fitness(size_t steps) const
 
 float smb::Smb::get_distance_fitness() const
 {
-    int distance = (this->read_cpu(0X06D) * 256) + this->read_cpu(0X086);
+    int distance = this->mario_xy[0];
     return std::pow(static_cast<float>(distance), 1.9f) -
         (std::min(std::max(static_cast<float>(distance) - 50.f, 0.f), 1.f) * 2000.f);
 }
@@ -123,40 +168,6 @@ float smb::Smb::get_score_fitness() const
 
 float smb::Smb::get_win_fitness() const
 {
-    int win = this->read_cpu(0x001D) == 3 ? 1 : 0;
+    int win = this->win ? 1 : 0;
     return static_cast<float>(win) * 1000000.f;
-}
-
-/* DONE */
-
-bool smb::Smb::done_func(bool& win) const
-{
-    return get_win_done(win) || this->get_die_done();
-}
-
-bool smb::Smb::get_die_done() const
-{
-    if(this->read_cpu(0xB5) >= 2){
-        return true;
-    }
-
-    int addr = this->read_cpu(0x0E);
-    if(addr == 0x0B || addr == 0x06){
-        return true;
-    }
-
-    return false;
-}
-
-bool smb::Smb::get_win_done(bool& win) const
-{
-    win = this->read_cpu(0x001D) == 3;
-    return win;
-}
-
-/* NOOP */
-
-bool smb::Smb::noop_func() const
-{
-    return (! this->read_gamepad(0, Left));
 }

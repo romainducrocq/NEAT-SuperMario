@@ -9,6 +9,7 @@ void MyEnv::Env::init_func()
 /*** DEF OBS FUNC HERE */
 void MyEnv::Env::obs_func()
 {
+    this->m.smb.obs_func(this->Super::mdp.obs);
 }
 
 /*** DEF ACT FUNC HERE */
@@ -20,7 +21,10 @@ void MyEnv::Env::act_func()
 /*** DEF DONE FUNC HERE */
 void MyEnv::Env::done_func()
 {
-    this->Super::mdp.done = this->m.smb.done_func(this->m.win);
+    this->Super::mdp.done = this->m.smb.done_func();
+    if(this->m.smb.get_win_done()){
+        Logger::info("WIN (GENERATION " + std::to_string(this->Super::generation) + ")");
+    }
 }
 
 /*** DEF FITNESS FUNC HERE */
@@ -32,23 +36,26 @@ void MyEnv::Env::fitness_func()
 /*** DEF INFO FUNC HERE */
 void MyEnv::Env::info_func()
 {
+    // TODO
 }
 
 /*** DEF NOOP FUNC HERE */
 void MyEnv::Env::noop_func()
 {
-    // this->Super::is_noop = this->m.smb.noop_func();
 }
 
 /*** DEF RESET FUNC HERE */
 void MyEnv::Env::reset_func()
 {
     nintaco::State::STATE().load();
+    this->m.smb.reset_func();
 }
 
 /*** DEF STEP FUNC HERE */
 void MyEnv::Env::step_func()
 {
+    this->m.smb.step_func();
+
     switch (this->Super::mode) {
         case CONF::Mode::TRAIN:
             std::cout << "step train\n";
@@ -60,7 +67,7 @@ void MyEnv::Env::step_func()
 
         case CONF::Mode::PLAY:
             // std::cout << "step play\n";
-            this->m.smb.obs_func(this->Super::mdp.obs);
+            this->m.smb.obs_func(this->Super::mdp.obs); // TODO rm
             break;
         default:
             break;

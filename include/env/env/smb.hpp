@@ -42,6 +42,8 @@ namespace smb
             std::array<int, 2> mario_xy = { 0 };
             std::vector<int> enemies_xy;
 
+            bool win = false;
+
         private:
             inline size_t to1D(int x, int y) const
             {
@@ -51,11 +53,6 @@ namespace smb
             inline int read_cpu(int addr) const
             {
                 return nintaco_readCPU(nintaco::Api::API().get_api(), addr);
-            }
-
-            inline bool read_gamepad(int gamepad, int button) const
-            {
-                return nintaco_readGamepad(nintaco::Api::API().get_api(), gamepad, button);
             }
 
         private:
@@ -68,16 +65,20 @@ namespace smb
             float get_score_fitness() const;
             float get_win_fitness() const;
 
-            bool get_win_done(bool& win) const;
+            void set_win_done();
             bool get_die_done() const;
 
         public:
             Smb();
 
+            bool get_win_done() const;
+
+            void reset_func();
+            void step_func();
+
             void obs_func(std::array<float, CONF::INPUTS>& obs);
+            bool done_func();
             float fitness_func(bool done, size_t steps) const;
-            bool done_func(bool& win) const;
-            bool noop_func() const;
     };
 }
 
