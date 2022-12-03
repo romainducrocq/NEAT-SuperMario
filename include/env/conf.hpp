@@ -212,7 +212,7 @@ std::string DefaultConf<T>::LOG_SAV = "";
 template<typename T>
 const size_t DefaultConf<T>::INPUTS = 100;
 template<typename T>
-const size_t DefaultConf<T>::OUTPUTS = 6;
+const size_t DefaultConf<T>::OUTPUTS = 3;
 template<typename T>
 const size_t DefaultConf<T>::LIM_HIDDEN = 1000000;
 template<typename T>
@@ -244,30 +244,30 @@ const float DefaultConf<T>::CROSSOVER_PROB = 0.75f;
 template<typename T>
 const size_t DefaultConf<T>::STALE_SPECIES = 15;
 template<typename T>
-const size_t DefaultConf<T>::POPULATION_SIZE = 150;
+const size_t DefaultConf<T>::POPULATION_SIZE = 300;
 template<typename T>
 const size_t DefaultConf<T>::MAX_POPULATION_SIZE = 0; // (0=false) -> const population size // &&
 template<typename T>
-const size_t DefaultConf<T>::POPULATION_GENS_INC = 150; // (0=false) -> const population size // &&
+const size_t DefaultConf<T>::POPULATION_GENS_INC = 300; // (0=false) -> const population size // &&
 template<typename T>
 const size_t DefaultConf<T>::POPULATION_INC_FREQ = 10; // (0=false) -> const population size
 template<typename T>
-const size_t DefaultConf<T>::ACT_REPEAT = 0;
+const size_t DefaultConf<T>::ACT_REPEAT = 5;
 template<typename T>
-const size_t DefaultConf<T>::MVG_AVG = 100;
+const size_t DefaultConf<T>::MVG_AVG = 10;
 template<typename T>
-const size_t DefaultConf<T>::PLT_FREQ = 0; // (0=false) -> plot at end train only
+const size_t DefaultConf<T>::PLT_FREQ = 1; // (0=false) -> plot at end train only
 template<typename T>
 const size_t DefaultConf<T>::SAV_FREQ = 1; // (0=false) -> save at end train only
 
 template<typename T>
-size_t DefaultConf<T>::GENERATIONS_TRAIN = 300; // (0=inf) -> infinite train
+size_t DefaultConf<T>::GENERATIONS_TRAIN = 0; // (0=inf) -> infinite train
 template<typename T>
 size_t DefaultConf<T>::EPOCHS_EVAL = 10; // (0=inf) -> infinite eval
 template<typename T>
 size_t DefaultConf<T>::MAX_STEP = 0; // (0=inf) -> no step early stop
 template<typename T>
-size_t DefaultConf<T>::MAX_NOOP = 0; // (0=inf) -> no noop early stop
+size_t DefaultConf<T>::MAX_NOOP = 1; // (0=inf) -> no noop early stop
 
 /* NINTACO */
 template<typename T>
@@ -305,9 +305,9 @@ template<typename T>
 const std::array<typename DefaultConf<T>::Action, DefaultConf<T>::OUTPUTS> ACTIONS_ = {
         DefaultConf<T>::Action::A,
         DefaultConf<T>::Action::B,
-        DefaultConf<T>::Action::UP,
-        DefaultConf<T>::Action::DOWN,
-        DefaultConf<T>::Action::LEFT,
+        // DefaultConf<T>::Action::UP,
+        // DefaultConf<T>::Action::DOWN,
+        // DefaultConf<T>::Action::LEFT,
         DefaultConf<T>::Action::RIGHT,
 };
 template<typename T>
