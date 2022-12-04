@@ -261,7 +261,7 @@ const size_t DefaultConf<T>::ACT_REPEAT = 5;
 template<typename T>
 const size_t DefaultConf<T>::MVG_AVG = 10;
 template<typename T>
-const size_t DefaultConf<T>::PLT_FREQ = 1; // (0=false) -> plot at end train only
+const size_t DefaultConf<T>::PLT_FREQ = 2; // (0=false) -> plot at end train only
 template<typename T>
 const size_t DefaultConf<T>::SAV_FREQ = 1; // (0=false) -> save at end train only
 

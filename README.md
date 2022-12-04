@@ -208,7 +208,7 @@ POPULATION_INC_FREQ  = 10
 
 ACT_REPEAT           = 5
 MVG_AVG              = 10
-PLT_FREQ             = 1
+PLT_FREQ             = 2
 SAV_FREQ             = 1
 
 GENERATIONS_TRAIN    = 0
