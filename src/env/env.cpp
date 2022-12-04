@@ -23,7 +23,7 @@ void MyEnv::Env::done_func()
 {
     this->Super::mdp.done = this->m.smb.done_func();
     if(this->m.smb.get_win_done()){
-        Logger::info("WIN (GENERATION " + std::to_string(this->Super::generation) + ")");
+        this->m.win_cnt++;
     }
 }
 
@@ -44,6 +44,7 @@ void MyEnv::Env::info_func()
                                                          "INF") << "\n";
             std::cout << "MAX FITNESS : " << this->Super::max_fitness << "\n";
             std::cout << "MVG AVG     : " << this->Super::mvg_avg.get() << "\n";
+            std::cout << "#   WIN     : " << this->m.win_cnt << "\n";
             std::cout << "\n";
             break;
 
@@ -54,12 +55,15 @@ void MyEnv::Env::info_func()
                                                    "INF") << "\n";
             std::cout << "FITNESS : " << this->Super::mdp.fitness << "\n";
             std::cout << "MVG AVG : " << this->Super::mvg_avg.get() << "\n";
+            std::cout << "DID WIN : " << (this->m.win_cnt ? "YES" : "NO") << "\n";
             std::cout << "\n";
             break;
 
         default:
             break;
     }
+
+    this->m.win_cnt = 0;
 }
 
 /*** DEF NOOP FUNC HERE */

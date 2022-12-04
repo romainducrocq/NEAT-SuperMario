@@ -181,7 +181,7 @@ optional args:
 * HYPERPARAMETER VALUES :
 
 INPUTS               = 100
-OUTPUTS              = 3
+OUTPUTS              = 4
 
 LIM_HIDDEN           = 1000000
 

@@ -217,7 +217,7 @@ std::string DefaultConf<T>::LOG_SAV = "";
 template<typename T>
 const size_t DefaultConf<T>::INPUTS = 100;
 template<typename T>
-const size_t DefaultConf<T>::OUTPUTS = 3;
+const size_t DefaultConf<T>::OUTPUTS = 4;
 template<typename T>
 const size_t DefaultConf<T>::LIM_HIDDEN = 1000000;
 template<typename T>
@@ -312,7 +312,7 @@ const std::array<typename DefaultConf<T>::Action, DefaultConf<T>::OUTPUTS> ACTIO
         DefaultConf<T>::Action::B,
         // DefaultConf<T>::Action::UP,
         // DefaultConf<T>::Action::DOWN,
-        // DefaultConf<T>::Action::LEFT,
+        DefaultConf<T>::Action::LEFT,
         DefaultConf<T>::Action::RIGHT,
 };
 template<typename T>
