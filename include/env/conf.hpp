@@ -314,6 +314,8 @@ const std::array<typename DefaultConf<T>::Action, DefaultConf<T>::OUTPUTS> ACTIO
         // DefaultConf<T>::Action::DOWN,
         DefaultConf<T>::Action::LEFT,
         DefaultConf<T>::Action::RIGHT,
+        // DefaultConf<T>::Action::START,
+        // DefaultConf<T>::Action::SELECT,
 };
 template<typename T>
 const std::vector<typename DefaultConf<T>::Action> DefaultConf<T>::ACTIONS = {
