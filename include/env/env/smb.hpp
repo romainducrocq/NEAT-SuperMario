@@ -36,10 +36,10 @@ namespace smb
             int max_cols = 13;
             int max_rows = 15;
 
-            int cols = 10;
+            int cols = 7;
             int rows;
 
-            std::array<int, 2> cols_ = { 3 };
+            std::array<int, 2> cols_ = { 0 };
             std::array<int, 2> rows_ = { 0 };
 
             std::array<int, 2> mario_xy = { 0 };
