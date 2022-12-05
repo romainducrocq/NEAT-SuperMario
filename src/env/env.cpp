@@ -83,6 +83,12 @@ void MyEnv::Env::reset_func()
 void MyEnv::Env::step_func()
 {
     this->m.smb.step_func();
+
+    switch(this->Super::mode){
+        case CONF::Mode::PLAY:
+            this->m.smb.obs_func(this->Super::mdp.obs);
+            break;
+    }
 }
 
 /*** DEF RESET RENDER FUNC HERE */

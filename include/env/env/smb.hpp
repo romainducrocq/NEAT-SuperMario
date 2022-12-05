@@ -24,7 +24,7 @@ namespace smb
 
         private:
             enum feature{
-                EMPTY, SAFE, ENEMY, MARIO, N
+                EMPTY, SAFE, HOLE, ENEMY, N
             };
 
         private:
@@ -39,8 +39,8 @@ namespace smb
             int cols = 10;
             int rows;
 
-            int cols_l = 3;
-            int cols_r;
+            std::array<int, 2> cols_ = { 3 };
+            std::array<int, 2> rows_ = { 0 };
 
             std::array<int, 2> mario_xy = { 0 };
             std::vector<int> enemies_xy;

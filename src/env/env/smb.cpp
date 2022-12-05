@@ -11,8 +11,11 @@ smb::Smb::Smb()
     this->cols = std::max(std::min(this->max_cols, this->cols), 1);
     this->rows = std::max(std::min(this->max_rows, static_cast<int>(this->obs_n) / this->cols), 1);
 
-    this->cols_l = std::max(std::min(this->cols, this->cols_l), 0);
-    this->cols_r = std::max(std::min(this->cols, this->cols - this->cols_l), 1);
+    this->cols_[0] = std::max(std::min(this->cols, this->cols_[0]), 0);
+    this->cols_[1] = std::max(std::min(this->cols, this->cols - this->cols_[0]), 1);
+
+    this->rows_[0] = (this->rows / 2) + ((this->rows % 2) - 1);
+    this->rows_[1] = this->rows / 2;
 
     /* DONE */
 
@@ -61,25 +64,25 @@ void smb::Smb::obs_func(std::array<float, CONF::INPUTS>& obs)
     this->set_enemies_obs();
 
     size_t i = 0;
-    for(int y = ((15 - this->rows) * 16); y < (15 * 16); y += 16){
-        for(int x = (-this->cols_l * 16); x < (this->cols_r * 16); x += 16){
+    for(int y = (-this->rows_[0] * 16); y <= (this->rows_[1] * 16); y += 16){
+        for(int x = (-this->cols_[0] * 16); x < (this->cols_[1] * 16); x += 16){
 
-            [&](int dx) {
-                if(x == 0 && std::abs(this->mario_xy[1] - y + 16) <= 8){
-                    obs[i] = this->scale_to01.at(smb::Smb::feature::MARIO);
-                    return;
-                }
-
+           [&](int dx, int dy) {
                 for(size_t e = 0; e < this->enemies_xy.size(); e += 2){
-                    if(std::abs(this->enemies_xy[e] - dx) <= 8 && std::abs(this->enemies_xy[e + 1] - y) <= 8){
+                    if(std::abs(this->enemies_xy[e] - dx) <= 8 && std::abs(this->enemies_xy[e + 1] - dy) <= 8){
                         obs[i] = this->scale_to01.at(smb::Smb::feature::ENEMY);
                         return;
                     }
                 }
 
-                obs[i] = this->get_tile_t_obs(dx, y) ? this->scale_to01.at(smb::Smb::feature::SAFE) :
-                                                       this->scale_to01.at(smb::Smb::feature::EMPTY);
-            }(x + this->mario_xy[0]);
+                if(this->get_tile_t_obs(dx, dy) && dy < 0x1B0){
+                    obs[i] = this->scale_to01.at(smb::Smb::feature::SAFE);
+                }else if(((dy - 48) / 16) == 11){
+                    obs[i] = this->scale_to01.at(smb::Smb::feature::HOLE);
+                }else{
+                    obs[i] = this->scale_to01.at(smb::Smb::feature::EMPTY);
+                }
+           }(x + this->mario_xy[0], y + this->mario_xy[1]);
 
             i++;
         }
@@ -112,7 +115,7 @@ bool smb::Smb::get_tile_t_obs(int x, int y) const
     x = (x % 256) / 16;
     y = (y - 32) / 16;
 
-    if(y >= 13 || y < 0){
+    if(y >= 12 || y < 0){
         return false;
     }
 
