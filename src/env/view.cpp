@@ -28,7 +28,7 @@ void View::Renderer::draw_setup(const MyEnv::Model& /*m*/)
 void View::Renderer::draw_loop(const MyEnv::Model& m)
 {
     if(View::EventHandler::EVENTHANDLER().get_ev_state().debug.second &&
-       // (this->mode == CONF::Mode::TRAIN || this->mode == CONF::Mode::EVAL) &&
+       (this->mode == CONF::Mode::TRAIN || this->mode == CONF::Mode::EVAL) &&
        std::chrono::duration<float>(std::chrono::high_resolution_clock::now() - this->debug_timer).count()
        > this->debug_sleep){
 
@@ -50,9 +50,9 @@ void View::Renderer::draw_loop(const MyEnv::Model& m)
                         std::cout << "\033[0;31m" << "# " << "\033[0m"; // RED
                         break;
 
-                  case smb::Smb::feature::HOLE:
-                      std::cout << "\033[0;32m" << "# " << "\033[0m"; // GREEN
-                      break;
+                    case smb::Smb::feature::HOLE:
+                        std::cout << "\033[0;32m" << "# " << "\033[0m"; // GREEN
+                        break;
                 }
             }
             std::cout << "\n";
