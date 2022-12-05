@@ -190,23 +190,22 @@ void smb::Smb::set_timeout_noop()
 float smb::Smb::fitness_func(bool done) const
 {
     if(done){
-        return std::max(this->get_frames_fitness() + this->get_distance_fitness() + this->get_win_fitness(), 0.00001f);
+        return std::max(this->get_frames_fitness() + this->get_distance_fitness() + this->get_win_fitness(), 0.f);
     }
     return 0.f;
 }
 
 float smb::Smb::get_frames_fitness() const
 {
-    return (-std::pow(static_cast<float>(this->frames), 1.5f));
+    return -(static_cast<float>(this->frames) / 2.f);
 }
 
 float smb::Smb::get_distance_fitness() const
 {
-    return std::pow(static_cast<float>(this->mario_xy[0]), 1.8f) +
-        (std::min(std::max(static_cast<float>(this->mario_xy[0]) - 50.f, 0.f), 1.f) * 2500.f);
+    return static_cast<float>(this->max_mario_x);
 }
 
 float smb::Smb::get_win_fitness() const
 {
-    return static_cast<float>(this->win ? 1 : 0) * 1000000.f;
+    return static_cast<float>(this->win ? 1 : 0) * 1000.f;
 }
