@@ -37,7 +37,7 @@ void View::Renderer::draw_loop(const MyEnv::Model& m)
         }
         for(int y = 0; y < m.smb.rows; y++){
             for(int x = 0; x < m.smb.cols; x++){
-                switch(static_cast<int>(((*m.obs_r)[m.smb.to1D(x, y)] * (smb::Smb::feature::N - 1)) + 0.1f)){
+                switch(m.smb.unscale((*m.obs_r)[m.smb.to1D(x, y)])){
                     case smb::Smb::feature::EMPTY:
                         std::cout << "\033[1;34m" << "# " << "\033[0m"; // BLUE
                         break;

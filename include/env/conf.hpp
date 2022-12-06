@@ -259,7 +259,7 @@ const size_t DefaultConf<T>::POPULATION_INC_FREQ = 10; // (0=false) -> const pop
 template<typename T>
 const size_t DefaultConf<T>::ACT_REPEAT = 5;
 template<typename T>
-const size_t DefaultConf<T>::MVG_AVG = 10;
+const size_t DefaultConf<T>::MVG_AVG = 300;
 template<typename T>
 const size_t DefaultConf<T>::PLT_FREQ = 2; // (0=false) -> plot at end train only
 template<typename T>

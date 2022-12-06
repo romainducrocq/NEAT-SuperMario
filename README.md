@@ -180,7 +180,7 @@ optional args:
 ```
 * HYPERPARAMETER VALUES :
 
-INPUTS               = 100
+INPUTS               = 91
 OUTPUTS              = 4
 
 LIM_HIDDEN           = 1000000
@@ -207,7 +207,7 @@ POPULATION_GENS_INC  = 300
 POPULATION_INC_FREQ  = 10
 
 ACT_REPEAT           = 5
-MVG_AVG              = 10
+MVG_AVG              = 300
 PLT_FREQ             = 2
 SAV_FREQ             = 1
 

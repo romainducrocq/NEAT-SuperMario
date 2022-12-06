@@ -58,9 +58,14 @@ namespace smb
             /* FITNESS */
 
         private:
-            inline size_t to1D(int x, int y) const
+            inline int to1D(int x, int y) const
             {
                 return x + y * this->cols;
+            }
+
+            inline int unscale(float z) const
+            {
+                return static_cast<int>(z * (smb::Smb::feature::N - 1) + 0.1f);
             }
 
             inline int read_cpu(int addr) const

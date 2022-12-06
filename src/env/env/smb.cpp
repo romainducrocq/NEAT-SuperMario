@@ -63,11 +63,11 @@ void smb::Smb::obs_func(std::array<float, CONF::INPUTS>& obs)
 {
     this->set_enemies_obs();
 
-    size_t i = 0;
+    int i = 0;
     for(int y = (-this->rows_[0] * 16); y <= (this->rows_[1] * 16); y += 16){
         for(int x = (-this->cols_[0] * 16); x < (this->cols_[1] * 16); x += 16){
 
-           [&](int dx, int dy) {
+           [&](int dx, int dy, int y_) {
                 for(size_t e = 0; e < this->enemies_xy.size(); e += 2){
                     if(std::abs(this->enemies_xy[e] - dx) <= 8 && std::abs(this->enemies_xy[e + 1] - dy) <= 8){
                         obs[i] = this->scale_to01.at(smb::Smb::feature::ENEMY);
@@ -75,14 +75,27 @@ void smb::Smb::obs_func(std::array<float, CONF::INPUTS>& obs)
                     }
                 }
 
+                if(y_ > 11 && i >= this->cols){
+                    switch(this->unscale(obs[i - this->cols])){
+                        case smb::Smb::feature::HOLE:
+                            obs[i] = this->scale_to01.at(smb::Smb::feature::HOLE);
+                            return;
+                        // case smb::Smb::feature::SAFE:
+                        //     obs[i] = this->scale_to01.at(smb::Smb::feature::SAFE);
+                        //     return;
+                        default:
+                            break;
+                    }
+                }
+
                 if(this->get_tile_t_obs(dx, dy) && dy < 0x1B0){
                     obs[i] = this->scale_to01.at(smb::Smb::feature::SAFE);
-                }else if(((dy - 48) / 16) == 11){
+                }else if(y_ == 11){
                     obs[i] = this->scale_to01.at(smb::Smb::feature::HOLE);
                 }else{
                     obs[i] = this->scale_to01.at(smb::Smb::feature::EMPTY);
                 }
-           }(x + this->mario_xy[0], y + this->mario_xy[1]);
+           }(x + this->mario_xy[0], y + this->mario_xy[1], (y + this->mario_xy[1] - 48) / 16);
 
             i++;
         }
@@ -115,7 +128,7 @@ bool smb::Smb::get_tile_t_obs(int x, int y) const
     x = (x % 256) / 16;
     y = (y - 32) / 16;
 
-    if(y >= 12 || y < 0){
+    if(y > 11 || y < 0){
         return false;
     }
 
