@@ -29,6 +29,8 @@ void nintaco::Emulator::app_setup()
 void nintaco::Emulator::app_loop()
 {
     if(this->api.ready()){
+        nintaco::State::STATE().speed();
+
         if(! nintaco::Event::EVENT().open()){
             this->api.kill();
             return;

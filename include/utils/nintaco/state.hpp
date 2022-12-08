@@ -18,6 +18,8 @@ namespace nintaco
         private:
             std::string sav = "../../res/sav/" + CONF::LVL + ".save";
 
+            int speedrate = CONF::MODE == CONF::Mode::TRAIN ? 0 : 100;
+
         private:
             State() = default;
 
@@ -25,6 +27,7 @@ namespace nintaco
             void init();
 
             void load();
+            void speed();
 
         public:
             State(const State &other) = delete;

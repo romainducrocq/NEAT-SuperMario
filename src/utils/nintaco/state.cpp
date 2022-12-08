@@ -13,3 +13,8 @@ void nintaco::State::load()
 
     std::this_thread::sleep_for(std::chrono::seconds(1));
 }
+
+void nintaco::State::speed()
+{
+    nintaco_setSpeed(nintaco::Api::API().get_api(), this->speedrate);
+}
