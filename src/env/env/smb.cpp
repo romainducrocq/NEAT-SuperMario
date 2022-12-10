@@ -153,7 +153,7 @@ bool smb::Smb::done_func()
 
 void smb::Smb::set_win_done()
 {
-    this->win = this->read_cpu(0x001D) == 3;
+    this->win = this->read_cpu(0x001D) == 3 && this->mario_xy[0] > 3160;
 }
 
 bool smb::Smb::get_die_done() const
