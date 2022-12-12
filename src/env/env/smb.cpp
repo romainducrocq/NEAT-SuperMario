@@ -9,13 +9,15 @@ smb::Smb::Smb()
     }
 
     this->cols = std::max(std::min(this->max_cols, this->cols), 1);
-    this->rows = std::max(std::min(this->max_rows, static_cast<int>(this->obs_n) / this->cols), 1);
+    this->rows = std::max(std::min(this->max_rows, (static_cast<int>(this->obs_n) - this->o_n) / this->cols), 1);
 
     this->cols_[0] = std::max(std::min(this->cols, this->cols_[0]), 0);
     this->cols_[1] = std::max(std::min(this->cols, this->cols - this->cols_[0]), 1);
 
     this->rows_[0] = (this->rows / 2) + ((this->rows % 2) - 1);
     this->rows_[1] = this->rows / 2;
+
+    /* ACTION */
 
     /* DONE */
 
@@ -29,6 +31,8 @@ smb::Smb::Smb()
 void smb::Smb::reset_func()
 {
     /* OBSERVATION */
+
+    /* ACTION */
 
     /* DONE */
     this->win = false;
@@ -48,6 +52,8 @@ void smb::Smb::step_func()
 {
     /* OBSERVATION */
     this->set_mario_obs();
+
+    /* ACTION */
 
     /* DONE */
 
@@ -100,6 +106,9 @@ void smb::Smb::obs_func(std::array<float, CONF::INPUTS>& obs)
             i++;
         }
     }
+
+    obs[i++] = this->get_mario_dx_obs();
+    obs[i++] = this->get_mario_dy_obs();
 }
 
 void smb::Smb::set_mario_obs()
@@ -117,6 +126,16 @@ void smb::Smb::set_enemies_obs()
             enemies_xy.push_back((this->read_cpu(0xCF + i) - 24) / 16);
         }
     }
+}
+
+float smb::Smb::get_mario_dx_obs() const
+{
+    return static_cast<float>(static_cast<char>(this->read_cpu(0x0057)) +  0x28) / 80.f;
+}
+
+float smb::Smb::get_mario_dy_obs() const
+{
+    return static_cast<float>(static_cast<char>(this->read_cpu(0x009F)) + 0x05) / 10.f;
 }
 
 bool smb::Smb::get_tile_t_obs(int x, int y) const
@@ -141,6 +160,17 @@ bool smb::Smb::get_tile_t_obs(int x, int y) const
         default:
             return true;
     }
+}
+
+/* ACTION */
+void smb::Smb::act_func() const
+{
+    this->set_button_b();
+}
+
+void smb::Smb::set_button_b() const
+{
+    this->write_gamepad(B, true);
 }
 
 /* DONE */

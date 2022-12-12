@@ -58,6 +58,11 @@ void View::Renderer::draw_loop(const MyEnv::Model& m)
             std::cout << "\n";
         }
 
+        std::cout << "\n";
+        int i = m.smb.rows * m.smb.cols;
+        std::cout << "* dx: " << (*m.obs_r)[i++] << "\n";
+        std::cout << "* dy: " << (*m.obs_r)[i++] << "\n";
+
         this->debug_timer = std::chrono::high_resolution_clock::now();
     }
 }

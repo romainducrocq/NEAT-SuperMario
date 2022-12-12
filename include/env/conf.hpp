@@ -215,9 +215,9 @@ std::string DefaultConf<T>::LOG_SAV = "";
 
 /*** DEF PARAMS HERE */
 template<typename T>
-const size_t DefaultConf<T>::INPUTS = 91;
+const size_t DefaultConf<T>::INPUTS = 93;
 template<typename T>
-const size_t DefaultConf<T>::OUTPUTS = 4;
+const size_t DefaultConf<T>::OUTPUTS = 3;
 template<typename T>
 const size_t DefaultConf<T>::LIM_HIDDEN = 1000000;
 template<typename T>
@@ -225,11 +225,11 @@ const float DefaultConf<T>::MUTATE_WEIGHT_RATE = 0.1f;
 template<typename T>
 const float DefaultConf<T>::MUTATE_GENE_RATE = 0.25f;
 template<typename T>
-const float DefaultConf<T>::MUTATE_LINK_RATE = 2.f;
+const float DefaultConf<T>::MUTATE_LINK_RATE = 1.f;
 template<typename T>
 const float DefaultConf<T>::MUTATE_BIAS_RATE = 0.4f;
 template<typename T>
-const float DefaultConf<T>::MUTATE_NEURON_RATE = 0.5f;
+const float DefaultConf<T>::MUTATE_NEURON_RATE = 0.3f;
 template<typename T>
 const float DefaultConf<T>::MUTATE_ENABLE_RATE = 0.2f;
 template<typename T>
@@ -247,7 +247,7 @@ const float DefaultConf<T>::DELTA_THRESHOLD = 1.f;
 template<typename T>
 const float DefaultConf<T>::CROSSOVER_PROB = 0.75f;
 template<typename T>
-const size_t DefaultConf<T>::STALE_SPECIES = 15;
+const size_t DefaultConf<T>::STALE_SPECIES = 30;
 template<typename T>
 const size_t DefaultConf<T>::POPULATION_SIZE = 300;
 template<typename T>
@@ -309,7 +309,7 @@ std::string DefaultConf<T>::LVL = "1_1";
 template<typename T>
 const std::array<typename DefaultConf<T>::Action, DefaultConf<T>::OUTPUTS> ACTIONS_ = {
         DefaultConf<T>::Action::A,
-        DefaultConf<T>::Action::B,
+        // DefaultConf<T>::Action::B,
         // DefaultConf<T>::Action::UP,
         // DefaultConf<T>::Action::DOWN,
         DefaultConf<T>::Action::LEFT,

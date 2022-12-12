@@ -32,6 +32,7 @@ namespace smb
             std::unordered_map<smb::Smb::feature, float> scale_to01;
 
             size_t obs_n = CONF::INPUTS;
+            int o_n = 2;
 
             int max_cols = 13;
             int max_rows = 15;
@@ -44,6 +45,8 @@ namespace smb
 
             std::array<int, 2> mario_xy = { 0 };
             std::vector<int> enemies_xy;
+
+            /* ACTION */
 
             /* DONE */
             bool win = false;
@@ -73,11 +76,21 @@ namespace smb
                 return nintaco_readCPU(nintaco::Api::API().get_api(), addr);
             }
 
+            inline void write_gamepad(GamepadButtons button, bool value) const
+            {
+                nintaco_writeGamepad(nintaco::Api::API().get_api(), 0, button, value);
+            }
+
         private:
             /* OBSERVATION */
             void set_mario_obs();
             void set_enemies_obs();
+            float get_mario_dx_obs() const;
+            float get_mario_dy_obs() const;
             bool get_tile_t_obs(int x, int y) const;
+
+            /* ACTION */
+            void set_button_b() const;
 
             /* DONE */
             void set_win_done();
@@ -102,6 +115,9 @@ namespace smb
 
             /* OBSERVATION */
             void obs_func(std::array<float, CONF::INPUTS>& obs);
+
+            /* ACTION */
+            void act_func() const;
 
             /* DONE */
             bool done_func();

@@ -16,6 +16,7 @@ void MyEnv::Env::obs_func()
 void MyEnv::Env::act_func()
 {
     nintaco::Action::ACTION().act_func(this->Super::mdp.act);
+    this->m.smb.act_func();
 }
 
 /*** DEF DONE FUNC HERE */
