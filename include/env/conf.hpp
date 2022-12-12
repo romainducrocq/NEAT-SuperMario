@@ -229,7 +229,7 @@ const float DefaultConf<T>::MUTATE_LINK_RATE = 1.f;
 template<typename T>
 const float DefaultConf<T>::MUTATE_BIAS_RATE = 0.4f;
 template<typename T>
-const float DefaultConf<T>::MUTATE_NEURON_RATE = 0.3f;
+const float DefaultConf<T>::MUTATE_NEURON_RATE = 0.7f;
 template<typename T>
 const float DefaultConf<T>::MUTATE_ENABLE_RATE = 0.2f;
 template<typename T>
