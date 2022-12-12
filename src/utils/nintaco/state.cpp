@@ -12,6 +12,7 @@ void nintaco::State::load()
     th.detach();
 
     std::this_thread::sleep_for(std::chrono::seconds(1));
+    std::cout << std::flush;
 }
 
 void nintaco::State::speed()
