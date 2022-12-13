@@ -228,6 +228,230 @@ MAX_NOOP             = 1
 -------------------------------TRAIN-------------------------------
 ```
 ```
+GENERATION  : 1 / INF
+MAX FITNESS : 282
+MVG AVG     : 38.7083
+#   WIN     : 0
+
+GENERATION  : 2 / INF
+MAX FITNESS : 282
+MVG AVG     : 57.2867
+#   WIN     : 0
+
+GENERATION  : 3 / INF
+MAX FITNESS : 289.5
+MVG AVG     : 89.05
+#   WIN     : 0
+
+GENERATION  : 4 / INF
+MAX FITNESS : 517
+MVG AVG     : 134.2
+#   WIN     : 0
+
+GENERATION  : 5 / INF
+MAX FITNESS : 529
+MVG AVG     : 189.777
+#   WIN     : 0
+
+GENERATION  : 6 / INF
+MAX FITNESS : 828.5
+MVG AVG     : 215.107
+#   WIN     : 0
+
+GENERATION  : 7 / INF
+MAX FITNESS : 828.5
+MVG AVG     : 219.513
+#   WIN     : 0
+
+GENERATION  : 8 / INF
+MAX FITNESS : 1359
+MVG AVG     : 227.508
+#   WIN     : 0
+
+GENERATION  : 9 / INF
+MAX FITNESS : 1359
+MVG AVG     : 242.61
+#   WIN     : 0
+
+GENERATION  : 10 / INF
+MAX FITNESS : 1359
+MVG AVG     : 247.785
+#   WIN     : 0
+
+GENERATION  : 11 / INF
+MAX FITNESS : 1359
+MVG AVG     : 286.028
+#   WIN     : 0
+
+GENERATION  : 12 / INF
+MAX FITNESS : 1359
+MVG AVG     : 318.455
+#   WIN     : 0
+
+GENERATION  : 13 / INF
+MAX FITNESS : 1359
+MVG AVG     : 331.652
+#   WIN     : 0
+
+GENERATION  : 14 / INF
+MAX FITNESS : 1903
+MVG AVG     : 348.988
+#   WIN     : 0
+
+GENERATION  : 15 / INF
+MAX FITNESS : 1903
+MVG AVG     : 400.55
+#   WIN     : 0
+
+GENERATION  : 16 / INF
+MAX FITNESS : 1903
+MVG AVG     : 459.912
+#   WIN     : 0
+
+GENERATION  : 17 / INF
+MAX FITNESS : 3415
+MVG AVG     : 524.397
+#   WIN     : 3
+
+GENERATION  : 18 / INF
+MAX FITNESS : 3415
+MVG AVG     : 505.39
+#   WIN     : 2
+
+GENERATION  : 19 / INF
+MAX FITNESS : 3415
+MVG AVG     : 528.24
+#   WIN     : 2
+
+GENERATION  : 20 / INF
+MAX FITNESS : 3415
+MVG AVG     : 572.818
+#   WIN     : 2
+
+GENERATION  : 21 / INF
+MAX FITNESS : 3425
+MVG AVG     : 607.545
+#   WIN     : 1
+
+GENERATION  : 22 / INF
+MAX FITNESS : 3444.5
+MVG AVG     : 674.195
+#   WIN     : 3
+
+GENERATION  : 23 / INF
+MAX FITNESS : 3444.5
+MVG AVG     : 718.637
+#   WIN     : 4
+
+GENERATION  : 24 / INF
+MAX FITNESS : 3444.5
+MVG AVG     : 773.455
+#   WIN     : 5
+
+GENERATION  : 25 / INF
+MAX FITNESS : 3444.5
+MVG AVG     : 761.43
+#   WIN     : 2
+
+GENERATION  : 26 / INF
+MAX FITNESS : 3444.5
+MVG AVG     : 865.528
+#   WIN     : 13
+
+GENERATION  : 27 / INF
+MAX FITNESS : 3444.5
+MVG AVG     : 872.527
+#   WIN     : 9
+
+GENERATION  : 28 / INF
+MAX FITNESS : 3444.5
+MVG AVG     : 967.94
+#   WIN     : 13
+
+GENERATION  : 29 / INF
+MAX FITNESS : 3444.5
+MVG AVG     : 1056.4
+#   WIN     : 24
+
+GENERATION  : 30 / INF
+MAX FITNESS : 3444.5
+MVG AVG     : 1089.48
+#   WIN     : 29
+
+GENERATION  : 31 / INF
+MAX FITNESS : 3444.5
+MVG AVG     : 1235.27
+#   WIN     : 38
+
+GENERATION  : 32 / INF
+MAX FITNESS : 3444.5
+MVG AVG     : 1269.75
+#   WIN     : 34
+
+GENERATION  : 33 / INF
+MAX FITNESS : 3444.5
+MVG AVG     : 1326.65
+#   WIN     : 34
+
+GENERATION  : 34 / INF
+MAX FITNESS : 3444.5
+MVG AVG     : 1444.87
+#   WIN     : 51
+
+GENERATION  : 35 / INF
+MAX FITNESS : 3444.5
+MVG AVG     : 1523.23
+#   WIN     : 61
+
+GENERATION  : 36 / INF
+MAX FITNESS : 3444.5
+MVG AVG     : 1661.34
+#   WIN     : 88
+
+GENERATION  : 37 / INF
+MAX FITNESS : 3445
+MVG AVG     : 1579.18
+#   WIN     : 78
+
+GENERATION  : 38 / INF
+MAX FITNESS : 3445
+MVG AVG     : 1630.25
+#   WIN     : 78
+
+GENERATION  : 39 / INF
+MAX FITNESS : 3445
+MVG AVG     : 1759.93
+#   WIN     : 82
+
+GENERATION  : 40 / INF
+MAX FITNESS : 3445
+MVG AVG     : 1570.98
+#   WIN     : 74
+
+GENERATION  : 41 / INF
+MAX FITNESS : 3445
+MVG AVG     : 1663.02
+#   WIN     : 77
+
+GENERATION  : 42 / INF
+MAX FITNESS : 3445
+MVG AVG     : 1665.99
+#   WIN     : 74
+
+GENERATION  : 43 / INF
+MAX FITNESS : 3445
+MVG AVG     : 1838.76
+#   WIN     : 89
+
+GENERATION  : 44 / INF
+MAX FITNESS : 3445
+MVG AVG     : 1639.38
+#   WIN     : 78
+
+GENERATION  : 45 / INF
+MAX FITNESS : 3445
+MVG AVG     : 1662.77
+#   WIN     : 73
 ```
 
 `log/plots/`  
@@ -242,6 +466,9 @@ MAX_NOOP             = 1
 -------------------------------EVAL--------------------------------
 ```
 ```
+EPOCH   : 1 / 1
+FITNESS : 3445
+DID WIN : YES
 ```
 
 ****
