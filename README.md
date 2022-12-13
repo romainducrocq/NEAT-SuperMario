@@ -260,7 +260,6 @@ MVG AVG     : 1662.77
 ```
 
 `log/plots/`  
-- Level 1-1:
 <span id="plot_demo1_1">
   
 ![Demo](log/plots/demo1_1.png)
