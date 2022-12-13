@@ -233,6 +233,7 @@ MAX_NOOP             = 1
 `log/plots/`  
 <span id="plot_demo">
   
+![Demo](log/plots/demo.png)
   
 </span>
 
