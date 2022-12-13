@@ -461,6 +461,7 @@ MVG AVG     : 1662.77
 ![Demo](log/plots/demo1_1.png)
   
 </span>
+  
 
 ```
 -------------------------------EVAL--------------------------------
@@ -476,6 +477,7 @@ DID WIN : YES
 ![Demo](res/gif/demo1_1.gif)
 
 </span>
+  
 ****
 
 ## Docs
