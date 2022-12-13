@@ -104,6 +104,14 @@ do
         fi
         echo '  ' >> README.md
         echo '</span>' >> README.md
+    elif [[ "${LINE}" == *"gif_demo"* ]] ; then
+        echo "${LINE}" >> README.md
+        echo '  ' >> README.md
+        if [ -f "../res/gif/demo.gif" ] ; then
+            echo '![Demo](res/gif/demo.gif)' >> README.md
+        fi
+        echo '  ' >> README.md
+        echo '</span>' >> README.md
     fi
 
     if [[ "${LINE}" == *"span"* ]] ; then
