@@ -26,6 +26,21 @@ void MyEnv::Env::done_func()
     if(this->m.smb.get_win_done()){
         this->m.win_cnt++;
     }
+
+    if(this->m.ini){
+        switch(this->Super::mode){
+            case CONF::Mode::EVAL:
+                if(this->Super::steps >= 2){
+                    this->m.ini = false;
+                    this->Super::epoch = 0;
+                    this->Super::mdp.done = true;
+                }
+                break;
+            default:
+                this->m.ini = false;
+                break;
+        }
+    }
 }
 
 /*** DEF FITNESS FUNC HERE */
@@ -40,24 +55,27 @@ void MyEnv::Env::info_func()
     switch(this->Super::mode){
 
         case CONF::Mode::TRAIN:
-            std::cout << "GENERATION  : " << this->Super::generation << " / " <<
-                (this->Super::max_generation_train > 0 ? std::to_string(this->Super::max_generation_train) :
-                                                         "INF") << "\n";
-            std::cout << "MAX FITNESS : " << this->Super::max_fitness << "\n";
-            std::cout << "MVG AVG     : " << this->Super::mvg_avg.get() << "\n";
-            std::cout << "#   WIN     : " << this->m.win_cnt << "\n";
-            std::cout << "\n";
+            if(this->Super::generation > 0){
+                std::cout << "GENERATION  : " << this->Super::generation << " / " <<
+                          (this->Super::max_generation_train > 0 ? std::to_string(this->Super::max_generation_train) :
+                           "INF") << "\n";
+                std::cout << "MAX FITNESS : " << this->Super::max_fitness << "\n";
+                std::cout << "MVG AVG     : " << this->Super::mvg_avg.get() << "\n";
+                std::cout << "#   WIN     : " << this->m.win_cnt << "\n";
+                std::cout << "\n";
+            }
             break;
 
         case CONF::Mode::EVAL:
         case CONF::Mode::PLAY:
-            std::cout << "EPOCH   : " << this->Super::epoch << " / " <<
-                (this->Super::max_epoch_eval > 0 ? std::to_string(this->Super::max_epoch_eval) :
-                                                   "INF") << "\n";
-            std::cout << "FITNESS : " << this->Super::mdp.fitness << "\n";
-            std::cout << "MVG AVG : " << this->Super::mvg_avg.get() << "\n";
-            std::cout << "DID WIN : " << (this->m.win_cnt ? "YES" : "NO") << "\n";
-            std::cout << "\n";
+            if(this->Super::epoch > 0){
+                std::cout << "EPOCH   : " << this->Super::epoch << " / " <<
+                          (this->Super::max_epoch_eval > 0 ? std::to_string(this->Super::max_epoch_eval) :
+                           "INF") << "\n";
+                std::cout << "FITNESS : " << this->Super::mdp.fitness << "\n";
+                std::cout << "DID WIN : " << (this->m.win_cnt ? "YES" : "NO") << "\n";
+                std::cout << "\n";
+            }
             break;
 
         default:

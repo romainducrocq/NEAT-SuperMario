@@ -30,6 +30,8 @@ namespace MyEnv
         smb::Smb smb = smb::Smb();
 
         size_t win_cnt = 0;
+
+        bool ini = true;
     };
 
     class Env : public Neat
