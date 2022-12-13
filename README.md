@@ -231,7 +231,8 @@ MAX_NOOP             = 1
 ```
 
 `log/plots/`  
-<span id="plot_demo">
+- Level 1-1:
+<span id="plot_demo1_1">
   
 ![Demo](log/plots/demo.png)
   
