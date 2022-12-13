@@ -458,7 +458,7 @@ MVG AVG     : 1662.77
 - Level 1-1:
 <span id="plot_demo1_1">
   
-![Demo](log/plots/demo.png)
+![Demo](log/plots/demo1_1.png)
   
 </span>
 
@@ -470,7 +470,12 @@ EPOCH   : 1 / 1
 FITNESS : 3445
 DID WIN : YES
 ```
+- Level 1-1:
+<span id="gif_demo1_1">
 
+![Demo](res/gif/demo1_1.gif)
+
+</span>
 ****
 
 ## Docs
