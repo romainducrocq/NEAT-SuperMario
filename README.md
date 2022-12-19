@@ -228,35 +228,72 @@ MAX_NOOP             = 1
 -------------------------------TRAIN-------------------------------
 ```
 ```
-GENERATION  : 1 / INF
-MAX FITNESS : 282
-MVG AVG     : 38.7083
+GENERATION  : 1 / 300
+MAX FITNESS : 289.5
+MVG AVG     : 41.0717
 #   WIN     : 0
 
-GENERATION  : 17 / INF
-MAX FITNESS : 3415
-MVG AVG     : 524.397
-#   WIN     : 3
+GENERATION  : 24 / 300
+MAX FITNESS : 3373
+MVG AVG     : 642.527
+#   WIN     : 2
 
-GENERATION  : 21 / INF
-MAX FITNESS : 3425
-MVG AVG     : 607.545
-#   WIN     : 1
+GENERATION  : 33 / 300
+MAX FITNESS : 3375.5
+MVG AVG     : 837.527
+#   WIN     : 6
 
-GENERATION  : 22 / INF
-MAX FITNESS : 3444.5
-MVG AVG     : 674.195
-#   WIN     : 3
+GENERATION  : 35 / 300
+MAX FITNESS : 3402.5
+MVG AVG     : 923.523
+#   WIN     : 5
 
-GENERATION  : 37 / INF
-MAX FITNESS : 3445
-MVG AVG     : 1579.18
-#   WIN     : 78
+GENERATION  : 36 / 300
+MAX FITNESS : 3440.5
+MVG AVG     : 1032.61
+#   WIN     : 6
 
-GENERATION  : 45 / INF
-MAX FITNESS : 3445
-MVG AVG     : 1662.77
-#   WIN     : 73
+GENERATION  : 44 / 300
+MAX FITNESS : 3441
+MVG AVG     : 1048.76
+#   WIN     : 16
+
+GENERATION  : 61 / 300
+MAX FITNESS : 3443
+MVG AVG     : 1773.53
+#   WIN     : 83
+
+GENERATION  : 62 / 300
+MAX FITNESS : 3454
+MVG AVG     : 1826.32
+#   WIN     : 99
+
+GENERATION  : 88 / 300
+MAX FITNESS : 3463.5
+MVG AVG     : 2168.22
+#   WIN     : 140
+
+GENERATION  : 124 / 300
+MAX FITNESS : 3468.5
+MVG AVG     : 2354.4
+#   WIN     : 170
+
+GENERATION  : 149 / 300
+MAX FITNESS : 3470.5
+MVG AVG     : 2526.36
+#   WIN     : 196
+
+GENERATION  : 155 / 300
+MAX FITNESS : 3471
+MVG AVG     : 2457.06
+#   WIN     : 187
+
+GENERATION  : 300 / 300
+MAX FITNESS : 3471
+MVG AVG     : 2749.04
+#   WIN     : 216
+
+Time: 4.03416e+08ms
 ```
 
 `log/plots/`  
@@ -272,8 +309,10 @@ MVG AVG     : 1662.77
 ```
 ```
 EPOCH   : 1 / 1
-FITNESS : 3445
+FITNESS : 3471
 DID WIN : YES
+
+Time: 35091.9ms
 ```
 - Level 1-1: `./eval.sh -k n -l 1_1 -e 10 -t 0 -n 0 -s demo1_1`  
 <span id="gif_demo1_1">
