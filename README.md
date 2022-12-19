@@ -314,7 +314,7 @@ DID WIN : YES
 
 Time: 35091.9ms
 ```
-- Level 1-1: `./eval.sh -k n -l 1_1 -e 10 -t 0 -n 0 -s demo1_1`  
+- Level 1_1: `./eval.sh -k n -l 1_1 -e 10 -t 0 -n 0 -s demo1_1`  
 <span id="gif_demo1_1">
 
 ![Demo](res/gif/demo1_1.gif)
