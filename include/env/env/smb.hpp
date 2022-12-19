@@ -50,6 +50,7 @@ namespace smb
 
             /* DONE */
             bool win = false;
+            std::string lvl = CONF::LVL;
 
             /* NOOP */
             size_t frames = 0;
