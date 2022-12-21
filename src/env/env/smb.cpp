@@ -131,6 +131,20 @@ void smb::Smb::set_enemies_obs()
             }else{
                 enemies_xy_t.push_back(Smb::feature::ENEMY);
             }
+
+            /*
+            if(type >= 0x24 && type <= 0x2C){
+                enemies_xy_t.push_back(Smb::feature::LIFT);
+            }else if(type == 0x32){
+                enemies_xy_t.push_back(Smb::feature::JUMP);
+            }else if(type >= 0x1B && type <= 0x1F){
+                enemies_xy_t.push_back(Smb::feature::FIRE);
+            }else if(type == 0x05 || type == 0x2D){
+                enemies_xy_t.push_back(Smb::feature::BOSS);
+            }else{
+                enemies_xy_t.push_back(Smb::feature::ENEMY);
+            }
+            */
         }
     }
 }

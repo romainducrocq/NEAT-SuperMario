@@ -25,6 +25,7 @@ namespace smb
         private:
             enum feature{
                 EMPTY, SAFE, HOLE, ENEMY, N
+                // EMPTY, SAFE, HOLE, ENEMY, LIFT, JUMP, FIRE, BOSS, N
             };
 
         private:
