@@ -247,7 +247,7 @@ const float DefaultConf<T>::DELTA_THRESHOLD = 1.f;
 template<typename T>
 const float DefaultConf<T>::CROSSOVER_PROB = 0.75f;
 template<typename T>
-const size_t DefaultConf<T>::STALE_SPECIES = 30;
+const size_t DefaultConf<T>::STALE_SPECIES = 50;
 template<typename T>
 const size_t DefaultConf<T>::POPULATION_SIZE = 300;
 template<typename T>
