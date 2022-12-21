@@ -125,22 +125,11 @@ void smb::Smb::set_enemies_obs()
             enemies_xy_t.push_back((this->read_cpu(0x6E + i) * 0x100) + this->read_cpu(0x87 + i) + 8);
             enemies_xy_t.push_back((this->read_cpu(0xCF + i) - 24) / 16);
 
-            switch(this->read_cpu(0x16 + i)){
-                case 0x24:
-                case 0x25:
-                case 0x26:
-                case 0x27:
-                case 0x28:
-                case 0x29:
-                case 0x2A:
-                case 0x2B:
-                case 0x2C:
-                // case 0x32:
-                    enemies_xy_t.push_back(Smb::feature::SAFE);
-                    break;
-                default:
-                    enemies_xy_t.push_back(Smb::feature::ENEMY);
-                    break;
+            int type = this->read_cpu(0x16 + i);
+            if(type >= 0x24 && type <= 0x2C){
+                enemies_xy_t.push_back(Smb::feature::SAFE);
+            }else{
+                enemies_xy_t.push_back(Smb::feature::ENEMY);
             }
         }
     }
