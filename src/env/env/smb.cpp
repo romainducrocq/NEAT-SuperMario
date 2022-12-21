@@ -74,9 +74,10 @@ void smb::Smb::obs_func(std::array<float, CONF::INPUTS>& obs)
         for(int x = (-this->cols_[0] * 16); x < (this->cols_[1] * 16); x += 16){
 
            [&](int dx, int dy, int yi) {
-               for(size_t e = 0; e < this->enemies_xy.size(); e += 2){
+               for(size_t e = 0; e < this->enemies_xy.size(); e += 3){
                     if(this->enemies_xy[e] >= dx && this->enemies_xy[e] < dx + 16 && this->enemies_xy[e + 1] == yi){
-                        obs[i] = this->scale_to01.at(smb::Smb::feature::ENEMY);
+                        obs[i] = this->scale_to01.at(this->enemies_xy[e + 2] ? smb::Smb::feature::ENEMY :
+                                                                               smb::Smb::feature::SAFE);
                         return;
                     }
                 }
@@ -124,6 +125,24 @@ void smb::Smb::set_enemies_obs()
         if(this->read_cpu(0xF + i)){
             enemies_xy.push_back((this->read_cpu(0x6E + i) * 0x100) + this->read_cpu(0x87 + i) + 8);
             enemies_xy.push_back((this->read_cpu(0xCF + i) - 24) / 16);
+
+            switch(this->read_cpu(0x16 + i)){
+                case 0x24:
+                case 0x25:
+                case 0x26:
+                case 0x27:
+                case 0x28:
+                case 0x29:
+                case 0x2A:
+                case 0x2B:
+                case 0x2C:
+                // case 0x32:
+                    enemies_xy.push_back(0);
+                    break;
+                default:
+                    enemies_xy.push_back(1);
+                    break;
+            }
         }
     }
 }
