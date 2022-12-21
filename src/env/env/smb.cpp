@@ -74,10 +74,9 @@ void smb::Smb::obs_func(std::array<float, CONF::INPUTS>& obs)
         for(int x = (-this->cols_[0] * 16); x < (this->cols_[1] * 16); x += 16){
 
            [&](int dx, int dy, int yi) {
-               for(size_t e = 0; e < this->enemies_xy.size(); e += 3){
-                    if(this->enemies_xy[e] >= dx && this->enemies_xy[e] < dx + 16 && this->enemies_xy[e + 1] == yi){
-                        obs[i] = this->scale_to01.at(this->enemies_xy[e + 2] ? smb::Smb::feature::ENEMY :
-                                                                               smb::Smb::feature::SAFE);
+               for(size_t e = 0; e < this->enemies_xy_t.size(); e += 3){
+                    if(this->enemies_xy_t[e] >= dx && this->enemies_xy_t[e] < dx + 16 && this->enemies_xy_t[e + 1] == yi){
+                        obs[i] = this->scale_to01.at(static_cast<Smb::feature>(this->enemies_xy_t[e + 2]));
                         return;
                     }
                 }
@@ -120,11 +119,11 @@ void smb::Smb::set_mario_obs()
 
 void smb::Smb::set_enemies_obs()
 {
-    this->enemies_xy.clear();
+    this->enemies_xy_t.clear();
     for(int i = 0; i < 5; i++){
         if(this->read_cpu(0xF + i)){
-            enemies_xy.push_back((this->read_cpu(0x6E + i) * 0x100) + this->read_cpu(0x87 + i) + 8);
-            enemies_xy.push_back((this->read_cpu(0xCF + i) - 24) / 16);
+            enemies_xy_t.push_back((this->read_cpu(0x6E + i) * 0x100) + this->read_cpu(0x87 + i) + 8);
+            enemies_xy_t.push_back((this->read_cpu(0xCF + i) - 24) / 16);
 
             switch(this->read_cpu(0x16 + i)){
                 case 0x24:
@@ -137,10 +136,10 @@ void smb::Smb::set_enemies_obs()
                 case 0x2B:
                 case 0x2C:
                 // case 0x32:
-                    enemies_xy.push_back(0);
+                    enemies_xy_t.push_back(Smb::feature::SAFE);
                     break;
                 default:
-                    enemies_xy.push_back(1);
+                    enemies_xy_t.push_back(Smb::feature::ENEMY);
                     break;
             }
         }

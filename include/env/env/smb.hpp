@@ -44,7 +44,7 @@ namespace smb
             std::array<int, 2> rows_ = { 0 };
 
             std::array<int, 2> mario_xy = { 0 };
-            std::vector<int> enemies_xy;
+            std::vector<int> enemies_xy_t;
 
             /* ACTION */
 
