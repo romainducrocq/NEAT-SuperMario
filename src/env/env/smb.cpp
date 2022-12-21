@@ -190,14 +190,10 @@ bool smb::Smb::done_func()
 
 void smb::Smb::set_win_done()
 {
-    if(this->lvl == "1_1"){
-        this->win = this->read_cpu(0x001D) == 3 && this->mario_xy[0] > 3160;
-    }else if(this->lvl == "1_2"){
-        this->win = this->mario_xy[0] > 2673;
-    }else if(this->lvl == "1_3"){
-        this->win = this->read_cpu(0x001D) == 3 && this->mario_xy[0] > 2424;
-    }else if(this->lvl == "1_4"){
-        this->win = this->mario_xy[0] > 2242;
+    if(this->win_x[this->lvl]){
+        this->win = this->mario_xy[0] > this->win_x[this->lvl];
+    }else{
+        this->win = this->read_cpu(0x001D) == 3;
     }
 }
 
