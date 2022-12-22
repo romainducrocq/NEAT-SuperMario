@@ -321,6 +321,13 @@ Time: 35091.9ms
 
 </span>
   
+- Level 2_2: `./eval.sh -k n -l 2_2 -e 10 -t 0 -n 0 -s demo2_2`
+<span id="gif_demo1_4">
+
+![Demo](res/gif/demo2_2.gif)
+
+</span>
+  
 - Level 1_4: `./eval.sh -k n -l 1_4 -e 10 -t 0 -n 0 -s demo1_4`
 <span id="gif_demo1_4">
 
