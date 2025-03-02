@@ -15,7 +15,7 @@
 
 ## How to _
 
-`cd bin`
+`cd bin/`
 
 ```
 1. Execute program : $ <cmd>
@@ -24,7 +24,7 @@
 ```
 
 ### Install
-`./make.sh` or  
+`sudo ./make.sh` or  
 ```
 OPT=$(dirname $(pwd))'/opt/'
 
@@ -49,7 +49,7 @@ unzip Nintaco_bin_2020-05-01.zip
 ```
 
 ### Run
-`./app.sh` or  
+`sudo ./app.sh` or  
 <span id="how_to_run">
 ```
 $ ./build.sh -R
@@ -62,7 +62,7 @@ $ ./run.sh -m eval -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 [Connect Nintaco](#how-to-_)
 
 ### Train
-`./train.sh [-D -R] <args>` or  
+`sudo ./train.sh [-D -R] <args>` or  
 <span id="how_to_train">
 ```
 * Debug   : $ ./train.sh -D -k n -l 1_1 -g 0 -t 0 -n 1 -p plt1_1 -s sav1_1
@@ -73,7 +73,7 @@ $ ./run.sh -m eval -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 [Connect Nintaco](#how-to-_)
 
 ### Eval
-`./eval.sh [-D -R] <args>` or  
+`sudo ./eval.sh [-D -R] <args>` or  
 <span id="how_to_eval">
 ```
 * Debug   : $ ./eval.sh -D -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
@@ -84,7 +84,7 @@ $ ./run.sh -m eval -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 [Connect Nintaco](#how-to-_)
 
 ### Play
-`./play.sh [-D -R] <args>` or  
+`sudo ./play.sh [-D -R] <args>` or  
 <span id="how_to_play">
 ```
 * Debug   : $ ./play.sh -D -k y -l 1_1 -e 10
@@ -95,7 +95,7 @@ $ ./run.sh -m eval -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 [Connect Nintaco](#how-to-_)
 
 ### Test
-`./test.sh [-D -R] <args>` or  
+`sudo ./test.sh [-D -R] <args>` or  
 <span id="how_to_test">
 ```
 * Debug   : $ ./test.sh -D 
@@ -106,7 +106,7 @@ $ ./run.sh -m eval -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 [Connect Nintaco](#how-to-_)
 
 ### Memcheck
-`./memcheck.sh <cmd>`  
+`sudo ./memcheck.sh <cmd>`  
 ```
 * Example : $ ./memcheck.sh ./train.sh -g 10 
 * Example : $ ./memcheck.sh ./eval.sh -s sav
@@ -115,7 +115,7 @@ $ ./run.sh -m eval -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 [Connect Nintaco](#how-to-_)
 
 ### Log
-`./log.sh [-V] <cmd>`  
+`sudo ./log.sh [-V] <cmd>`  
 ```
 * Example : $ ./log.sh ./train.sh -s sav
 * Example : $ ./log.sh -V ./play.sh -e 1
