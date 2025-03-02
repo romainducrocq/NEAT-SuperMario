@@ -96,19 +96,35 @@ do
         echo 'MAX_NOOP             = '"$(get_conf_param MAX_NOOP)" >> README.md
         echo '```' >> README.md
         echo '</span>' >> README.md
-    elif [[ "${LINE}" == *"plot_demo"* ]] ; then
+    elif [[ "${LINE}" == *"plot_demo1_1"* ]] ; then
         echo "${LINE}" >> README.md
         echo '  ' >> README.md
-        if [ -f "../log/plots/demo.png" ] ; then
-            echo '![Demo](log/plots/demo.png)' >> README.md
+        if [ -f "../log/plots/demo1_1.png" ] ; then
+            echo '![Demo](log/plots/demo1_1.png)' >> README.md
+        fi
+        echo '  ' >> README.md
+        echo '</span>' >> README.md
+    elif [[ "${LINE}" == *"gif_demo1_1"* ]] ; then
+        echo "${LINE}" >> README.md
+        echo '  ' >> README.md
+        if [ -f "../res/gif/demo1_1.gif" ] ; then
+            echo '![Demo](res/gif/demo1_1.gif)' >> README.md
+        fi
+        echo '  ' >> README.md
+        echo '</span>' >> README.md
+    elif [[ "${LINE}" == *"gif_demo1_4"* ]] ; then
+        echo "${LINE}" >> README.md
+        echo '  ' >> README.md
+        if [ -f "../res/gif/demo1_4.gif" ] ; then
+            echo '![Demo](res/gif/demo1_4.gif)' >> README.md
         fi
         echo '  ' >> README.md
         echo '</span>' >> README.md
     elif [[ "${LINE}" == *"gif_demo"* ]] ; then
         echo "${LINE}" >> README.md
         echo '  ' >> README.md
-        if [ -f "../res/gif/demo.gif" ] ; then
-            echo '![Demo](res/gif/demo.gif)' >> README.md
+        if [ -f "../res/gif/demo2_2.gif" ] ; then
+            echo '![Demo](res/gif/demo2_2.gif)' >> README.md
         fi
         echo '  ' >> README.md
         echo '</span>' >> README.md
