@@ -116,7 +116,7 @@ struct DefaultConf{
                 default :
                     std::cerr << "usage: apps/exec [-h] [-m MOD] [-k KEY] [-l LVL] [-g GEN] [-e EPO] [-t STP] [-n NOP] [-p PLT] [-s SAV] \n";
                     std::cerr << "\n";
-                    std::cerr << "NEAT SuperMorIA                                                                                        \n";
+                    std::cerr << "NEAT SuperMario                                                                                        \n";
                     std::cerr << "\n";
                     std::cerr << "optional args:                                                                                         \n";
                     std::cerr << "  -h      Print help and exit                                                                          \n";

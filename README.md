@@ -1,5 +1,5 @@
 
-# [C++] SUPER MORIA with NEAT and TidyV3mul
+# NEAT - SUPER MARIO with NEAT and TidyV3mul
 
 - My very own NEAT framework in C++ (it's v3 on the NES) : [\[v1. BASE\]](https://github.com/romainducrocq/NEAT-TidyVolve) - [\[v2. SFML\]](https://github.com/romainducrocq/NEAT-TidyV2fml) - [\[v3. EMUL\]](https://github.com/romainducrocq/NEAT-TidyV3mul)
 <!---->
@@ -134,7 +134,7 @@ $ ./run.sh -m eval -k n -l 1_1 -e 10 -t 0 -n 0 -s sav1_1
 ```
 usage: apps/exec [-h] [-m MOD] [-k KEY] [-l LVL] [-g GEN] [-e EPO] [-t STP] [-n NOP] [-p PLT] [-s SAV]
 
-NEAT SuperMorIA
+NEAT SuperMario
 
 optional args:
   -h      Print help and exit
